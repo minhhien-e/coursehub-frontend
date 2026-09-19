@@ -1,8 +1,11 @@
 import { Search, SlidersHorizontal, ChevronDown } from 'lucide-react';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
+import { useCourses } from '../hooks/useCourses';
 
 export const CourseFilters = () => {
+  const { searchQuery, sortBy, handleSearch, handleSort } = useCourses();
+
   return (
     <div className="flex flex-col md:flex-row gap-4 items-center w-full mb-8">
       {/* Search Bar */}
@@ -14,6 +17,8 @@ export const CourseFilters = () => {
           type="text" 
           placeholder="Search courses..." 
           className="pl-10 h-11 bg-[#121814] border-[#1b251e] focus:bg-[#1a231d] w-full shadow-sm"
+          value={searchQuery}
+          onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
 
@@ -22,7 +27,8 @@ export const CourseFilters = () => {
         <div className="relative flex-1 md:flex-none md:w-48">
           <select 
             className="w-full h-11 bg-[#121814] border border-[#1b251e] text-zinc-300 text-sm rounded-lg pl-4 pr-10 appearance-none outline-none focus:border-emerald-500 transition-colors shadow-sm cursor-pointer"
-            defaultValue="recommended"
+            value={sortBy}
+            onChange={(e) => handleSort(e.target.value)}
           >
             <option value="recommended">Sort by</option>
             <option value="popular">Most Popular</option>
