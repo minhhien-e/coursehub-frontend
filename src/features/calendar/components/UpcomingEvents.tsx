@@ -4,6 +4,7 @@ import { cn } from '@/utils/cn';
 
 interface UpcomingEventsProps {
   events: CalendarEvent[];
+  onEventClick?: (event: CalendarEvent) => void;
 }
 
 const typeConfig: Record<CalendarEventType, { icon: any; colorClass: string; bgClass: string }> = {
@@ -12,7 +13,7 @@ const typeConfig: Record<CalendarEventType, { icon: any; colorClass: string; bgC
   quiz: { icon: AlertCircle, colorClass: 'text-orange-500', bgClass: 'bg-orange-500/10 border-orange-500/20' },
 };
 
-export const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
+export const UpcomingEvents = ({ events, onEventClick }: UpcomingEventsProps) => {
   // Filter for upcoming events and sort by date
   const todayStr = new Date().toISOString().split('T')[0];
   
@@ -44,7 +45,8 @@ export const UpcomingEvents = ({ events }: UpcomingEventsProps) => {
             return (
               <div 
                 key={event.id}
-                className="bg-[#0a0e0c] border border-[#1b251e] rounded-xl p-4 flex gap-4 hover:border-zinc-700 transition-colors"
+                onClick={() => onEventClick?.(event)}
+                className="bg-[#0a0e0c] border border-[#1b251e] rounded-xl p-4 flex gap-4 hover:border-zinc-700 transition-colors cursor-pointer"
               >
                 <div className={cn(
                   "w-10 h-10 shrink-0 rounded-lg flex items-center justify-center border",

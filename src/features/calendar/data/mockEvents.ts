@@ -15,6 +15,7 @@ export const mockEvents: CalendarEvent[] = [
     date: getRelativeDateStr(2),
     time: '2:00 PM',
     type: 'live_session',
+    description: 'Watch Sarah optimize a real-world React application live.',
   },
   {
     id: 'e2',

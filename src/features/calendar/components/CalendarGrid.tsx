@@ -5,6 +5,7 @@ import type { CalendarEvent, CalendarEventType } from '../types';
 
 interface CalendarGridProps {
   events: CalendarEvent[];
+  onEventClick?: (event: CalendarEvent) => void;
 }
 
 const typeConfig: Record<CalendarEventType, { label: string; colorClass: string; bgClass: string }> = {
@@ -15,7 +16,7 @@ const typeConfig: Record<CalendarEventType, { label: string; colorClass: string;
 
 const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-export const CalendarGrid = ({ events }: CalendarGridProps) => {
+export const CalendarGrid = ({ events, onEventClick }: CalendarGridProps) => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const year = currentDate.getFullYear();
@@ -121,7 +122,11 @@ export const CalendarGrid = ({ events }: CalendarGridProps) => {
                     return (
                       <div 
                         key={event.id}
-                        className={cn("text-[10px] px-1.5 py-1 rounded truncate", config.bgClass)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onEventClick?.(event);
+                        }}
+                        className={cn("text-[10px] px-1.5 py-1 rounded truncate cursor-pointer hover:opacity-80 transition-opacity", config.bgClass)}
                         title={event.title}
                       >
                         {event.title}

@@ -1,13 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { fetchEvents } from '../store/calendarSlice';
 import { CalendarGrid } from './CalendarGrid';
 import { UpcomingEvents } from './UpcomingEvents';
+import { EventModal } from './EventModal';
 import { Loader2 } from 'lucide-react';
+import type { CalendarEvent } from '../types';
 
 export const CalendarView = () => {
   const dispatch = useAppDispatch();
   const { events, isLoading, error } = useAppSelector((state) => state.calendar);
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
 
   useEffect(() => {
     dispatch(fetchEvents());
@@ -41,12 +44,21 @@ export const CalendarView = () => {
       {/* Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2">
-          <CalendarGrid events={events} />
+          <CalendarGrid events={events} onEventClick={setSelectedEvent} />
         </div>
         <div>
-          <UpcomingEvents events={events} />
+          <UpcomingEvents events={events} onEventClick={setSelectedEvent} />
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedEvent && (
+        <EventModal 
+          event={selectedEvent} 
+          isOpen={true} 
+          onClose={() => setSelectedEvent(null)} 
+        />
+      )}
       
     </div>
   );
