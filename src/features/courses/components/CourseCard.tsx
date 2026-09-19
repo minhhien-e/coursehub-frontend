@@ -1,5 +1,6 @@
 import { Star, Users, Clock, PlayCircle } from 'lucide-react';
 import type { Course } from '../types';
+import { Link } from 'react-router-dom';
 
 interface CourseCardProps {
   course: Course;
@@ -7,7 +8,8 @@ interface CourseCardProps {
 
 export const CourseCard = ({ course }: CourseCardProps) => {
   return (
-    <div className="bg-[#121814] rounded-2xl overflow-hidden border border-[#1b251e] shadow-sm hover:border-emerald-500/50 hover:shadow-emerald-900/20 transition-all duration-300 group cursor-pointer flex flex-col h-full">
+    <Link to={`/courses/${course.id}`} className="block h-full group">
+      <div className="bg-[#121814] rounded-2xl overflow-hidden border border-[#1b251e] shadow-sm hover:border-emerald-500/50 hover:shadow-emerald-900/20 transition-all duration-300 cursor-pointer flex flex-col h-full">
       
       {/* Thumbnail */}
       <div className="relative h-48 w-full overflow-hidden">
@@ -86,6 +88,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
           )}
         </div>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 };

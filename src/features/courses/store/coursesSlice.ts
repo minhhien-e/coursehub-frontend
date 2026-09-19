@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, type PayloadAction } from '@reduxjs/toolkit';
-import type { Course } from '../types';
+import type { Course, CourseDetail } from '../types';
 import { coursesService } from '../api/courses.service';
 
 interface CoursesState {
@@ -13,6 +13,8 @@ interface CoursesState {
   isFilterOpen: boolean;
   availableCategories: string[];
   availableLevels: string[];
+  currentCourse: CourseDetail | null;
+  isCourseLoading: boolean;
 }
 
 const initialState: CoursesState = {
@@ -26,6 +28,8 @@ const initialState: CoursesState = {
   isFilterOpen: false,
   availableCategories: [],
   availableLevels: [],
+  currentCourse: null,
+  isCourseLoading: false,
 };
 
 export const fetchCourses = createAsyncThunk(
@@ -40,6 +44,14 @@ export const fetchFilterOptions = createAsyncThunk(
   'courses/fetchFilterOptions',
   async () => {
     const response = await coursesService.getFilterOptions();
+    return response;
+  }
+);
+
+export const fetchCourseById = createAsyncThunk(
+  'courses/fetchCourseById',
+  async (id: string) => {
+    const response = await coursesService.getCourseById(id);
     return response;
   }
 );
@@ -95,6 +107,19 @@ const coursesSlice = createSlice({
       .addCase(fetchFilterOptions.fulfilled, (state, action) => {
         state.availableCategories = action.payload.categories;
         state.availableLevels = action.payload.levels;
+      })
+      .addCase(fetchCourseById.pending, (state) => {
+        state.isCourseLoading = true;
+        state.error = null;
+        state.currentCourse = null;
+      })
+      .addCase(fetchCourseById.fulfilled, (state, action) => {
+        state.isCourseLoading = false;
+        state.currentCourse = action.payload;
+      })
+      .addCase(fetchCourseById.rejected, (state, action) => {
+        state.isCourseLoading = false;
+        state.error = action.error.message || 'Failed to fetch course details';
       });
   },
 });
