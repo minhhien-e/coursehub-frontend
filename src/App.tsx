@@ -4,6 +4,8 @@ import { MainLayout } from './layouts/MainLayout';
 import { Dashboard } from './pages/Dashboard';
 import { Settings } from './pages/Settings';
 import { BrowseCourses, CourseDetails, LearnCourse } from './pages/Courses';
+import { Assignments } from './pages/Assignments';
+import { Calendar } from './pages/Calendar';
 import { Login, Register, ForgotPassword, ResetPassword } from './pages/Auth';
 
 function App() {
@@ -27,8 +29,8 @@ function App() {
           <Route path="courses" element={<BrowseCourses />} />
           <Route path="courses/:id" element={<CourseDetails />} />
           <Route path="my-learning" element={<div className="text-white text-center mt-10">My Learning (Coming soon)</div>} />
-          <Route path="assignments" element={<div className="text-white text-center mt-10">Assignments (Coming soon)</div>} />
-          <Route path="calendar" element={<div className="text-white text-center mt-10">Calendar (Coming soon)</div>} />
+          <Route path="assignments" element={<Assignments />} />
+          <Route path="calendar" element={<Calendar />} />
           <Route path="settings" element={<Settings />} />
         </Route>
 

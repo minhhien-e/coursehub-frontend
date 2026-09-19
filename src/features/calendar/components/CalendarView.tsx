@@ -1,0 +1,53 @@
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { fetchEvents } from '../store/calendarSlice';
+import { CalendarGrid } from './CalendarGrid';
+import { UpcomingEvents } from './UpcomingEvents';
+import { Loader2 } from 'lucide-react';
+
+export const CalendarView = () => {
+  const dispatch = useAppDispatch();
+  const { events, isLoading, error } = useAppSelector((state) => state.calendar);
+
+  useEffect(() => {
+    dispatch(fetchEvents());
+  }, [dispatch]);
+
+  if (isLoading && events.length === 0) {
+    return (
+      <div className="flex justify-center items-center h-[60vh]">
+        <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex justify-center items-center h-[60vh] text-red-500">
+        {error}
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-6 md:p-8 max-w-[1400px] mx-auto animate-in fade-in duration-500">
+      
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-extrabold text-white mb-2">Calendar</h1>
+        <p className="text-zinc-400">Track your deadlines, live sessions, and quiz dates.</p>
+      </div>
+
+      {/* Main Content */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2">
+          <CalendarGrid events={events} />
+        </div>
+        <div>
+          <UpcomingEvents events={events} />
+        </div>
+      </div>
+      
+    </div>
+  );
+};
