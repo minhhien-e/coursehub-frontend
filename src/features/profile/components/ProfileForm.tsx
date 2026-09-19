@@ -1,22 +1,26 @@
-﻿import { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Camera } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Label } from '@/components/ui/Label';
 import { useSettings } from '@/features/profile/hooks/useSettings';
+import { useAppSelector } from '@/store/hooks';
 
 export const ProfileForm = () => {
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const { user } = useAppSelector((state) => state.auth);
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(user?.avatarUrl || null);
+  const [avatarFile, setAvatarFile] = useState<File | undefined>();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { updateProfile, isLoading } = useSettings();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      if (avatarUrl) URL.revokeObjectURL(avatarUrl);
+      if (avatarUrl && !avatarUrl.startsWith('http')) URL.revokeObjectURL(avatarUrl);
       const newUrl = URL.createObjectURL(file);
       setAvatarUrl(newUrl);
+      setAvatarFile(file);
     }
   };
 
@@ -26,11 +30,25 @@ export const ProfileForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const fullName = formData.get('fullName') as string;
+    const email = formData.get('email') as string;
+    const headline = formData.get('headline') as string;
+    const bio = formData.get('bio') as string;
+    const location = formData.get('location') as string;
+    
     await updateProfile({
-      fullName: 'Alex Johnson', // Hardcoded for now
-      email: 'alex.johnson@example.com'
+      fullName,
+      email,
+      headline,
+      bio,
+      location,
+      avatarFile,
+      avatarUrl: avatarUrl || undefined
     });
   };
+
+  const defaultFullName = user ? `${user.firstName} ${user.lastName}`.trim() : '';
 
   return (
     <div className="bg-[#121814] rounded-xl border border-[#1b251e] p-6 md:p-8 max-w-4xl shadow-sm">
@@ -39,7 +57,7 @@ export const ProfileForm = () => {
       <div className="flex items-center space-x-4 mb-8">
         <div className="w-20 h-20 rounded-full bg-zinc-800 overflow-hidden flex-shrink-0">
           <img 
-            src={avatarUrl || "https://ui-avatars.com/api/?name=Alex+Johnson&background=333&color=fff"} 
+            src={avatarUrl || `https://ui-avatars.com/api/?name=${defaultFullName || 'Guest'}&background=333&color=fff`} 
             alt="Avatar" 
             className="w-full h-full object-cover" 
           />
@@ -76,31 +94,33 @@ export const ProfileForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <Label htmlFor="fullName" required>Full Name</Label>
-            <Input id="fullName" defaultValue="Alex Johnson" />
+            <Input id="fullName" name="fullName" defaultValue={defaultFullName} required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email" required>Email</Label>
-            <Input id="email" type="email" defaultValue="alex.johnson@example.com" />
+            <Input id="email" name="email" type="email" defaultValue={user?.email || ''} required />
           </div>
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="headline">Headline</Label>
-          <Input id="headline" defaultValue="Full-Stack Developer & Lifelong Learner" />
+          <Input id="headline" name="headline" defaultValue="" placeholder="e.g. Full-Stack Developer" />
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="bio">Bio</Label>
           <Textarea 
             id="bio" 
-            defaultValue="Passionate about web development and design. Currently learning advanced React patterns and system design."
+            name="bio"
+            defaultValue=""
+            placeholder="Tell us a little bit about yourself"
             className="min-h-[100px]"
           />
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="location">Location</Label>
-          <Input id="location" defaultValue="San Francisco, CA" />
+          <Input id="location" name="location" defaultValue="" placeholder="e.g. San Francisco, CA" />
         </div>
         
         <div className="border-t border-[#1b251e] my-8"></div>
@@ -110,19 +130,19 @@ export const ProfileForm = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <Label htmlFor="website">Website</Label>
-            <Input id="website" defaultValue="https://alexjohnson.dev" />
+            <Input id="website" name="website" defaultValue="" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="twitter">Twitter</Label>
-            <Input id="twitter" defaultValue="https://twitter.com/alexj" />
+            <Input id="twitter" name="twitter" defaultValue="" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="linkedin">LinkedIn</Label>
-            <Input id="linkedin" defaultValue="https://linkedin.com/in/alexjohnson" />
+            <Input id="linkedin" name="linkedin" defaultValue="" />
           </div>
           <div className="space-y-2">
             <Label htmlFor="github">GitHub</Label>
-            <Input id="github" defaultValue="https://github.com/alexjdev" />
+            <Input id="github" name="github" defaultValue="" />
           </div>
         </div>
 

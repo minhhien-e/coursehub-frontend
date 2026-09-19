@@ -1,5 +1,7 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { settingsService } from '@/features/profile/api/settings.service';
+import { useAppDispatch } from '@/store/hooks';
+import { updateUser } from '@/features/auth';
 
 export interface UpdateProfilePayload {
   fullName: string;
@@ -12,6 +14,7 @@ export interface UpdateProfilePayload {
   linkedin?: string;
   github?: string;
   avatarFile?: File;
+  avatarUrl?: string;
 }
 
 export interface UpdatePasswordPayload {
@@ -22,11 +25,28 @@ export interface UpdatePasswordPayload {
 
 export const useSettings = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useAppDispatch();
 
   const updateProfile = async (payload: UpdateProfilePayload) => {
     setIsLoading(true);
     try {
-      return await settingsService.updateProfile(payload);
+      // Simulate API call
+      // const response = await settingsService.updateProfile(payload);
+      
+      // Split full name back into first and last name for redux
+      const nameParts = payload.fullName.trim().split(' ');
+      const firstName = nameParts[0];
+      const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+      
+      // Update Redux state immediately (optimistic update or after mock API)
+      dispatch(updateUser({
+        firstName,
+        lastName,
+        email: payload.email,
+        avatarUrl: payload.avatarUrl
+      }));
+      
+      return { success: true };
     } catch (error) {
       console.error('Failed to update profile', error);
       return { success: false, error };
