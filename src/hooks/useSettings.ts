@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { settingsService } from '@/services/settings.service';
 
 export interface UpdateProfilePayload {
   fullName: string;
@@ -25,10 +26,7 @@ export const useSettings = () => {
   const updateProfile = async (payload: UpdateProfilePayload) => {
     setIsLoading(true);
     try {
-      // TODO: Replace with actual API call
-      console.log('API Call -> updateProfile', payload);
-      await new Promise(resolve => setTimeout(resolve, 800));
-      return { success: true };
+      return await settingsService.updateProfile(payload);
     } catch (error) {
       console.error('Failed to update profile', error);
       return { success: false, error };
@@ -40,10 +38,7 @@ export const useSettings = () => {
   const updateNotifications = async (payload: any) => {
     setIsLoading(true);
     try {
-      // TODO: Replace with actual API call
-      console.log('API Call -> updateNotifications', payload);
-      await new Promise(resolve => setTimeout(resolve, 800));
-      return { success: true };
+      return await settingsService.updateNotifications(payload);
     } catch (error) {
       console.error('Failed to update notifications', error);
       return { success: false, error };
@@ -55,10 +50,7 @@ export const useSettings = () => {
   const updatePrivacy = async (payload: any) => {
     setIsLoading(true);
     try {
-      // TODO: Replace with actual API call
-      console.log('API Call -> updatePrivacy', payload);
-      await new Promise(resolve => setTimeout(resolve, 800));
-      return { success: true };
+      return await settingsService.updatePrivacy(payload);
     } catch (error) {
       console.error('Failed to update privacy settings', error);
       return { success: false, error };
@@ -70,10 +62,7 @@ export const useSettings = () => {
   const updatePassword = async (payload: UpdatePasswordPayload) => {
     setIsLoading(true);
     try {
-      // TODO: Replace with actual API call
-      console.log('API Call -> updatePassword', payload);
-      await new Promise(resolve => setTimeout(resolve, 800));
-      return { success: true };
+      return await settingsService.updatePassword(payload);
     } catch (error) {
       console.error('Failed to update password', error);
       return { success: false, error };
