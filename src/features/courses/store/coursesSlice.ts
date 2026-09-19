@@ -11,6 +11,8 @@ interface CoursesState {
   selectedCategories: string[];
   selectedLevels: string[];
   isFilterOpen: boolean;
+  availableCategories: string[];
+  availableLevels: string[];
 }
 
 const initialState: CoursesState = {
@@ -22,12 +24,22 @@ const initialState: CoursesState = {
   selectedCategories: [],
   selectedLevels: [],
   isFilterOpen: false,
+  availableCategories: [],
+  availableLevels: [],
 };
 
 export const fetchCourses = createAsyncThunk(
   'courses/fetchCourses',
   async () => {
     const response = await coursesService.getCourses();
+    return response;
+  }
+);
+
+export const fetchFilterOptions = createAsyncThunk(
+  'courses/fetchFilterOptions',
+  async () => {
+    const response = await coursesService.getFilterOptions();
     return response;
   }
 );
@@ -79,6 +91,10 @@ const coursesSlice = createSlice({
       .addCase(fetchCourses.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || 'Failed to fetch courses';
+      })
+      .addCase(fetchFilterOptions.fulfilled, (state, action) => {
+        state.availableCategories = action.payload.categories;
+        state.availableLevels = action.payload.levels;
       });
   },
 });

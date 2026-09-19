@@ -9,5 +9,16 @@ export const coursesService = {
         resolve(mockCourses);
       }, 800);
     });
+  },
+
+  async getFilterOptions(): Promise<{ categories: string[]; levels: string[] }> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          categories: ['Development', 'Design', 'Business', 'Marketing', 'Data Science', 'Languages', 'Music', 'Photography'],
+          levels: ['Beginner', 'Intermediate', 'Advanced'],
+        });
+      }, 600);
+    });
   }
 };

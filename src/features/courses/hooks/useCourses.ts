@@ -1,17 +1,23 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { fetchCourses, setSearchQuery, setSortBy, setIsFilterOpen, toggleCategory, toggleLevel, clearFilters } from '../store/coursesSlice';
+import { fetchCourses, fetchFilterOptions, setSearchQuery, setSortBy, setIsFilterOpen, toggleCategory, toggleLevel, clearFilters } from '../store/coursesSlice';
 
 export const useCourses = () => {
   const dispatch = useAppDispatch();
-  const { items, isLoading, error, searchQuery, sortBy, selectedCategories, selectedLevels, isFilterOpen } = useAppSelector((state) => state.courses);
+  const { 
+    items, isLoading, error, searchQuery, sortBy, 
+    selectedCategories, selectedLevels, isFilterOpen,
+    availableCategories, availableLevels
+  } = useAppSelector((state) => state.courses);
 
   useEffect(() => {
-    // Only fetch if we don't have items and aren't already loading
     if (items.length === 0 && !isLoading) {
       dispatch(fetchCourses());
     }
-  }, [dispatch, items.length, isLoading]);
+    if (availableCategories.length === 0) {
+      dispatch(fetchFilterOptions());
+    }
+  }, [dispatch, items.length, isLoading, availableCategories.length]);
 
   const handleSearch = (query: string) => dispatch(setSearchQuery(query));
   const handleSort = (sort: string) => dispatch(setSortBy(sort));
@@ -44,7 +50,7 @@ export const useCourses = () => {
     .sort((a, b) => {
       switch (sortBy) {
         case 'newest':
-          return b.id.localeCompare(a.id); // Simple mock logic for newest
+          return b.id.localeCompare(a.id);
         case 'price-low':
           return a.price - b.price;
         case 'price-high':
@@ -67,6 +73,8 @@ export const useCourses = () => {
     selectedCategories,
     selectedLevels,
     isFilterOpen,
+    availableCategories,
+    availableLevels,
     setIsFilterOpen: handleSetIsFilterOpen,
     handleSearch,
     handleSort,

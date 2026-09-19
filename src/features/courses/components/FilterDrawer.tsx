@@ -1,15 +1,6 @@
-import { X } from 'lucide-react';
+import { X, Loader2 } from 'lucide-react';
 import { useCourses } from '../hooks/useCourses';
 import { cn } from '@/utils/cn';
-
-const CATEGORIES = [
-  'Development', 'Design', 'Business', 'Marketing', 
-  'Data Science', 'Languages', 'Music', 'Photography'
-];
-
-const LEVELS = [
-  'Beginner', 'Intermediate', 'Advanced'
-];
 
 export const FilterDrawer = () => {
   const { 
@@ -17,6 +8,8 @@ export const FilterDrawer = () => {
     setIsFilterOpen, 
     selectedCategories, 
     selectedLevels, 
+    availableCategories,
+    availableLevels,
     handleToggleCategory, 
     handleToggleLevel 
   } = useCourses();
@@ -45,47 +38,55 @@ export const FilterDrawer = () => {
           </button>
         </div>
 
-        {/* Categories */}
-        <div className="mb-8">
-          <h3 className="text-sm font-semibold text-white mb-4">Category</h3>
-          <div className="flex flex-wrap gap-2">
-            {CATEGORIES.map((category) => (
-              <button
-                key={category}
-                onClick={() => handleToggleCategory(category)}
-                className={cn(
-                  "px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors",
-                  selectedCategories.includes(category)
-                    ? "bg-emerald-500/10 border-emerald-500 text-emerald-400"
-                    : "bg-[#1a231d] border-[#253229] text-zinc-300 hover:border-zinc-500"
-                )}
-              >
-                {category}
-              </button>
-            ))}
+        {availableCategories.length === 0 ? (
+          <div className="flex justify-center items-center py-20">
+            <Loader2 className="w-6 h-6 text-emerald-500 animate-spin" />
           </div>
-        </div>
+        ) : (
+          <>
+            {/* Categories */}
+            <div className="mb-8">
+              <h3 className="text-sm font-semibold text-white mb-4">Category</h3>
+              <div className="flex flex-wrap gap-2">
+                {availableCategories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => handleToggleCategory(category)}
+                    className={cn(
+                      "px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors",
+                      selectedCategories.includes(category)
+                        ? "bg-emerald-500/10 border-emerald-500 text-emerald-400"
+                        : "bg-[#1a231d] border-[#253229] text-zinc-300 hover:border-zinc-500"
+                    )}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
 
-        {/* Levels */}
-        <div className="mb-8">
-          <h3 className="text-sm font-semibold text-white mb-4">Level</h3>
-          <div className="flex flex-wrap gap-2">
-            {LEVELS.map((level) => (
-              <button
-                key={level}
-                onClick={() => handleToggleLevel(level)}
-                className={cn(
-                  "px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors",
-                  selectedLevels.includes(level)
-                    ? "bg-emerald-500/10 border-emerald-500 text-emerald-400"
-                    : "bg-[#1a231d] border-[#253229] text-zinc-300 hover:border-zinc-500"
-                )}
-              >
-                {level}
-              </button>
-            ))}
-          </div>
-        </div>
+            {/* Levels */}
+            <div className="mb-8">
+              <h3 className="text-sm font-semibold text-white mb-4">Level</h3>
+              <div className="flex flex-wrap gap-2">
+                {availableLevels.map((level) => (
+                  <button
+                    key={level}
+                    onClick={() => handleToggleLevel(level)}
+                    className={cn(
+                      "px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors",
+                      selectedLevels.includes(level)
+                        ? "bg-emerald-500/10 border-emerald-500 text-emerald-400"
+                        : "bg-[#1a231d] border-[#253229] text-zinc-300 hover:border-zinc-500"
+                    )}
+                  >
+                    {level}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
