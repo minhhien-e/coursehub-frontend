@@ -1,25 +1,7 @@
-import { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
-import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
+import { PasswordInput } from '@/components/ui/PasswordInput';
 import { useSettings } from '@/hooks/useSettings';
-
-const PasswordInput = ({ id, ...props }: React.InputHTMLAttributes<HTMLInputElement>) => {
-  const [show, setShow] = useState(false);
-  return (
-    <div className="relative">
-      <Input id={id} type={show ? "text" : "password"} className="pr-10" {...props} />
-      <button
-        type="button"
-        onClick={() => setShow(!show)}
-        className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300 focus:outline-none"
-      >
-        {show ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-      </button>
-    </div>
-  );
-};
 
 export const AccountForm = () => {
   const { updatePassword, isLoading } = useSettings();

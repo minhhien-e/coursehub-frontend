@@ -1,13 +1,22 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
+import { AuthLayout } from './layouts/AuthLayout';
 import { Dashboard } from './pages/Dashboard';
 import { Settings } from './pages/Settings';
+import { Login, Register, ForgotPassword } from './pages/Auth';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Auth Routes */}
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+        </Route>
+
+        {/* Main App Routes */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="courses" element={<div className="text-white text-center mt-10">Browse Courses (Coming soon)</div>} />
@@ -16,6 +25,9 @@ function App() {
           <Route path="calendar" element={<div className="text-white text-center mt-10">Calendar (Coming soon)</div>} />
           <Route path="settings" element={<Settings />} />
         </Route>
+
+        {/* Fallback */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
