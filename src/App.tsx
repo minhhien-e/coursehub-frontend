@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { MainLayout } from './layouts/MainLayout';
 import { Dashboard } from './pages/Dashboard';
+import { Settings } from './pages/Settings';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="my-learning" element={<div className="text-white text-center mt-10">My Learning (Coming soon)</div>} />
           <Route path="assignments" element={<div className="text-white text-center mt-10">Assignments (Coming soon)</div>} />
           <Route path="calendar" element={<div className="text-white text-center mt-10">Calendar (Coming soon)</div>} />
+          <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
     </BrowserRouter>
