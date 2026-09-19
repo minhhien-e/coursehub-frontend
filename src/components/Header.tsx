@@ -1,16 +1,19 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, Bell, Moon, User, Settings, LogOut } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { storage } from '@/utils/storage';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { logout } from '@/features/auth';
 
 export const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.auth);
 
   const handleLogout = () => {
     setIsDropdownOpen(false);
-    storage.clearAll();
+    dispatch(logout());
     navigate('/login');
   };
 
@@ -51,14 +54,14 @@ export const Header = () => {
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             className="flex items-center focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-full"
           >
-            <img src="https://i.pravatar.cc/150?img=11" alt="Profile" className="w-8 h-8 rounded-full border border-zinc-700" />
+            <img src={user?.avatarUrl || "https://i.pravatar.cc/150?img=11"} alt="Profile" className="w-8 h-8 rounded-full border border-zinc-700" />
           </button>
 
           {isDropdownOpen && (
             <div className="absolute right-0 mt-2 w-56 bg-[#0B1410] border border-zinc-800 rounded-lg shadow-xl py-1 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
               <div className="px-4 py-3 border-b border-zinc-800">
-                <p className="text-sm font-semibold text-zinc-100">Alex Johnson</p>
-                <p className="text-xs text-zinc-400 truncate mt-0.5">alex.johnson@example.com</p>
+                <p className="text-sm font-semibold text-zinc-100">{user ? `${user.firstName} ${user.lastName}` : 'Guest User'}</p>
+                <p className="text-xs text-zinc-400 truncate mt-0.5">{user?.email || 'Not logged in'}</p>
               </div>
               
               <div className="py-1">
