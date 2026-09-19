@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Button } from '../../../components/ui/Button';
-import { Switch } from '../../../components/ui/Switch';
+import { Button } from '@/components/ui/Button';
+import { Switch } from '@/components/ui/Switch';
 
 export const NotificationsForm = () => {
   const [settings, setSettings] = useState({

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
-import { Button } from '../../../components/ui/Button';
-import { Input } from '../../../components/ui/Input';
-import { Label } from '../../../components/ui/Label';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Label } from '@/components/ui/Label';
 
 const PasswordInput = ({ id, ...props }: React.InputHTMLAttributes<HTMLInputElement>) => {
   const [show, setShow] = useState(false);

@@ -1,9 +1,9 @@
 import { useState, useRef } from 'react';
 import { Camera } from 'lucide-react';
-import { Button } from '../../../components/ui/Button';
-import { Input } from '../../../components/ui/Input';
-import { Textarea } from '../../../components/ui/Textarea';
-import { Label } from '../../../components/ui/Label';
+import { Button } from '@/components/ui/Button';
+import { Input } from '@/components/ui/Input';
+import { Textarea } from '@/components/ui/Textarea';
+import { Label } from '@/components/ui/Label';
 
 export const ProfileForm = () => {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
