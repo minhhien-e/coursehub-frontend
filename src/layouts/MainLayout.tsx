@@ -1,13 +1,19 @@
-import React from 'react';
+import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Sidebar } from '@/components/Sidebar';
 import { Header } from '@/components/Header';
+import { cn } from '@/utils/cn';
 
 export const MainLayout = () => {
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+
   return (
     <div className="min-h-screen bg-background text-textMain flex font-sans">
-      <Sidebar />
-      <div className="flex-1 ml-64 flex flex-col">
+      <Sidebar isCollapsed={isSidebarCollapsed} setIsCollapsed={setIsSidebarCollapsed} />
+      <div className={cn(
+        "flex-1 flex flex-col transition-all duration-300",
+        isSidebarCollapsed ? "ml-20" : "ml-64"
+      )}>
         <Header />
         <main className="flex-1 p-8 overflow-y-auto">
           <Outlet />

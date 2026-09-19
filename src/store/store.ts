@@ -10,6 +10,7 @@ import { bookmarksReducer } from '../features/bookmarks/store/bookmarksSlice';
 import { notesReducer } from '../features/notes/store/notesSlice';
 import { notificationsReducer } from '../features/notifications/store/notificationsSlice';
 import { billingReducer } from '../features/billing/store/billingSlice';
+import { leaderboardReducer } from '../features/leaderboard/store/leaderboardSlice';
 
 export const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ export const store = configureStore({
     notes: notesReducer,
     notifications: notificationsReducer,
     billing: billingReducer,
+    leaderboard: leaderboardReducer,
   },
 });
 

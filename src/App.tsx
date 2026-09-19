@@ -8,6 +8,7 @@ import { Assignments } from './pages/Assignments';
 import { Calendar } from './pages/Calendar';
 import { Certificates } from './pages/Certificates';
 import { Achievements } from './pages/Achievements';
+import { Leaderboard } from './pages/Leaderboard';
 import { MyLearning } from './pages/MyLearning';
 import { Bookmarks } from './pages/Bookmarks';
 import { Notes } from './pages/Notes';
@@ -41,6 +42,7 @@ function App() {
           <Route path="my-learning" element={<MyLearning />} />
           <Route path="certificates" element={<Certificates />} />
           <Route path="achievements" element={<Achievements />} />
+          <Route path="leaderboard" element={<Leaderboard />} />
           <Route path="bookmarks" element={<Bookmarks />} />
           <Route path="notes" element={<Notes />} />
           <Route path="assignments" element={<Assignments />} />
