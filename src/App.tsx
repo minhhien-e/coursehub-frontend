@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { MainLayout } from './layouts/MainLayout';
 import { AuthLayout } from './layouts/AuthLayout';
+import { MainLayout } from './layouts/MainLayout';
 import { Dashboard } from './pages/Dashboard';
 import { Settings } from './pages/Settings';
+import { BrowseCourses, CourseDetails, LearnCourse } from './pages/Courses';
 import { Login, Register, ForgotPassword, ResetPassword } from './pages/Auth';
 
 function App() {
@@ -17,10 +18,14 @@ function App() {
           <Route path="/reset-password" element={<ResetPassword />} />
         </Route>
 
+        {/* Standalone Pages (No MainLayout) */}
+        <Route path="/courses/:id/learn" element={<LearnCourse />} />
+
         {/* Main App Routes */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
-          <Route path="courses" element={<div className="text-white text-center mt-10">Browse Courses (Coming soon)</div>} />
+          <Route path="courses" element={<BrowseCourses />} />
+          <Route path="courses/:id" element={<CourseDetails />} />
           <Route path="my-learning" element={<div className="text-white text-center mt-10">My Learning (Coming soon)</div>} />
           <Route path="assignments" element={<div className="text-white text-center mt-10">Assignments (Coming soon)</div>} />
           <Route path="calendar" element={<div className="text-white text-center mt-10">Calendar (Coming soon)</div>} />
