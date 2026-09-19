@@ -1,10 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 import { Search, Bell, Moon, User, Settings, LogOut } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { storage } from '@/utils/storage';
 
 export const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setIsDropdownOpen(false);
+    storage.clearAll();
+    navigate('/login');
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -75,7 +83,7 @@ export const Header = () => {
               <div className="border-t border-zinc-800 py-1">
                 <button 
                   className="flex items-center w-full px-4 py-2 text-sm text-zinc-300 hover:bg-[#15231c] hover:text-white transition-colors text-left"
-                  onClick={() => setIsDropdownOpen(false)}
+                  onClick={handleLogout}
                 >
                   <LogOut className="w-4 h-4 mr-3" />
                   Log out
