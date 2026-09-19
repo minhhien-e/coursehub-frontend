@@ -62,12 +62,23 @@ export const CourseDetailsView = () => {
               alt={course.title} 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <Button className="rounded-full px-6 py-6 shadow-lg shadow-black/50 hover:scale-105 transition-transform">
-                <PlayCircle className="w-6 h-6 mr-2" />
-                <span className="font-semibold text-lg">Preview Course</span>
-              </Button>
-            </div>
+            
+            {/* Find first preview lesson to link to */}
+            {(() => {
+              const previewLesson = course.modules.flatMap(m => m.lessons).find(l => l.isPreview);
+              if (!previewLesson) return null;
+              
+              return (
+                <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Link to={`/courses/${course.id}/learn?lessonId=${previewLesson.id}`}>
+                    <Button className="rounded-full px-6 py-6 shadow-lg shadow-black/50 hover:scale-105 transition-transform">
+                      <PlayCircle className="w-6 h-6 mr-2" />
+                      <span className="font-semibold text-lg">Preview Course</span>
+                    </Button>
+                  </Link>
+                </div>
+              );
+            })()}
           </div>
 
           {/* Course Meta */}
@@ -131,11 +142,22 @@ export const CourseDetailsView = () => {
             )}
 
             {/* Actions */}
-            <Link to={`/courses/${course.id}/learn`} className="block mb-4">
-              <Button className="w-full h-12 text-base font-semibold">
-                {course.progress !== undefined ? 'Continue Learning' : 'Enroll Now'}
-              </Button>
-            </Link>
+            {course.progress !== undefined ? (
+              <Link to={`/courses/${course.id}/learn`} className="block mb-4">
+                <Button className="w-full h-12 text-base font-semibold">
+                  Continue Learning
+                </Button>
+              </Link>
+            ) : (
+              <div className="space-y-3 mb-4">
+                <Button className="w-full h-12 text-base font-semibold">
+                  Enroll Now
+                </Button>
+                <Button variant="outline" className="w-full h-12 text-base font-semibold border-[#253229] hover:bg-[#1a231d]">
+                  Add to Cart
+                </Button>
+              </div>
+            )}
             
             <div className="flex gap-4 mb-8">
               <Button variant="outline" className="flex-1 h-12 border-[#253229] hover:bg-[#1a231d]">

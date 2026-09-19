@@ -57,28 +57,53 @@ export const TabCurriculum = ({ course }: TabCurriculumProps) => {
 
               {isOpen && (
                 <div className="px-5 pb-4 space-y-1">
-                  {module.lessons.map((lesson) => (
-                    <Link 
-                      key={lesson.id}
-                      to={`/courses/${course.id}/learn?lessonId=${lesson.id}`}
-                      className="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-[#1a231d] transition-colors group cursor-pointer"
-                    >
-                      <div className="flex items-center gap-3">
-                        <PlayCircle size={18} className="text-emerald-500/70 group-hover:text-emerald-400 transition-colors" />
-                        <span className="text-sm text-zinc-300 group-hover:text-white transition-colors">
-                          {lesson.title}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        {lesson.isPreview && (
-                          <span className="text-xs font-medium text-white bg-white/10 px-2 py-0.5 rounded">
-                            Preview
+                  {module.lessons.map((lesson) => {
+                    const isAccessible = course.progress !== undefined || lesson.isPreview;
+                    
+                    const innerContent = (
+                      <>
+                        <div className="flex items-center gap-3">
+                          <PlayCircle size={18} className={cn(
+                            "transition-colors",
+                            isAccessible ? "text-emerald-500/70 group-hover:text-emerald-400" : "text-zinc-600"
+                          )} />
+                          <span className={cn(
+                            "text-sm transition-colors",
+                            isAccessible ? "text-zinc-300 group-hover:text-white" : "text-zinc-500"
+                          )}>
+                            {lesson.title}
                           </span>
-                        )}
-                        <span className="text-xs text-zinc-500">{lesson.duration}</span>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          {lesson.isPreview && (
+                            <span className="text-xs font-medium text-white bg-white/10 px-2 py-0.5 rounded">
+                              Preview
+                            </span>
+                          )}
+                          <span className="text-xs text-zinc-500">{lesson.duration}</span>
+                        </div>
+                      </>
+                    );
+
+                    const className = cn(
+                      "flex items-center justify-between py-3 px-2 rounded-lg transition-colors group",
+                      isAccessible ? "hover:bg-[#1a231d] cursor-pointer" : "cursor-not-allowed opacity-80"
+                    );
+
+                    return isAccessible ? (
+                      <Link 
+                        key={lesson.id}
+                        to={`/courses/${course.id}/learn?lessonId=${lesson.id}`}
+                        className={className}
+                      >
+                        {innerContent}
+                      </Link>
+                    ) : (
+                      <div key={lesson.id} className={className}>
+                        {innerContent}
                       </div>
-                    </Link>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>

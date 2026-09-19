@@ -11,11 +11,10 @@ export const mockCourseDetail: CourseDetail = {
   students: 18500,
   duration: '42h 30m',
   lessons: 156,
-  price: 89.99,
-  originalPrice: 149.99,
-  discountBadge: '40% OFF',
+  price: 64.99,
+  originalPrice: undefined,
   imageUrl: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop',
-  progress: 68,
+  // progress: 68, // Commented out to simulate unenrolled course
   features: [
     '42 hours of video',
     '28 articles',
