@@ -1,5 +1,6 @@
 import { CourseFilters } from './CourseFilters';
 import { CourseCard } from './CourseCard';
+import { FilterDrawer } from './FilterDrawer';
 import { useCourses } from '../hooks/useCourses';
 import { Loader2 } from 'lucide-react';
 
@@ -7,7 +8,9 @@ export const BrowseCoursesView = () => {
   const { courses, totalCourses, isLoading, error } = useCourses();
 
   return (
-    <div className="w-full max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <>
+      <FilterDrawer />
+      <div className="w-full max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       
       {/* Header */}
       <div className="mb-8">
@@ -38,5 +41,6 @@ export const BrowseCoursesView = () => {
       )}
       
     </div>
+    </>
   );
 };

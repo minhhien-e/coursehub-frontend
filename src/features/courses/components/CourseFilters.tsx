@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button';
 import { useCourses } from '../hooks/useCourses';
 
 export const CourseFilters = () => {
-  const { searchQuery, sortBy, handleSearch, handleSort } = useCourses();
+  const { searchQuery, sortBy, handleSearch, handleSort, setIsFilterOpen } = useCourses();
 
   return (
     <div className="flex flex-col md:flex-row gap-4 items-center w-full mb-8">
@@ -45,6 +45,7 @@ export const CourseFilters = () => {
         <Button 
           variant="outline" 
           className="h-11 px-4 border-[#1b251e] bg-[#121814] hover:bg-[#1a231d] text-zinc-300 space-x-2 shadow-sm flex-none"
+          onClick={() => setIsFilterOpen(true)}
         >
           <SlidersHorizontal size={16} />
           <span>Filters</span>

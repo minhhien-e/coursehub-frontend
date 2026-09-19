@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { fetchCourses, setSearchQuery, setSortBy } from '../store/coursesSlice';
+import { fetchCourses, setSearchQuery, setSortBy, toggleCategory, toggleLevel, clearFilters } from '../store/coursesSlice';
 
 export const useCourses = () => {
   const dispatch = useAppDispatch();
-  const { items, isLoading, error, searchQuery, sortBy } = useAppSelector((state) => state.courses);
+  const { items, isLoading, error, searchQuery, sortBy, selectedCategories, selectedLevels } = useAppSelector((state) => state.courses);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   useEffect(() => {
     // Only fetch if we don't have items and aren't already loading
@@ -13,20 +14,32 @@ export const useCourses = () => {
     }
   }, [dispatch, items.length, isLoading]);
 
-  const handleSearch = (query: string) => {
-    dispatch(setSearchQuery(query));
-  };
-
-  const handleSort = (sort: string) => {
-    dispatch(setSortBy(sort));
-  };
+  const handleSearch = (query: string) => dispatch(setSearchQuery(query));
+  const handleSort = (sort: string) => dispatch(setSortBy(sort));
+  const handleToggleCategory = (category: string) => dispatch(toggleCategory(category));
+  const handleToggleLevel = (level: string) => dispatch(toggleLevel(level));
+  const handleClearFilters = () => dispatch(clearFilters());
 
   // Filter and sort the courses
   const filteredCourses = items
     .filter((course) => {
-      if (!searchQuery) return true;
-      return course.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-             course.instructor.toLowerCase().includes(searchQuery.toLowerCase());
+      // Search filter
+      if (searchQuery && !course.title.toLowerCase().includes(searchQuery.toLowerCase()) && 
+          !course.instructor.toLowerCase().includes(searchQuery.toLowerCase())) {
+        return false;
+      }
+      
+      // Category filter
+      if (selectedCategories.length > 0 && !selectedCategories.includes(course.category)) {
+        return false;
+      }
+      
+      // Level filter
+      if (selectedLevels.length > 0 && !selectedLevels.includes(course.level)) {
+        return false;
+      }
+      
+      return true;
     })
     .sort((a, b) => {
       switch (sortBy) {
@@ -51,7 +64,14 @@ export const useCourses = () => {
     error,
     searchQuery,
     sortBy,
+    selectedCategories,
+    selectedLevels,
+    isFilterOpen,
+    setIsFilterOpen,
     handleSearch,
     handleSort,
+    handleToggleCategory,
+    handleToggleLevel,
+    handleClearFilters,
   };
 };

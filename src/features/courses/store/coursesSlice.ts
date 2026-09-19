@@ -8,6 +8,8 @@ interface CoursesState {
   error: string | null;
   searchQuery: string;
   sortBy: string;
+  selectedCategories: string[];
+  selectedLevels: string[];
 }
 
 const initialState: CoursesState = {
@@ -16,6 +18,8 @@ const initialState: CoursesState = {
   error: null,
   searchQuery: '',
   sortBy: 'recommended',
+  selectedCategories: [],
+  selectedLevels: [],
 };
 
 export const fetchCourses = createAsyncThunk(
@@ -36,6 +40,26 @@ const coursesSlice = createSlice({
     setSortBy: (state, action: PayloadAction<string>) => {
       state.sortBy = action.payload;
     },
+    toggleCategory: (state, action: PayloadAction<string>) => {
+      const category = action.payload;
+      if (state.selectedCategories.includes(category)) {
+        state.selectedCategories = state.selectedCategories.filter(c => c !== category);
+      } else {
+        state.selectedCategories.push(category);
+      }
+    },
+    toggleLevel: (state, action: PayloadAction<string>) => {
+      const level = action.payload;
+      if (state.selectedLevels.includes(level)) {
+        state.selectedLevels = state.selectedLevels.filter(l => l !== level);
+      } else {
+        state.selectedLevels.push(level);
+      }
+    },
+    clearFilters: (state) => {
+      state.selectedCategories = [];
+      state.selectedLevels = [];
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -54,5 +78,5 @@ const coursesSlice = createSlice({
   },
 });
 
-export const { setSearchQuery, setSortBy } = coursesSlice.actions;
+export const { setSearchQuery, setSortBy, toggleCategory, toggleLevel, clearFilters } = coursesSlice.actions;
 export default coursesSlice.reducer;
