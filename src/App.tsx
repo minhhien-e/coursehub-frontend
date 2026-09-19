@@ -8,6 +8,13 @@ import { Assignments } from './pages/Assignments';
 import { Calendar } from './pages/Calendar';
 import { Certificates } from './pages/Certificates';
 import { Achievements } from './pages/Achievements';
+import { MyLearning } from './pages/MyLearning';
+import { Bookmarks } from './pages/Bookmarks';
+import { Notes } from './pages/Notes';
+import { Notifications } from './pages/Notifications';
+import { Profile } from './pages/Profile';
+import { Billing } from './pages/Billing';
+import { Pricing } from './pages/Pricing';
 import { Login, Register, ForgotPassword, ResetPassword } from './pages/Auth';
 
 function App() {
@@ -24,18 +31,24 @@ function App() {
 
         {/* Standalone Pages (No MainLayout) */}
         <Route path="/courses/:id/learn" element={<LearnCourse />} />
+        <Route path="/pricing" element={<Pricing />} />
 
         {/* Main App Routes */}
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="courses" element={<BrowseCourses />} />
           <Route path="courses/:id" element={<CourseDetails />} />
-          <Route path="my-learning" element={<div className="text-white text-center mt-10">My Learning (Coming soon)</div>} />
+          <Route path="my-learning" element={<MyLearning />} />
           <Route path="certificates" element={<Certificates />} />
           <Route path="achievements" element={<Achievements />} />
+          <Route path="bookmarks" element={<Bookmarks />} />
+          <Route path="notes" element={<Notes />} />
           <Route path="assignments" element={<Assignments />} />
           <Route path="calendar" element={<Calendar />} />
+          <Route path="notifications" element={<Notifications />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<Settings />} />
+          <Route path="billing" element={<Billing />} />
         </Route>
 
         {/* Fallback */}
