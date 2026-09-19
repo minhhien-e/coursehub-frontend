@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useRef } from 'react';
 import { Camera } from 'lucide-react';
 import { Button } from '../../../components/ui/Button';
 import { Input } from '../../../components/ui/Input';
@@ -6,15 +6,50 @@ import { Textarea } from '../../../components/ui/Textarea';
 import { Label } from '../../../components/ui/Label';
 
 export const ProfileForm = () => {
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (avatarUrl) URL.revokeObjectURL(avatarUrl);
+      const newUrl = URL.createObjectURL(file);
+      setAvatarUrl(newUrl);
+    }
+  };
+
+  const handleButtonClick = () => {
+    fileInputRef.current?.click();
+  };
+
   return (
     <div className="bg-[#121814] rounded-xl border border-[#1b251e] p-6 md:p-8 max-w-4xl shadow-sm">
       <h3 className="text-lg font-bold text-zinc-100 mb-6">Profile Information</h3>
 
       <div className="flex items-center space-x-4 mb-8">
         <div className="w-20 h-20 rounded-full bg-zinc-800 overflow-hidden flex-shrink-0">
-          <img src="https://ui-avatars.com/api/?name=Alex+Johnson&background=333&color=fff" alt="Avatar" className="w-full h-full object-cover" />
+          <img 
+            src={avatarUrl || "https://ui-avatars.com/api/?name=Alex+Johnson&background=333&color=fff"} 
+            alt="Avatar" 
+            className="w-full h-full object-cover" 
+          />
         </div>
-        <Button variant="outline" size="sm" className="space-x-2 text-xs border-zinc-600">
+        
+        <input 
+          type="file" 
+          className="hidden" 
+          ref={fileInputRef} 
+          onChange={handleFileChange} 
+          accept="image/png, image/jpeg, image/webp" 
+        />
+        
+        <Button 
+          type="button"
+          variant="outline" 
+          size="sm" 
+          className="space-x-2 text-xs border-zinc-600"
+          onClick={handleButtonClick}
+        >
           <Camera className="w-4 h-4" />
           <span>Change Photo</span>
         </Button>
