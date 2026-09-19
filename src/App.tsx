@@ -3,7 +3,7 @@ import { MainLayout } from './layouts/MainLayout';
 import { AuthLayout } from './layouts/AuthLayout';
 import { Dashboard } from './pages/Dashboard';
 import { Settings } from './pages/Settings';
-import { Login, Register, ForgotPassword } from './pages/Auth';
+import { Login, Register, ForgotPassword, ResetPassword } from './pages/Auth';
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         </Route>
 
         {/* Main App Routes */}

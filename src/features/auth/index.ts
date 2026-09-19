@@ -4,3 +4,5 @@ export * from './components/ForgotPasswordForm';
 
 export * from './store/authSlice';
 export { default as authReducer } from './store/authSlice';
+
+export * from './components/ResetPasswordForm';
