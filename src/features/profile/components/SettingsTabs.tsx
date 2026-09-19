@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -31,3 +31,4 @@ export const SettingsTabs: React.FC<SettingsTabsProps> = ({ activeTab, onChange 
     </div>
   );
 };
+

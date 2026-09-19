@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { SettingsTabs } from './components/SettingsTabs';
-import { ProfileForm } from './components/ProfileForm';
-import { NotificationsForm } from './components/NotificationsForm';
-import { PrivacyForm } from './components/PrivacyForm';
-import { AccountForm } from './components/AccountForm';
+import { 
+  SettingsTabs, 
+  ProfileForm, 
+  NotificationsForm, 
+  PrivacyForm, 
+  AccountForm 
+} from '@/features/profile';
 
 export const Settings = () => {
   const [activeTab, setActiveTab] = useState('Profile');

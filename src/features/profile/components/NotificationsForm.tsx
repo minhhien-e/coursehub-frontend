@@ -1,7 +1,7 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Switch } from '@/components/ui/Switch';
-import { useSettings } from '@/hooks/useSettings';
+import { useSettings } from '@/features/profile/hooks/useSettings';
 
 export const NotificationsForm = () => {
   const { updateNotifications, isLoading } = useSettings();
@@ -75,3 +75,4 @@ export const NotificationsForm = () => {
     </div>
   );
 };
+

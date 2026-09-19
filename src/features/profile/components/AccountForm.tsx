@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/Button';
+﻿import { Button } from '@/components/ui/Button';
 import { Label } from '@/components/ui/Label';
 import { PasswordInput } from '@/components/ui/PasswordInput';
-import { useSettings } from '@/hooks/useSettings';
+import { useSettings } from '@/features/profile/hooks/useSettings';
 
 export const AccountForm = () => {
   const { updatePassword, isLoading } = useSettings();
@@ -55,3 +55,4 @@ export const AccountForm = () => {
     </div>
   );
 };
+

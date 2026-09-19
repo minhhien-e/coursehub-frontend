@@ -1,10 +1,10 @@
-import { useState, useRef } from 'react';
+﻿import { useState, useRef } from 'react';
 import { Camera } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Label } from '@/components/ui/Label';
-import { useSettings } from '@/hooks/useSettings';
+import { useSettings } from '@/features/profile/hooks/useSettings';
 
 export const ProfileForm = () => {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
@@ -135,3 +135,4 @@ export const ProfileForm = () => {
     </div>
   );
 };
+

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Switch } from '@/components/ui/Switch';
-import { useSettings } from '@/hooks/useSettings';
+import { useSettings } from '@/features/profile/hooks/useSettings';
 
 export const PrivacyForm = () => {
   const { updatePrivacy, isLoading } = useSettings();
@@ -57,3 +57,4 @@ export const PrivacyForm = () => {
     </div>
   );
 };
+

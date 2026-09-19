@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { settingsService } from '@/services/settings.service';
+﻿import { useState } from 'react';
+import { settingsService } from '@/features/profile/api/settings.service';
 
 export interface UpdateProfilePayload {
   fullName: string;
@@ -79,3 +79,4 @@ export const useSettings = () => {
     updatePassword,
   };
 };
+
