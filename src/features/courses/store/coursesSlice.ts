@@ -10,6 +10,7 @@ interface CoursesState {
   sortBy: string;
   selectedCategories: string[];
   selectedLevels: string[];
+  isFilterOpen: boolean;
 }
 
 const initialState: CoursesState = {
@@ -20,6 +21,7 @@ const initialState: CoursesState = {
   sortBy: 'recommended',
   selectedCategories: [],
   selectedLevels: [],
+  isFilterOpen: false,
 };
 
 export const fetchCourses = createAsyncThunk(
@@ -39,6 +41,9 @@ const coursesSlice = createSlice({
     },
     setSortBy: (state, action: PayloadAction<string>) => {
       state.sortBy = action.payload;
+    },
+    setIsFilterOpen: (state, action: PayloadAction<boolean>) => {
+      state.isFilterOpen = action.payload;
     },
     toggleCategory: (state, action: PayloadAction<string>) => {
       const category = action.payload;
@@ -78,5 +83,5 @@ const coursesSlice = createSlice({
   },
 });
 
-export const { setSearchQuery, setSortBy, toggleCategory, toggleLevel, clearFilters } = coursesSlice.actions;
+export const { setSearchQuery, setSortBy, setIsFilterOpen, toggleCategory, toggleLevel, clearFilters } = coursesSlice.actions;
 export default coursesSlice.reducer;

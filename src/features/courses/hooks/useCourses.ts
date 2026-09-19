@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
-import { fetchCourses, setSearchQuery, setSortBy, toggleCategory, toggleLevel, clearFilters } from '../store/coursesSlice';
+import { fetchCourses, setSearchQuery, setSortBy, setIsFilterOpen, toggleCategory, toggleLevel, clearFilters } from '../store/coursesSlice';
 
 export const useCourses = () => {
   const dispatch = useAppDispatch();
-  const { items, isLoading, error, searchQuery, sortBy, selectedCategories, selectedLevels } = useAppSelector((state) => state.courses);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const { items, isLoading, error, searchQuery, sortBy, selectedCategories, selectedLevels, isFilterOpen } = useAppSelector((state) => state.courses);
 
   useEffect(() => {
     // Only fetch if we don't have items and aren't already loading
@@ -16,6 +15,7 @@ export const useCourses = () => {
 
   const handleSearch = (query: string) => dispatch(setSearchQuery(query));
   const handleSort = (sort: string) => dispatch(setSortBy(sort));
+  const handleSetIsFilterOpen = (isOpen: boolean) => dispatch(setIsFilterOpen(isOpen));
   const handleToggleCategory = (category: string) => dispatch(toggleCategory(category));
   const handleToggleLevel = (level: string) => dispatch(toggleLevel(level));
   const handleClearFilters = () => dispatch(clearFilters());
@@ -67,7 +67,7 @@ export const useCourses = () => {
     selectedCategories,
     selectedLevels,
     isFilterOpen,
-    setIsFilterOpen,
+    setIsFilterOpen: handleSetIsFilterOpen,
     handleSearch,
     handleSort,
     handleToggleCategory,
