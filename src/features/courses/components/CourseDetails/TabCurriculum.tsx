@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronUp, PlayCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import type { CourseDetail } from '../../types';
 import { cn } from '@/utils/cn';
 
@@ -57,8 +58,9 @@ export const TabCurriculum = ({ course }: TabCurriculumProps) => {
               {isOpen && (
                 <div className="px-5 pb-4 space-y-1">
                   {module.lessons.map((lesson) => (
-                    <div 
+                    <Link 
                       key={lesson.id}
+                      to={`/courses/${course.id}/learn?lessonId=${lesson.id}`}
                       className="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-[#1a231d] transition-colors group cursor-pointer"
                     >
                       <div className="flex items-center gap-3">
@@ -75,7 +77,7 @@ export const TabCurriculum = ({ course }: TabCurriculumProps) => {
                         )}
                         <span className="text-xs text-zinc-500">{lesson.duration}</span>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               )}

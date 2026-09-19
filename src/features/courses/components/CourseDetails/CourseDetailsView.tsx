@@ -131,9 +131,11 @@ export const CourseDetailsView = () => {
             )}
 
             {/* Actions */}
-            <Button className="w-full h-12 text-base font-semibold mb-4" onClick={() => alert("Video player coming soon!")}>
-              {course.progress !== undefined ? 'Continue Learning' : 'Enroll Now'}
-            </Button>
+            <Link to={`/courses/${course.id}/learn`} className="block mb-4">
+              <Button className="w-full h-12 text-base font-semibold">
+                {course.progress !== undefined ? 'Continue Learning' : 'Enroll Now'}
+              </Button>
+            </Link>
             
             <div className="flex gap-4 mb-8">
               <Button variant="outline" className="flex-1 h-12 border-[#253229] hover:bg-[#1a231d]">

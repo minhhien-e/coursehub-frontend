@@ -48,11 +48,41 @@ export const mockCourseDetail: CourseDetail = {
       title: 'Introduction to Advanced Patterns',
       duration: '3h 20m',
       lessons: [
-        { id: 'l1', title: 'Why Advanced Patterns Matter', duration: '18:30', isPreview: true },
-        { id: 'l2', title: 'Setting Up the Development Environment', duration: '12:00' },
-        { id: 'l3', title: 'React Component Mental Models', duration: '24:15' },
-        { id: 'l4', title: 'Pattern Recognition Exercise', duration: '30:00' },
-        { id: 'l5', title: 'Module 1 Assessment', duration: '15:00' }
+        { 
+          id: 'l1', 
+          title: 'Why Advanced Patterns Matter', 
+          duration: '18:30', 
+          isPreview: true,
+          isCompleted: true,
+          notes: 'In this lesson, we explore why moving beyond basic React knowledge is essential. We discuss how large-scale applications require more robust architectural decisions.',
+          resources: [
+            { title: 'Lesson slides (PDF)', type: 'pdf', url: '#' }
+          ]
+        },
+        { 
+          id: 'l2', 
+          title: 'Setting Up the Development Environment', 
+          duration: '12:00',
+          isCompleted: true 
+        },
+        { 
+          id: 'l3', 
+          title: 'React Component Mental Models', 
+          duration: '24:15',
+          isCompleted: true 
+        },
+        { 
+          id: 'l4', 
+          title: 'Pattern Recognition Exercise', 
+          duration: '30:00',
+          isCompleted: true 
+        },
+        { 
+          id: 'l5', 
+          title: 'Module 1 Assessment', 
+          duration: '15:00',
+          isCompleted: true 
+        }
       ]
     },
     {
@@ -60,10 +90,34 @@ export const mockCourseDetail: CourseDetail = {
       title: 'Compound Components Pattern',
       duration: '4h 45m',
       lessons: [
-        { id: 'l6', title: 'What are Compound Components?', duration: '20:10' },
-        { id: 'l7', title: 'Implementing Toggle', duration: '35:00' },
-        { id: 'l8', title: 'Flexible Compound Components', duration: '28:40' },
-        { id: 'l9', title: 'Real-world Example: Select Component', duration: '45:00' }
+        { 
+          id: 'l6', 
+          title: 'Understanding Compound Components', 
+          duration: '22:00',
+          isCompleted: true 
+        },
+        { 
+          id: 'l7', 
+          title: 'Building a Flexible Tabs Component', 
+          duration: '45:00',
+          isCompleted: true 
+        },
+        { 
+          id: 'l8', 
+          title: 'Context-Based Compound Components', 
+          duration: '28:30',
+          isCompleted: true 
+        },
+        { 
+          id: 'l9', 
+          title: 'Compound Component Deep Dive', 
+          duration: '20:00',
+          notes: 'In this lesson, we explore the Context-Based Compound Components pattern in depth. This approach uses React Context to share implicit state between related components, enabling flexible compositions while keeping the API clean.',
+          resources: [
+            { title: 'Lesson slides (PDF)', type: 'pdf', url: '#' },
+            { title: 'Starter code (GitHub)', type: 'github', url: '#' }
+          ]
+        }
       ]
     },
     {

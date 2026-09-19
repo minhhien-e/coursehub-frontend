@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { MainLayout } from './layouts/MainLayout';
 import { AuthLayout } from './layouts/AuthLayout';
+import { MainLayout } from './layouts/MainLayout';
 import { Dashboard } from './pages/Dashboard';
 import { Settings } from './pages/Settings';
-import { BrowseCourses, CourseDetails } from './pages/Courses';
+import { BrowseCourses, CourseDetails, LearnCourse } from './pages/Courses';
 import { Login, Register, ForgotPassword, ResetPassword } from './pages/Auth';
 
 function App() {
@@ -17,6 +17,9 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
         </Route>
+
+        {/* Standalone Pages (No MainLayout) */}
+        <Route path="/courses/:id/learn" element={<LearnCourse />} />
 
         {/* Main App Routes */}
         <Route path="/" element={<MainLayout />}>
