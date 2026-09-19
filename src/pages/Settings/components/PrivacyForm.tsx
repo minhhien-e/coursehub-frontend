@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Switch } from '@/components/ui/Switch';
+import { useSettings } from '@/hooks/useSettings';
 
 export const PrivacyForm = () => {
+  const { updatePrivacy, isLoading } = useSettings();
   const [settings, setSettings] = useState({
     publicProfile: true,
-    showLearningActivity: false,
+    showLearningActivity: true,
     showAchievements: true,
   });
 
   const toggleSetting = (key: keyof typeof settings) => {
     setSettings(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const handleSave = async () => {
+    await updatePrivacy(settings);
   };
 
   return (
@@ -43,8 +49,10 @@ export const PrivacyForm = () => {
         </div>
       </div>
 
-      <div className="flex justify-end pt-4 mt-8">
-        <Button variant="primary">Save Settings</Button>
+      <div className="flex justify-end pt-4 mt-8 border-t border-[#1b251e]">
+        <Button variant="primary" onClick={handleSave} disabled={isLoading}>
+          {isLoading ? "Saving..." : "Save Privacy Settings"}
+        </Button>
       </div>
     </div>
   );

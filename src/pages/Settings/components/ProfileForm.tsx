@@ -4,10 +4,12 @@ import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Textarea } from '@/components/ui/Textarea';
 import { Label } from '@/components/ui/Label';
+import { useSettings } from '@/hooks/useSettings';
 
 export const ProfileForm = () => {
   const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { updateProfile, isLoading } = useSettings();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -20,6 +22,14 @@ export const ProfileForm = () => {
 
   const handleButtonClick = () => {
     fileInputRef.current?.click();
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await updateProfile({
+      fullName: 'Alex Johnson', // Hardcoded for now
+      email: 'alex.johnson@example.com'
+    });
   };
 
   return (
@@ -62,7 +72,7 @@ export const ProfileForm = () => {
         Fields marked with <span className="text-red-500">*</span> are required.
       </div>
 
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <Label htmlFor="fullName" required>Full Name</Label>
@@ -117,7 +127,9 @@ export const ProfileForm = () => {
         </div>
 
         <div className="flex justify-end pt-4 mt-6">
-          <Button type="submit" variant="primary">Save Changes</Button>
+          <Button type="submit" variant="primary" disabled={isLoading}>
+            {isLoading ? "Saving..." : "Save Changes"}
+          </Button>
         </div>
       </form>
     </div>

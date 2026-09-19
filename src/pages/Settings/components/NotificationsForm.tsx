@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Switch } from '@/components/ui/Switch';
+import { useSettings } from '@/hooks/useSettings';
 
 export const NotificationsForm = () => {
+  const { updateNotifications, isLoading } = useSettings();
   const [settings, setSettings] = useState({
     courseUpdates: true,
     achievementAlerts: true,
@@ -13,6 +15,10 @@ export const NotificationsForm = () => {
 
   const toggleSetting = (key: keyof typeof settings) => {
     setSettings(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const handleSave = async () => {
+    await updateNotifications(settings);
   };
 
   return (
@@ -61,8 +67,10 @@ export const NotificationsForm = () => {
         </div>
       </div>
 
-      <div className="flex justify-end pt-4 mt-8">
-        <Button variant="primary">Save Preferences</Button>
+      <div className="flex justify-end pt-6 mt-8 border-t border-[#1b251e]">
+        <Button variant="primary" onClick={handleSave} disabled={isLoading}>
+          {isLoading ? "Saving..." : "Save Preferences"}
+        </Button>
       </div>
     </div>
   );

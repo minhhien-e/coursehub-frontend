@@ -3,6 +3,7 @@ import { Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Input } from '@/components/ui/Input';
 import { Label } from '@/components/ui/Label';
+import { useSettings } from '@/hooks/useSettings';
 
 const PasswordInput = ({ id, ...props }: React.InputHTMLAttributes<HTMLInputElement>) => {
   const [show, setShow] = useState(false);
@@ -21,11 +22,18 @@ const PasswordInput = ({ id, ...props }: React.InputHTMLAttributes<HTMLInputElem
 };
 
 export const AccountForm = () => {
+  const { updatePassword, isLoading } = useSettings();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await updatePassword({});
+  };
+
   return (
     <div className="bg-[#121814] rounded-xl border border-[#1b251e] p-6 md:p-8 max-w-4xl shadow-sm">
       <h3 className="text-lg font-bold text-zinc-100 mb-6">Account Settings</h3>
 
-      <form className="space-y-6">
+      <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-2">
           <Label htmlFor="currentPassword" required>Current Password</Label>
           <PasswordInput id="currentPassword" />
@@ -43,7 +51,9 @@ export const AccountForm = () => {
         </div>
 
         <div className="flex justify-end pt-2">
-          <Button type="button" variant="primary">Update Password</Button>
+          <Button type="submit" variant="primary" disabled={isLoading}>
+            {isLoading ? "Updating..." : "Update Password"}
+          </Button>
         </div>
       </form>
 
