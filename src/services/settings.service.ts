@@ -1,4 +1,4 @@
-import { UpdateProfilePayload, UpdatePasswordPayload } from '@/hooks/useSettings';
+import type { UpdateProfilePayload, UpdatePasswordPayload } from '@/hooks/useSettings';
 
 export const settingsService = {
   updateProfile: async (payload: UpdateProfilePayload) => {
