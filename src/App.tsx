@@ -6,6 +6,7 @@ import { Settings } from './pages/Settings';
 import { BrowseCourses, CourseDetails, LearnCourse } from './pages/Courses';
 import { Assignments } from './pages/Assignments';
 import { Calendar } from './pages/Calendar';
+import { Certificates } from './pages/Certificates';
 import { Login, Register, ForgotPassword, ResetPassword } from './pages/Auth';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="courses" element={<BrowseCourses />} />
           <Route path="courses/:id" element={<CourseDetails />} />
           <Route path="my-learning" element={<div className="text-white text-center mt-10">My Learning (Coming soon)</div>} />
+          <Route path="certificates" element={<Certificates />} />
           <Route path="assignments" element={<Assignments />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="settings" element={<Settings />} />
