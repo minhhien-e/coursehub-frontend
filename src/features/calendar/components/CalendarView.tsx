@@ -16,22 +16,6 @@ export const CalendarView = () => {
     dispatch(fetchEvents());
   }, [dispatch]);
 
-  if (isLoading && events.length === 0) {
-    return (
-      <div className="flex justify-center items-center h-[60vh]">
-        <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-[60vh] text-red-500">
-        {error}
-      </div>
-    );
-  }
-
   return (
     <div className="p-6 md:p-8 max-w-[1400px] mx-auto animate-in fade-in duration-500">
       
@@ -41,15 +25,27 @@ export const CalendarView = () => {
         <p className="text-textMuted">Track your deadlines, live sessions, and quiz dates.</p>
       </div>
 
-      {/* Main Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <CalendarGrid events={events} onEventClick={setSelectedEvent} />
+      {isLoading && events.length === 0 ? (
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
         </div>
-        <div>
-          <UpcomingEvents events={events} onEventClick={setSelectedEvent} />
+      ) : error ? (
+        <div className="flex justify-center items-center py-20 text-red-500">
+          {error}
         </div>
-      </div>
+      ) : (
+        <>
+          {/* Main Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="lg:col-span-2">
+              <CalendarGrid events={events} onEventClick={setSelectedEvent} />
+            </div>
+            <div>
+              <UpcomingEvents events={events} onEventClick={setSelectedEvent} />
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Modal */}
       {selectedEvent && (

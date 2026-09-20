@@ -12,22 +12,6 @@ export const CertificatesView = () => {
     dispatch(fetchCertificates());
   }, [dispatch]);
 
-  if (isLoading && items.length === 0) {
-    return (
-      <div className="flex justify-center items-center h-[60vh]">
-        <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-[60vh] text-red-500">
-        {error}
-      </div>
-    );
-  }
-
   return (
     <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
@@ -37,12 +21,24 @@ export const CertificatesView = () => {
         <p className="text-textMuted">{items.length} certificates earned</p>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        {items.map(cert => (
-          <CertificateCard key={cert.id} certificate={cert} />
-        ))}
-      </div>
+      {isLoading && items.length === 0 ? (
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
+        </div>
+      ) : error ? (
+        <div className="flex justify-center items-center py-20 text-red-500">
+          {error}
+        </div>
+      ) : (
+        <>
+          {/* Grid */}
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+            {items.map(cert => (
+              <CertificateCard key={cert.id} certificate={cert} />
+            ))}
+          </div>
+        </>
+      )}
       
     </div>
   );

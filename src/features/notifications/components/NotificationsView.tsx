@@ -16,22 +16,6 @@ export const NotificationsView = () => {
   const unreadCount = items.filter(n => !n.isRead).length;
   const filteredItems = activeTab === 'All' ? items : items.filter(n => !n.isRead);
 
-  if (isLoading && items.length === 0) {
-    return (
-      <div className="flex justify-center items-center h-[60vh]">
-        <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-[60vh] text-red-500">
-        {error}
-      </div>
-    );
-  }
-
   return (
     <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
@@ -51,48 +35,60 @@ export const NotificationsView = () => {
         </button>
       </div>
 
-      {/* Tabs */}
-      <div className="flex items-center gap-2 mb-6 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
-        <button
-          onClick={() => dispatch(setActiveTab('All'))}
-          className={cn(
-            "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
-            activeTab === 'All'
-              ? "bg-zinc-800 text-white shadow-sm"
-              : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
-          )}
-        >
-          All ({items.length})
-        </button>
-        <button
-          onClick={() => dispatch(setActiveTab('Unread'))}
-          className={cn(
-            "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
-            activeTab === 'Unread'
-              ? "bg-zinc-800 text-white shadow-sm"
-              : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
-          )}
-        >
-          Unread ({unreadCount})
-        </button>
-      </div>
-
-      {/* List */}
-      <div className="space-y-3">
-        {filteredItems.map(notification => (
-          <NotificationItem 
-            key={notification.id} 
-            notification={notification} 
-            onMarkRead={(id) => dispatch(markAsRead(id))}
-          />
-        ))}
-
-        {filteredItems.length === 0 && (
-          <div className="text-center py-12 bg-surface border border-borderDim rounded-xl">
-            <p className="text-textMuted">No notifications here.</p>
+      {isLoading && items.length === 0 ? (
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
+        </div>
+      ) : error ? (
+        <div className="flex justify-center items-center py-20 text-red-500">
+          {error}
+        </div>
+      ) : (
+        <>
+          {/* Tabs */}
+          <div className="flex items-center gap-2 mb-6 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
+            <button
+              onClick={() => dispatch(setActiveTab('All'))}
+              className={cn(
+                "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
+                activeTab === 'All'
+                  ? "bg-zinc-800 text-white shadow-sm"
+                  : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
+              )}
+            >
+              All ({items.length})
+            </button>
+            <button
+              onClick={() => dispatch(setActiveTab('Unread'))}
+              className={cn(
+                "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
+                activeTab === 'Unread'
+                  ? "bg-zinc-800 text-white shadow-sm"
+                  : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
+              )}
+            >
+              Unread ({unreadCount})
+            </button>
           </div>
-        )}
-      </div>
+
+          {/* List */}
+          <div className="space-y-3">
+            {filteredItems.map(notification => (
+              <NotificationItem 
+                key={notification.id} 
+                notification={notification} 
+                onMarkRead={(id) => dispatch(markAsRead(id))}
+              />
+            ))}
+
+            {filteredItems.length === 0 && (
+              <div className="text-center py-12 bg-surface border border-borderDim rounded-xl">
+                <p className="text-textMuted">No notifications here.</p>
+              </div>
+            )}
+          </div>
+        </>
+      )}
       
     </div>
   );

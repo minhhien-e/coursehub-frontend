@@ -36,22 +36,6 @@ export const BookmarksView = () => {
     return true;
   });
 
-  if (isLoading && (!stats || items.length === 0)) {
-    return (
-      <div className="flex justify-center items-center h-[60vh]">
-        <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-[60vh] text-red-500">
-        {error}
-      </div>
-    );
-  }
-
   return (
     <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
@@ -70,45 +54,57 @@ export const BookmarksView = () => {
         </button>
       </div>
 
-      {/* Stats */}
-      {stats && <BookmarksStatsRow stats={stats} />}
-
-      {/* Search and Filters */}
-      <div className="mb-6">
-        <div className="relative mb-6">
-          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-textMuted" />
-          <input 
-            type="text" 
-            placeholder="Search bookmarks..."
-            className="w-full bg-surfaceHighlight border border-borderDim rounded-xl pl-12 pr-4 py-3 text-white placeholder:text-textMuted outline-none focus:border-emerald-500 transition-colors"
-          />
+      {isLoading && (!stats || items.length === 0) ? (
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
         </div>
-
-        <div className="flex items-center gap-2 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => dispatch(setActiveFilter(filter))}
-              className={cn(
-                "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
-                activeFilter === filter
-                  ? "bg-zinc-800 text-white shadow-sm"
-                  : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
-              )}
-            >
-              {getFilterLabel(filter)}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* List */}
-      {activeFilter === 'Collections' ? (
-        <div className="text-center py-12 bg-surfaceHighlight border border-borderDim rounded-xl text-textMuted">
-          Collections view coming soon...
+      ) : error ? (
+        <div className="flex justify-center items-center py-20 text-red-500">
+          {error}
         </div>
       ) : (
-        <BookmarkList bookmarks={filteredItems} />
+        <>
+          {/* Stats */}
+          {stats && <BookmarksStatsRow stats={stats} />}
+
+          {/* Search and Filters */}
+          <div className="mb-6">
+            <div className="relative mb-6">
+              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-textMuted" />
+              <input 
+                type="text" 
+                placeholder="Search bookmarks..."
+                className="w-full bg-surfaceHighlight border border-borderDim rounded-xl pl-12 pr-4 py-3 text-white placeholder:text-textMuted outline-none focus:border-emerald-500 transition-colors"
+              />
+            </div>
+
+            <div className="flex items-center gap-2 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
+              {filters.map((filter) => (
+                <button
+                  key={filter}
+                  onClick={() => dispatch(setActiveFilter(filter))}
+                  className={cn(
+                    "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
+                    activeFilter === filter
+                      ? "bg-zinc-800 text-white shadow-sm"
+                      : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
+                  )}
+                >
+                  {getFilterLabel(filter)}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* List */}
+          {activeFilter === 'Collections' ? (
+            <div className="text-center py-12 bg-surfaceHighlight border border-borderDim rounded-xl text-textMuted">
+              Collections view coming soon...
+            </div>
+          ) : (
+            <BookmarkList bookmarks={filteredItems} />
+          )}
+        </>
       )}
 
       {/* Modal */}

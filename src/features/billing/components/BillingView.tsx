@@ -14,35 +14,29 @@ export const BillingView = () => {
     dispatch(fetchBillingDetails());
   }, [dispatch]);
 
-  if (isLoading && !details) {
-    return (
-      <div className="flex justify-center items-center h-[60vh]">
-        <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-[60vh] text-red-500">
-        {error}
-      </div>
-    );
-  }
-
-  if (!details) return null;
-
   return (
     <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
-      {/* Current Plan */}
-      <CurrentPlanCard plan={details.plan} price={details.price} />
+      {isLoading && !details ? (
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
+        </div>
+      ) : error ? (
+        <div className="flex justify-center items-center py-20 text-red-500">
+          {error}
+        </div>
+      ) : details ? (
+        <>
+          {/* Current Plan */}
+          <CurrentPlanCard plan={details.plan} price={details.price} />
 
-      {/* Payment Methods */}
-      <PaymentMethodsList methods={details.paymentMethods} />
+          {/* Payment Methods */}
+          <PaymentMethodsList methods={details.paymentMethods} />
 
-      {/* Billing History */}
-      <BillingHistoryTable history={details.history} />
+          {/* Billing History */}
+          <BillingHistoryTable history={details.history} />
+        </>
+      ) : null}
       
     </div>
   );

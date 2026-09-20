@@ -38,22 +38,6 @@ export const AssignmentsView = () => {
     return items.filter(i => i.status === statusFilter);
   }, [items, statusFilter]);
 
-  if (isLoading && items.length === 0) {
-    return (
-      <div className="flex justify-center items-center h-[60vh]">
-        <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="flex justify-center items-center h-[60vh] text-red-500">
-        {error}
-      </div>
-    );
-  }
-
   return (
     <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
@@ -63,39 +47,51 @@ export const AssignmentsView = () => {
         <p className="text-textMuted">Track and submit your course assignments.</p>
       </div>
 
-      {/* Stats */}
-      <AssignmentStats stats={stats} />
+      {isLoading && items.length === 0 ? (
+        <div className="flex justify-center items-center py-20">
+          <Loader2 className="w-10 h-10 text-emerald-500 animate-spin" />
+        </div>
+      ) : error ? (
+        <div className="flex justify-center items-center py-20 text-red-500">
+          {error}
+        </div>
+      ) : (
+        <>
+          {/* Stats */}
+          <AssignmentStats stats={stats} />
 
-      {/* Tabs */}
-      <div className="flex flex-wrap items-center gap-2 mb-6 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => dispatch(setStatusFilter(tab.id))}
-            className={cn(
-              "px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-2",
-              statusFilter === tab.id
-                ? "bg-zinc-800 text-white shadow-sm"
-                : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
-            )}
-          >
-            {tab.label}
-            <span className={cn(
-              "text-xs rounded-full px-1.5 py-0.5",
-              statusFilter === tab.id ? "bg-emerald-500/20 text-emerald-400" : "bg-zinc-800 text-textMuted"
-            )}>
-              {tab.count}
-            </span>
-          </button>
-        ))}
-      </div>
+          {/* Tabs */}
+          <div className="flex flex-wrap items-center gap-2 mb-6 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => dispatch(setStatusFilter(tab.id))}
+                className={cn(
+                  "px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-2",
+                  statusFilter === tab.id
+                    ? "bg-zinc-800 text-white shadow-sm"
+                    : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
+                )}
+              >
+                {tab.label}
+                <span className={cn(
+                  "text-xs rounded-full px-1.5 py-0.5",
+                  statusFilter === tab.id ? "bg-emerald-500/20 text-emerald-400" : "bg-zinc-800 text-textMuted"
+                )}>
+                  {tab.count}
+                </span>
+              </button>
+            ))}
+          </div>
 
-      {/* Table */}
-      <AssignmentTable 
-        assignments={filteredItems}
-        onSubmitClick={(assignment) => setSubmitModalAssignment(assignment)}
-        onViewClick={(assignment) => setFeedbackModalAssignment(assignment)}
-      />
+          {/* Table */}
+          <AssignmentTable 
+            assignments={filteredItems}
+            onSubmitClick={(assignment) => setSubmitModalAssignment(assignment)}
+            onViewClick={(assignment) => setFeedbackModalAssignment(assignment)}
+          />
+        </>
+      )}
 
       {/* Modals */}
       {submitModalAssignment && (
