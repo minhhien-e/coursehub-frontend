@@ -15,7 +15,7 @@ export const MainLayout = () => {
         isSidebarCollapsed ? "pl-20" : "pl-64"
       )}>
         <Header />
-        <main className="flex-1 overflow-y-auto bg-background">
+        <main className="flex-1 overflow-y-scroll bg-background">
           <Outlet />
         </main>
       </div>

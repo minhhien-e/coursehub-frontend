@@ -17,7 +17,6 @@
   body {
     @apply bg-background text-textMain antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    overflow-y: scroll;
   }
 
   /* Custom Scrollbar */
