@@ -25,7 +25,7 @@ export const CurrentPlanCard = ({ plan, price }: CurrentPlanCardProps) => {
           <div className="text-right">
             <p className="text-2xl font-extrabold text-white">${price}<span className="text-sm font-medium text-textMuted">/mo</span></p>
           </div>
-          <Link to="/pricing" className="bg-transparent border border-borderDim hover:bg-surfaceHighlight text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+          <Link to="/pricing" className="bg-primary hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm">
             Change Plan
           </Link>
         </div>
