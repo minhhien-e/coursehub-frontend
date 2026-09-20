@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, Bell, Moon, Sun, User, Settings, LogOut } from 'lucide-react';
+import { Search, Bell, User, Settings, LogOut } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { logout } from '@/features/auth';
