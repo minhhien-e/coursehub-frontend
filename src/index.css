@@ -2,12 +2,35 @@
 @config "../tailwind.config.js";
 
 @layer base {
+  :root {
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --surface-highlight: #f1f5f9;
+    --primary: #10b981;
+    --secondary: #e2e8f0;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-dim: #e2e8f0;
+  }
+
+  .dark {
+    --background: #0a0f0d;
+    --surface: #111816;
+    --surface-highlight: #1a2421;
+    --primary: #10b981;
+    --secondary: #1f2937;
+    --text-main: #f3f4f6;
+    --text-muted: #9ca3af;
+    --border-dim: #1f2937;
+  }
+
+
   body {
     @apply bg-background text-textMain antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 
-  /* Custom Scrollbar for Dark Theme */
+  /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -16,10 +39,10 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1b251e;
+    background: var(--border-dim);
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #2a3a30;
+    background: var(--text-muted);
   }
 }
