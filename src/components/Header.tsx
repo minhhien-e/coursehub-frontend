@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, Bell, Moon, User, Settings, LogOut } from 'lucide-react';
+import { Search, Bell, Moon, Sun, User, Settings, LogOut } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { logout } from '@/features/auth';
+import { useTheme } from '@/hooks/useTheme';
 
 export const Header = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -10,6 +11,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.auth);
+  const { theme, setTheme } = useTheme();
 
   const handleLogout = () => {
     setIsDropdownOpen(false);
@@ -41,8 +43,12 @@ export const Header = () => {
       </div>
       
       <div className="flex items-center gap-4">
-        <button className="text-textMuted hover:text-white">
-          <Moon size={20} />
+        <button 
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="text-textMuted hover:text-textMain transition-colors"
+          title="Toggle Theme"
+        >
+          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
         </button>
         <button className="text-textMuted hover:text-white relative mr-2">
           <Bell size={20} />
