@@ -16,6 +16,7 @@ export const MainLayout = () => {
       )}>
         <Header />
         <main className="flex-1 overflow-y-scroll bg-background">
+          <div className="hidden max-w-7xl mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 animate-in fade-in duration-500" aria-hidden="true"></div>
           <Outlet />
         </main>
       </div>
