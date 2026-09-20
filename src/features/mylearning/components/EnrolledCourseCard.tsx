@@ -8,10 +8,10 @@ interface EnrolledCourseCardProps {
 
 export const EnrolledCourseCard = ({ course }: EnrolledCourseCardProps) => {
   return (
-    <div className="bg-[#0a0e0c] border border-[#1b251e] rounded-xl overflow-hidden group hover:border-zinc-700 transition-colors cursor-pointer flex flex-col h-full">
+    <div className="bg-surface border border-borderDim rounded-xl overflow-hidden group hover:border-borderDim transition-colors cursor-pointer flex flex-col h-full">
       
       {/* Image Container */}
-      <div className="relative aspect-video overflow-hidden border-b border-[#1b251e]">
+      <div className="relative aspect-video overflow-hidden border-b border-borderDim">
         <img 
           src={course.image} 
           alt={course.title}
@@ -33,7 +33,7 @@ export const EnrolledCourseCard = ({ course }: EnrolledCourseCardProps) => {
 
       {/* Content */}
       <div className="p-5 flex-1 flex flex-col">
-        <div className="flex items-center gap-2 text-[10px] uppercase font-bold tracking-wider text-zinc-500 mb-2">
+        <div className="flex items-center gap-2 text-[10px] uppercase font-bold tracking-wider text-textMuted mb-2">
           <span>Development</span>
         </div>
         
@@ -41,9 +41,9 @@ export const EnrolledCourseCard = ({ course }: EnrolledCourseCardProps) => {
           {course.title}
         </h3>
         
-        <p className="text-sm text-zinc-500 mb-4">{course.instructor}</p>
+        <p className="text-sm text-textMuted mb-4">{course.instructor}</p>
         
-        <div className="flex items-center gap-3 text-xs text-zinc-400 mb-4">
+        <div className="flex items-center gap-3 text-xs text-textMuted mb-4">
           <div className="flex items-center gap-1">
             <Star size={14} className="fill-orange-400 text-orange-400" />
             <span className="text-white font-medium">{course.rating}</span>
@@ -55,7 +55,7 @@ export const EnrolledCourseCard = ({ course }: EnrolledCourseCardProps) => {
           </div>
         </div>
         
-        <div className="flex items-center gap-3 text-xs text-zinc-400 mb-6">
+        <div className="flex items-center gap-3 text-xs text-textMuted mb-6">
           <div className="flex items-center gap-1">
             <Clock size={14} />
             <span>{course.duration}</span>
@@ -67,11 +67,11 @@ export const EnrolledCourseCard = ({ course }: EnrolledCourseCardProps) => {
         </div>
 
         {/* Progress Section */}
-        <div className="mt-auto pt-4 border-t border-[#1b251e]">
+        <div className="mt-auto pt-4 border-t border-borderDim">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-xs font-medium text-zinc-400">{course.progress}% complete</span>
+            <span className="text-xs font-medium text-textMuted">{course.progress}% complete</span>
           </div>
-          <div className="h-1.5 w-full bg-[#1b251e] rounded-full overflow-hidden">
+          <div className="h-1.5 w-full bg-borderDim rounded-full overflow-hidden">
             <div 
               className="h-full bg-emerald-500 rounded-full" 
               style={{ width: `${course.progress}%` }}

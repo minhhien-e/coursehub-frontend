@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/Button';
 import { Switch } from '@/components/ui/Switch';
 import { useSettings } from '@/features/profile/hooks/useSettings';
@@ -22,52 +22,52 @@ export const NotificationsForm = () => {
   };
 
   return (
-    <div className="bg-[#121814] rounded-xl border border-[#1b251e] p-6 md:p-8 max-w-4xl shadow-sm">
-      <h3 className="text-lg font-bold text-zinc-100 mb-6">Notification Preferences</h3>
+    <div className="bg-surfaceHighlight rounded-xl border border-borderDim p-6 md:p-8 shadow-sm">
+      <h3 className="text-lg font-bold text-textMain mb-6">Notification Preferences</h3>
 
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <h4 className="text-sm font-bold text-zinc-100">Course updates</h4>
-            <p className="text-xs text-zinc-400">New lessons, assignments, and announcements</p>
+            <h4 className="text-sm font-bold text-textMain">Course updates</h4>
+            <p className="text-xs text-textMuted">New lessons, assignments, and announcements</p>
           </div>
           <Switch checked={settings.courseUpdates} onCheckedChange={() => toggleSetting('courseUpdates')} />
         </div>
 
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <h4 className="text-sm font-bold text-zinc-100">Achievement alerts</h4>
-            <p className="text-xs text-zinc-400">Badges, level ups, and milestones</p>
+            <h4 className="text-sm font-bold text-textMain">Achievement alerts</h4>
+            <p className="text-xs text-textMuted">Badges, level ups, and milestones</p>
           </div>
           <Switch checked={settings.achievementAlerts} onCheckedChange={() => toggleSetting('achievementAlerts')} />
         </div>
 
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <h4 className="text-sm font-bold text-zinc-100">Community replies</h4>
-            <p className="text-xs text-zinc-400">Replies to your discussions and threads</p>
+            <h4 className="text-sm font-bold text-textMain">Community replies</h4>
+            <p className="text-xs text-textMuted">Replies to your discussions and threads</p>
           </div>
           <Switch checked={settings.communityReplies} onCheckedChange={() => toggleSetting('communityReplies')} />
         </div>
 
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <h4 className="text-sm font-bold text-zinc-100">Weekly digest</h4>
-            <p className="text-xs text-zinc-400">Summary of your learning activity</p>
+            <h4 className="text-sm font-bold text-textMain">Weekly digest</h4>
+            <p className="text-xs text-textMuted">Summary of your learning activity</p>
           </div>
           <Switch checked={settings.weeklyDigest} onCheckedChange={() => toggleSetting('weeklyDigest')} />
         </div>
 
         <div className="flex items-center justify-between">
           <div className="space-y-0.5">
-            <h4 className="text-sm font-bold text-zinc-100">Marketing emails</h4>
-            <p className="text-xs text-zinc-400">New courses, promotions, and events</p>
+            <h4 className="text-sm font-bold text-textMain">Marketing emails</h4>
+            <p className="text-xs text-textMuted">New courses, promotions, and events</p>
           </div>
           <Switch checked={settings.marketingEmails} onCheckedChange={() => toggleSetting('marketingEmails')} />
         </div>
       </div>
 
-      <div className="flex justify-end pt-6 mt-8 border-t border-[#1b251e]">
+      <div className="flex justify-end pt-6 mt-8 border-t border-borderDim">
         <Button variant="primary" onClick={handleSave} disabled={isLoading}>
           {isLoading ? "Saving..." : "Save Preferences"}
         </Button>

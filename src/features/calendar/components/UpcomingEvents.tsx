@@ -29,14 +29,14 @@ export const UpcomingEvents = ({ events, onEventClick }: UpcomingEventsProps) =>
   };
 
   return (
-    <div className="bg-[#121814] border border-[#1b251e] rounded-xl flex flex-col h-full max-h-[800px]">
-      <div className="p-6 border-b border-[#1b251e]">
+    <div className="bg-surfaceHighlight border border-borderDim rounded-xl flex flex-col h-full max-h-[800px]">
+      <div className="p-6 border-b border-borderDim">
         <h2 className="text-xl font-bold text-white">Upcoming Events</h2>
       </div>
       
       <div className="flex-1 overflow-y-auto p-6 space-y-4">
         {upcomingEvents.length === 0 ? (
-          <p className="text-zinc-500 text-sm text-center py-8">No upcoming events.</p>
+          <p className="text-textMuted text-sm text-center py-8">No upcoming events.</p>
         ) : (
           upcomingEvents.map(event => {
             const config = typeConfig[event.type];
@@ -46,7 +46,7 @@ export const UpcomingEvents = ({ events, onEventClick }: UpcomingEventsProps) =>
               <div 
                 key={event.id}
                 onClick={() => onEventClick?.(event)}
-                className="bg-[#0a0e0c] border border-[#1b251e] rounded-xl p-4 flex gap-4 hover:border-zinc-700 transition-colors cursor-pointer"
+                className="bg-surface border border-borderDim rounded-xl p-4 flex gap-4 hover:border-borderDim transition-colors cursor-pointer"
               >
                 <div className={cn(
                   "w-10 h-10 shrink-0 rounded-lg flex items-center justify-center border",
@@ -56,9 +56,9 @@ export const UpcomingEvents = ({ events, onEventClick }: UpcomingEventsProps) =>
                 </div>
                 
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-zinc-200 font-semibold text-sm truncate">{event.title}</h4>
-                  <p className="text-zinc-500 text-xs truncate mt-0.5">{event.course}</p>
-                  <p className="text-zinc-400 text-xs mt-2">
+                  <h4 className="text-textMain font-semibold text-sm truncate">{event.title}</h4>
+                  <p className="text-textMuted text-xs truncate mt-0.5">{event.course}</p>
+                  <p className="text-textMuted text-xs mt-2">
                     {formatEventDate(event.date, event.time)}
                   </p>
                 </div>

@@ -14,10 +14,10 @@ export const StudyHoursChart = () => {
   const maxHours = 8; // fixed scale for UI matching
 
   return (
-    <div className="bg-[#0a0e0c] border border-[#1b251e] rounded-xl p-5 mb-6">
+    <div className="bg-surface border border-borderDim rounded-xl p-5 mb-6">
       <div className="flex justify-between items-center mb-6">
         <h3 className="text-lg font-bold text-white">Weekly Study Hours</h3>
-        <button className="text-zinc-500 hover:text-white transition-colors">
+        <button className="text-textMuted hover:text-textMain transition-colors">
           <MoreHorizontal size={20} />
         </button>
       </div>
@@ -28,8 +28,8 @@ export const StudyHoursChart = () => {
         {/* Y-axis lines */}
         <div className="absolute inset-0 flex flex-col justify-between pointer-events-none">
           {[8, 6, 4, 2, 0].map(val => (
-            <div key={val} className="w-full flex items-center h-0 border-b border-[#1b251e] border-dashed">
-              <span className="absolute -left-6 text-[10px] text-zinc-600 -translate-y-1/2">{val}h</span>
+            <div key={val} className="w-full flex items-center h-0 border-b border-borderDim border-dashed">
+              <span className="absolute -left-6 text-[10px] text-textMuted -translate-y-1/2">{val}h</span>
             </div>
           ))}
         </div>
@@ -51,7 +51,7 @@ export const StudyHoursChart = () => {
                   style={{ height: `${heightPercent}%` }}
                 />
                 
-                <span className="text-[10px] text-zinc-500 mt-3 absolute -bottom-6">
+                <span className="text-[10px] text-textMuted mt-3 absolute -bottom-6">
                   {item.day}
                 </span>
               </div>

@@ -60,14 +60,14 @@ export const AssignmentsView = () => {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold text-white mb-2">Assignments</h1>
-        <p className="text-zinc-400">Track and submit your course assignments.</p>
+        <p className="text-textMuted">Track and submit your course assignments.</p>
       </div>
 
       {/* Stats */}
       <AssignmentStats stats={stats} />
 
       {/* Tabs */}
-      <div className="flex flex-wrap items-center gap-2 mb-6 bg-[#121814] p-1.5 rounded-lg border border-[#1b251e] w-fit">
+      <div className="flex flex-wrap items-center gap-2 mb-6 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -76,13 +76,13 @@ export const AssignmentsView = () => {
               "px-4 py-1.5 rounded-md text-sm font-medium transition-colors flex items-center gap-2",
               statusFilter === tab.id
                 ? "bg-zinc-800 text-white shadow-sm"
-                : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+                : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
             )}
           >
             {tab.label}
             <span className={cn(
               "text-xs rounded-full px-1.5 py-0.5",
-              statusFilter === tab.id ? "bg-emerald-500/20 text-emerald-400" : "bg-zinc-800 text-zinc-500"
+              statusFilter === tab.id ? "bg-emerald-500/20 text-emerald-400" : "bg-zinc-800 text-textMuted"
             )}>
               {tab.count}
             </span>

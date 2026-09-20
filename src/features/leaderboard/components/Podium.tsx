@@ -18,14 +18,14 @@ export const Podium = ({ topUsers }: PodiumProps) => {
         const isFirst = user.rank === 1;
         const rankColor = 
           user.rank === 1 ? 'text-amber-500 bg-amber-500/10 border-amber-500/20' :
-          user.rank === 2 ? 'text-zinc-300 bg-zinc-300/10 border-zinc-300/20' :
+          user.rank === 2 ? 'text-textMuted bg-zinc-300/10 border-zinc-300/20' :
           'text-orange-500 bg-orange-500/10 border-orange-500/20';
 
         return (
           <div 
             key={user.id} 
             className={cn(
-              "bg-[#121814] border border-[#1b251e] rounded-2xl p-6 flex flex-col items-center text-center relative",
+              "bg-surfaceHighlight border border-borderDim rounded-2xl p-6 flex flex-col items-center text-center relative",
               isFirst ? "md:h-64 h-auto shadow-lg shadow-amber-500/5 border-amber-500/20" : "md:h-56 h-auto"
             )}
           >
@@ -41,7 +41,7 @@ export const Podium = ({ topUsers }: PodiumProps) => {
             {/* Avatar */}
             <div className={cn(
               "relative mb-4 rounded-full p-1",
-              isFirst ? "bg-gradient-to-b from-amber-500 to-amber-700" : "bg-[#1b251e]"
+              isFirst ? "bg-gradient-to-b from-amber-500 to-amber-700" : "bg-borderDim"
             )}>
               <img 
                 src={user.avatar} 
@@ -54,14 +54,14 @@ export const Podium = ({ topUsers }: PodiumProps) => {
             </div>
 
             <h3 className="font-bold text-white text-lg">{user.name}</h3>
-            <p className="text-sm text-zinc-500 mb-4">Level {user.level}</p>
+            <p className="text-sm text-textMuted mb-4">Level {user.level}</p>
 
             <div className="flex flex-col items-center gap-2 mt-auto">
               <div className="flex items-center gap-1 text-emerald-500 font-bold">
                 <Zap size={16} />
                 {user.xp.toLocaleString()} XP
               </div>
-              <div className="flex items-center gap-1 text-zinc-400 text-xs font-medium bg-[#1b251e] px-2.5 py-1 rounded-full">
+              <div className="flex items-center gap-1 text-textMuted text-xs font-medium bg-borderDim px-2.5 py-1 rounded-full">
                 <Award size={14} />
                 {user.badges} badges
               </div>

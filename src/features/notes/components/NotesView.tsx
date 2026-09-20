@@ -36,7 +36,7 @@ export const NotesView = () => {
       <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h1 className="text-3xl font-extrabold text-white mb-2">My Notes</h1>
-          <p className="text-zinc-400">Personal notes taken during your courses.</p>
+          <p className="text-textMuted">Personal notes taken during your courses.</p>
         </div>
         <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
           <Plus size={18} />
@@ -50,20 +50,20 @@ export const NotesView = () => {
       {/* Filters */}
       <div className="mb-6 flex flex-col md:flex-row gap-4">
         <div className="relative flex-1">
-          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" />
+          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-textMuted" />
           <input 
             type="text" 
             placeholder="Search notes..."
-            className="w-full bg-[#121814] border border-[#1b251e] rounded-xl pl-12 pr-4 py-3 text-white placeholder:text-zinc-600 outline-none focus:border-emerald-500 transition-colors"
+            className="w-full bg-surfaceHighlight border border-borderDim rounded-xl pl-12 pr-4 py-3 text-white placeholder:text-textMuted outline-none focus:border-emerald-500 transition-colors"
           />
         </div>
         <div className="relative shrink-0">
-          <select className="appearance-none bg-[#121814] border border-[#1b251e] rounded-xl px-4 py-3 pr-10 text-white outline-none focus:border-emerald-500 transition-colors cursor-pointer w-full md:w-48">
+          <select className="appearance-none bg-surfaceHighlight border border-borderDim rounded-xl px-4 py-3 pr-10 text-white outline-none focus:border-emerald-500 transition-colors cursor-pointer w-full md:w-48">
             <option value="all">All Courses</option>
             <option value="recent">Recently Added</option>
             <option value="pinned">Pinned First</option>
           </select>
-          <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" />
+          <ChevronDown size={18} className="absolute right-4 top-1/2 -translate-y-1/2 text-textMuted pointer-events-none" />
         </div>
       </div>
 

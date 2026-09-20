@@ -41,10 +41,10 @@ export const PricingView = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0e0c] flex flex-col animate-in fade-in duration-500">
+    <div className="min-h-screen bg-surface flex flex-col animate-in fade-in duration-500">
       
       {/* Public Header */}
-      <header className="h-16 border-b border-[#1b251e] flex items-center justify-between px-6 md:px-10">
+      <header className="h-16 border-b border-borderDim flex items-center justify-between px-6 md:px-10">
         <div className="flex items-center gap-8">
           <Link to="/" className="flex items-center gap-2">
             <div className="bg-emerald-500 p-1.5 rounded-lg text-white">
@@ -53,15 +53,15 @@ export const PricingView = () => {
             <span className="text-xl font-bold text-white tracking-tight">LMS Kit</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-            <Link to="/courses" className="text-zinc-400 hover:text-white transition-colors">Courses</Link>
+            <Link to="/courses" className="text-textMuted hover:text-textMain transition-colors">Courses</Link>
             <Link to="/pricing" className="text-white">Pricing</Link>
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <button className="text-zinc-400 hover:text-white transition-colors">
+          <button className="text-textMuted hover:text-textMain transition-colors">
             <Moon size={18} />
           </button>
-          <Link to="/login" className="text-sm font-bold text-zinc-300 hover:text-white transition-colors">
+          <Link to="/login" className="text-sm font-bold text-textMuted hover:text-textMain transition-colors">
             Sign In
           </Link>
           <Link to="/register" className="text-sm font-bold bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg transition-colors shadow-lg shadow-emerald-500/20">
@@ -75,13 +75,13 @@ export const PricingView = () => {
         
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">Simple, transparent pricing</h1>
-          <p className="text-zinc-400 text-lg mb-10">Choose the plan that's right for you and start learning today.</p>
+          <p className="text-textMuted text-lg mb-10">Choose the plan that's right for you and start learning today.</p>
           
           {/* Toggle */}
           <div className="flex items-center justify-center gap-4">
-            <span className={cn("text-sm font-bold", !isAnnual ? "text-white" : "text-zinc-500")}>Monthly</span>
+            <span className={cn("text-sm font-bold", !isAnnual ? "text-white" : "text-textMuted")}>Monthly</span>
             <button 
-              className="w-12 h-6 rounded-full bg-[#1b251e] border border-zinc-700 relative transition-colors"
+              className="w-12 h-6 rounded-full bg-borderDim border border-borderDim relative transition-colors"
               onClick={() => setIsAnnual(!isAnnual)}
             >
               <div className={cn(
@@ -90,7 +90,7 @@ export const PricingView = () => {
               )} />
             </button>
             <div className="flex items-center gap-2">
-              <span className={cn("text-sm font-bold", isAnnual ? "text-white" : "text-zinc-500")}>Annual</span>
+              <span className={cn("text-sm font-bold", isAnnual ? "text-white" : "text-textMuted")}>Annual</span>
               <span className="bg-fuchsia-500/20 text-fuchsia-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
                 Save 20%
               </span>

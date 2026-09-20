@@ -59,7 +59,7 @@ export const BookmarksView = () => {
       <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div>
           <h1 className="text-3xl font-extrabold text-white mb-2">Bookmarks</h1>
-          <p className="text-zinc-400">Your saved courses and lessons for quick access.</p>
+          <p className="text-textMuted">Your saved courses and lessons for quick access.</p>
         </div>
         <button 
           onClick={() => dispatch(setCreateModalOpen(true))}
@@ -76,15 +76,15 @@ export const BookmarksView = () => {
       {/* Search and Filters */}
       <div className="mb-6">
         <div className="relative mb-6">
-          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500" />
+          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-textMuted" />
           <input 
             type="text" 
             placeholder="Search bookmarks..."
-            className="w-full bg-[#121814] border border-[#1b251e] rounded-xl pl-12 pr-4 py-3 text-white placeholder:text-zinc-600 outline-none focus:border-emerald-500 transition-colors"
+            className="w-full bg-surfaceHighlight border border-borderDim rounded-xl pl-12 pr-4 py-3 text-white placeholder:text-textMuted outline-none focus:border-emerald-500 transition-colors"
           />
         </div>
 
-        <div className="flex items-center gap-2 bg-[#121814] p-1.5 rounded-lg border border-[#1b251e] w-fit">
+        <div className="flex items-center gap-2 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
           {filters.map((filter) => (
             <button
               key={filter}
@@ -93,7 +93,7 @@ export const BookmarksView = () => {
                 "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
                 activeFilter === filter
                   ? "bg-zinc-800 text-white shadow-sm"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+                  : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
               )}
             >
               {getFilterLabel(filter)}
@@ -104,7 +104,7 @@ export const BookmarksView = () => {
 
       {/* List */}
       {activeFilter === 'Collections' ? (
-        <div className="text-center py-12 bg-[#121814] border border-[#1b251e] rounded-xl text-zinc-500">
+        <div className="text-center py-12 bg-surfaceHighlight border border-borderDim rounded-xl text-textMuted">
           Collections view coming soon...
         </div>
       ) : (

@@ -56,40 +56,40 @@ export const CalendarGrid = ({ events, onEventClick }: CalendarGridProps) => {
   const monthName = currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
 
   return (
-    <div className="bg-[#121814] border border-[#1b251e] rounded-xl overflow-hidden flex flex-col">
+    <div className="bg-surfaceHighlight border border-borderDim rounded-xl overflow-hidden flex flex-col">
       {/* Header */}
-      <div className="p-6 border-b border-[#1b251e] flex flex-wrap items-center justify-between gap-4">
+      <div className="p-6 border-b border-borderDim flex flex-wrap items-center justify-between gap-4">
         <h2 className="text-xl font-bold text-white">{monthName}</h2>
         
         <div className="flex items-center gap-2">
-          <button onClick={handlePrevMonth} className="p-1.5 rounded bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors border border-zinc-800">
+          <button onClick={handlePrevMonth} className="p-1.5 rounded bg-zinc-800/50 hover:bg-surfaceHighlight text-textMuted hover:text-textMain transition-colors border border-borderDim">
             <ChevronLeft size={16} />
           </button>
-          <button onClick={handleToday} className="px-3 py-1.5 rounded text-sm font-medium bg-zinc-800/50 hover:bg-zinc-800 text-zinc-300 hover:text-white transition-colors border border-zinc-800">
+          <button onClick={handleToday} className="px-3 py-1.5 rounded text-sm font-medium bg-zinc-800/50 hover:bg-surfaceHighlight text-textMuted hover:text-textMain transition-colors border border-borderDim">
             Today
           </button>
-          <button onClick={handleNextMonth} className="p-1.5 rounded bg-zinc-800/50 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors border border-zinc-800">
+          <button onClick={handleNextMonth} className="p-1.5 rounded bg-zinc-800/50 hover:bg-surfaceHighlight text-textMuted hover:text-textMain transition-colors border border-borderDim">
             <ChevronRight size={16} />
           </button>
         </div>
       </div>
 
       {/* Legend */}
-      <div className="px-6 py-4 border-b border-[#1b251e] flex items-center gap-6">
+      <div className="px-6 py-4 border-b border-borderDim flex items-center gap-6">
         {(Object.entries(typeConfig) as [CalendarEventType, typeof typeConfig[CalendarEventType]][]).map(([key, config]) => (
           <div key={key} className="flex items-center gap-2">
             <Circle size={10} className={cn("fill-current", config.colorClass)} />
-            <span className="text-sm text-zinc-400">{config.label}</span>
+            <span className="text-sm text-textMuted">{config.label}</span>
           </div>
         ))}
       </div>
 
       {/* Grid */}
       <div className="flex-1 p-1">
-        <div className="grid grid-cols-7 gap-px bg-[#1b251e]">
+        <div className="grid grid-cols-7 gap-px bg-borderDim">
           {/* Day Headers */}
           {daysOfWeek.map(day => (
-            <div key={day} className="bg-[#121814] py-3 text-center text-xs font-medium text-zinc-500">
+            <div key={day} className="bg-surfaceHighlight py-3 text-center text-xs font-medium text-textMuted">
               {day}
             </div>
           ))}
@@ -97,7 +97,7 @@ export const CalendarGrid = ({ events, onEventClick }: CalendarGridProps) => {
           {/* Day Cells */}
           {calendarDays.map((dayObj, index) => {
             if (!dayObj) {
-              return <div key={`empty-${index}`} className="bg-[#121814] min-h-[120px]" />;
+              return <div key={`empty-${index}`} className="bg-surfaceHighlight min-h-[120px]" />;
             }
             
             const isToday = dayObj.dateStr === new Date().toISOString().split('T')[0];
@@ -105,12 +105,12 @@ export const CalendarGrid = ({ events, onEventClick }: CalendarGridProps) => {
             return (
               <div 
                 key={dayObj.dateStr} 
-                className="bg-[#121814] min-h-[120px] p-2 flex flex-col gap-1.5 transition-colors hover:bg-[#1a231d]/50"
+                className="bg-surfaceHighlight min-h-[120px] p-2 flex flex-col gap-1.5 transition-colors hover:bg-surfaceHighlight/50"
               >
                 <div className="flex justify-between items-center px-1">
                   <span className={cn(
                     "text-sm font-medium w-6 h-6 flex items-center justify-center rounded-full",
-                    isToday ? "bg-emerald-500 text-black" : "text-zinc-300"
+                    isToday ? "bg-emerald-500 text-black" : "text-textMuted"
                   )}>
                     {dayObj.day}
                   </span>

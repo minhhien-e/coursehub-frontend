@@ -52,11 +52,11 @@ export const MyLearningView = () => {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold text-white mb-2">My Learning</h1>
-        <p className="text-zinc-400">Track your enrolled courses and pick up where you left off.</p>
+        <p className="text-textMuted">Track your enrolled courses and pick up where you left off.</p>
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 mb-8 bg-[#121814] p-1.5 rounded-lg border border-[#1b251e] w-fit">
+      <div className="flex items-center gap-2 mb-8 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -65,7 +65,7 @@ export const MyLearningView = () => {
               "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
               activeTab === tab
                 ? "bg-zinc-800 text-white shadow-sm"
-                : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+                : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
             )}
           >
             {getTabLabel(tab)}

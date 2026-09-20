@@ -24,19 +24,19 @@ const courses = [
 
 export const ContinueLearningList = () => {
   return (
-    <div className="bg-[#0a0e0c] border border-[#1b251e] rounded-xl overflow-hidden mb-6">
+    <div className="bg-surface border border-borderDim rounded-xl overflow-hidden mb-6">
       
-      <div className="p-5 border-b border-[#1b251e] flex justify-between items-center">
+      <div className="p-5 border-b border-borderDim flex justify-between items-center">
         <h3 className="text-lg font-bold text-white">Continue Learning</h3>
-        <button className="text-sm font-medium text-zinc-400 hover:text-white transition-colors flex items-center gap-1">
+        <button className="text-sm font-medium text-textMuted hover:text-textMain transition-colors flex items-center gap-1">
           View all <ArrowRight size={14} />
         </button>
       </div>
 
       <div className="divide-y divide-[#1b251e]">
         {courses.map(course => (
-          <div key={course.id} className="p-5 flex gap-5 hover:bg-[#121814] transition-colors group cursor-pointer">
-            <div className="w-32 h-20 rounded-lg overflow-hidden shrink-0 border border-[#1b251e]">
+          <div key={course.id} className="p-5 flex gap-5 hover:bg-surfaceHighlight transition-colors group cursor-pointer">
+            <div className="w-32 h-20 rounded-lg overflow-hidden shrink-0 border border-borderDim">
               <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             
@@ -47,16 +47,16 @@ export const ContinueLearningList = () => {
                   {course.tag}
                 </span>
               </div>
-              <p className="text-sm text-zinc-500 mb-3">{course.instructor}</p>
+              <p className="text-sm text-textMuted mb-3">{course.instructor}</p>
               
               <div className="flex items-center gap-3">
-                <div className="flex-1 h-1.5 bg-[#1b251e] rounded-full overflow-hidden">
+                <div className="flex-1 h-1.5 bg-borderDim rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-emerald-500 rounded-full" 
                     style={{ width: `${course.progress}%` }}
                   />
                 </div>
-                <span className="text-xs font-medium text-zinc-400 shrink-0 w-24">
+                <span className="text-xs font-medium text-textMuted shrink-0 w-24">
                   {course.progress}% complete
                 </span>
               </div>

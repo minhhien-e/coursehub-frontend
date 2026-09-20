@@ -17,9 +17,9 @@ const statusConfig: Record<AssignmentStatus, { label: string; icon: any; colorCl
 
 export const AssignmentTable = ({ assignments, onSubmitClick, onViewClick }: AssignmentTableProps) => {
   return (
-    <div className="w-full overflow-x-auto bg-[#121814] rounded-xl border border-[#1b251e]">
+    <div className="w-full overflow-x-auto bg-surfaceHighlight rounded-xl border border-borderDim">
       <table className="w-full text-sm text-left">
-        <thead className="text-xs text-zinc-400 uppercase bg-[#0d120f] border-b border-[#1b251e]">
+        <thead className="text-xs text-textMuted uppercase bg-[#0d120f] border-b border-borderDim">
           <tr>
             <th className="px-6 py-4 font-semibold">Title</th>
             <th className="px-6 py-4 font-semibold">Course</th>
@@ -35,17 +35,17 @@ export const AssignmentTable = ({ assignments, onSubmitClick, onViewClick }: Ass
             const StatusIcon = config.icon;
 
             return (
-              <tr key={assignment.id} className="hover:bg-[#1a231d]/50 transition-colors">
+              <tr key={assignment.id} className="hover:bg-surfaceHighlight/50 transition-colors">
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
-                    <FileText className="w-4 h-4 text-zinc-500 shrink-0" />
-                    <span className="font-medium text-zinc-200">{assignment.title}</span>
+                    <FileText className="w-4 h-4 text-textMuted shrink-0" />
+                    <span className="font-medium text-textMain">{assignment.title}</span>
                   </div>
                 </td>
-                <td className="px-6 py-4 text-zinc-400">
+                <td className="px-6 py-4 text-textMuted">
                   {assignment.course}
                 </td>
-                <td className="px-6 py-4 text-zinc-400">
+                <td className="px-6 py-4 text-textMuted">
                   {assignment.dueDate}
                 </td>
                 <td className="px-6 py-4">
@@ -57,7 +57,7 @@ export const AssignmentTable = ({ assignments, onSubmitClick, onViewClick }: Ass
                     {config.label}
                   </div>
                 </td>
-                <td className="px-6 py-4 text-center text-zinc-200 font-medium">
+                <td className="px-6 py-4 text-center text-textMain font-medium">
                   {assignment.grade !== undefined && assignment.totalScore !== undefined
                     ? `${assignment.grade}/${assignment.totalScore}`
                     : '--'}
@@ -66,7 +66,7 @@ export const AssignmentTable = ({ assignments, onSubmitClick, onViewClick }: Ass
                   <div className="flex justify-center">
                     {(assignment.status === 'pending' || assignment.status === 'late' && assignment.grade === undefined) ? (
                       <button 
-                        className="w-8 h-8 rounded-lg bg-[#1b251e] hover:bg-emerald-500/20 text-zinc-400 hover:text-emerald-400 flex items-center justify-center transition-colors"
+                        className="w-8 h-8 rounded-lg bg-borderDim hover:bg-emerald-500/20 text-textMuted hover:text-emerald-400 flex items-center justify-center transition-colors"
                         onClick={() => onSubmitClick?.(assignment)}
                         title="Submit Assignment"
                       >
@@ -74,14 +74,14 @@ export const AssignmentTable = ({ assignments, onSubmitClick, onViewClick }: Ass
                       </button>
                     ) : assignment.status === 'graded' || assignment.status === 'late' ? (
                       <button 
-                        className="w-8 h-8 rounded-lg bg-[#1b251e] hover:bg-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center transition-colors"
+                        className="w-8 h-8 rounded-lg bg-borderDim hover:bg-zinc-700 text-textMuted hover:text-textMain flex items-center justify-center transition-colors"
                         onClick={() => onViewClick?.(assignment)}
                         title="View Grade"
                       >
                         <Eye className="w-4 h-4" />
                       </button>
                     ) : (
-                      <span className="text-zinc-600">--</span>
+                      <span className="text-textMuted">--</span>
                     )}
                   </div>
                 </td>
@@ -90,7 +90,7 @@ export const AssignmentTable = ({ assignments, onSubmitClick, onViewClick }: Ass
           })}
           {assignments.length === 0 && (
             <tr>
-              <td colSpan={6} className="px-6 py-8 text-center text-zinc-500">
+              <td colSpan={6} className="px-6 py-8 text-center text-textMuted">
                 No assignments found for this filter.
               </td>
             </tr>

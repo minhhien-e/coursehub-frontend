@@ -9,7 +9,7 @@ export const ForgotPasswordForm = () => {
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="mb-8">
         <h2 className="text-3xl font-extrabold tracking-tight mb-2">Forgot password?</h2>
-        <p className="text-zinc-400">Enter your email and we'll send you a reset link.</p>
+        <p className="text-textMuted">Enter your email and we'll send you a reset link.</p>
       </div>
 
       <form className="space-y-6">

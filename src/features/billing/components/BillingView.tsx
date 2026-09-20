@@ -33,7 +33,7 @@ export const BillingView = () => {
   if (!details) return null;
 
   return (
-    <div className="p-6 md:p-8 max-w-4xl animate-in fade-in duration-500">
+    <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
       {/* Current Plan */}
       <CurrentPlanCard plan={details.plan} price={details.price} />

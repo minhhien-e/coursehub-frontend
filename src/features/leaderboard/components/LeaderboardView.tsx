@@ -22,19 +22,19 @@ export const LeaderboardView = () => {
   const currentUser = list.find(user => user.isCurrentUser);
 
   return (
-    <div className="p-6 md:p-8 max-w-6xl animate-in fade-in duration-500">
+    <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
           <h1 className="text-3xl font-extrabold text-white mb-2">Leaderboard</h1>
-          <p className="text-zinc-400">See how you rank among fellow learners.</p>
+          <p className="text-textMuted">See how you rank among fellow learners.</p>
         </div>
         <button 
           onClick={() => setIsModalOpen(true)}
-          className="flex items-center gap-2 text-sm font-bold text-zinc-300 bg-[#121814] border border-[#1b251e] hover:bg-[#1a231d] px-4 py-2 rounded-xl transition-colors"
+          className="flex items-center gap-2 text-sm font-bold text-textMuted bg-surfaceHighlight border border-borderDim hover:bg-surfaceHighlight px-4 py-2 rounded-xl transition-colors"
         >
-          <HelpCircle size={16} className="text-zinc-400" />
+          <HelpCircle size={16} className="text-textMuted" />
           How Points Work
         </button>
       </div>
@@ -52,7 +52,7 @@ export const LeaderboardView = () => {
           {currentUser && <CurrentUserRank user={currentUser} />}
 
           {/* Time Period Toggle */}
-          <div className="flex items-center gap-2 mb-8 bg-[#121814] p-1 rounded-xl border border-[#1b251e] w-fit">
+          <div className="flex items-center gap-2 mb-8 bg-surfaceHighlight p-1 rounded-xl border border-borderDim w-fit">
             {['Weekly', 'Monthly', 'All Time'].map((period) => (
               <button
                 key={period}
@@ -61,7 +61,7 @@ export const LeaderboardView = () => {
                   "px-4 py-1.5 rounded-lg text-sm font-bold transition-colors",
                   timePeriod === period 
                     ? "bg-[#233027] text-white" 
-                    : "text-zinc-500 hover:text-zinc-300"
+                    : "text-textMuted hover:text-textMuted"
                 )}
               >
                 {period}

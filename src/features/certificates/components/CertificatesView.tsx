@@ -29,12 +29,12 @@ export const CertificatesView = () => {
   }
 
   return (
-    <div className="p-6 md:p-8 max-w-6xl mx-auto animate-in fade-in duration-500">
+    <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold text-white mb-2">Certificates</h1>
-        <p className="text-zinc-400">{items.length} certificates earned</p>
+        <p className="text-textMuted">{items.length} certificates earned</p>
       </div>
 
       {/* Grid */}

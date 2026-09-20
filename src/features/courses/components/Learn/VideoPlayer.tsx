@@ -7,7 +7,7 @@ interface VideoPlayerProps {
 export const VideoPlayer = ({ title }: VideoPlayerProps) => {
   return (
     <div>
-      <div className="relative aspect-video bg-black rounded-lg overflow-hidden group mb-6 border border-[#1b251e]">
+      <div className="relative aspect-video bg-black rounded-lg overflow-hidden group mb-6 border border-borderDim">
         {/* Play Icon Center */}
         <div className="absolute inset-0 flex items-center justify-center">
           <button className="w-16 h-16 rounded-full border-2 border-white/30 flex items-center justify-center bg-black/40 hover:bg-white/10 hover:border-white transition-all hover:scale-105">
@@ -17,7 +17,7 @@ export const VideoPlayer = ({ title }: VideoPlayerProps) => {
         
         {/* Title Overlay */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none mt-24">
-          <span className="text-zinc-300 font-medium">{title}</span>
+          <span className="text-textMuted font-medium">{title}</span>
         </div>
 
         {/* Video Controls (Bottom) */}
@@ -50,10 +50,10 @@ export const VideoPlayer = ({ title }: VideoPlayerProps) => {
       <div className="flex items-start justify-between">
         <h1 className="text-2xl font-bold text-white mb-1">{title}</h1>
         <div className="flex items-center gap-3">
-          <button className="text-zinc-400 hover:text-white transition-colors">
+          <button className="text-textMuted hover:text-textMain transition-colors">
             <BookmarkPlus size={20} />
           </button>
-          <button className="text-zinc-400 hover:text-white transition-colors">
+          <button className="text-textMuted hover:text-textMain transition-colors">
             <ThumbsUp size={20} />
           </button>
         </div>

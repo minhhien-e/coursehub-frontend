@@ -10,10 +10,10 @@ export const LoginForm = () => {
     <div className="w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="mb-8">
         <h2 className="text-3xl font-extrabold tracking-tight mb-2">Welcome back</h2>
-        <p className="text-zinc-400">Sign in to continue your learning journey.</p>
+        <p className="text-textMuted">Sign in to continue your learning journey.</p>
       </div>
 
-      <div className="text-sm text-zinc-400 mb-6">
+      <div className="text-sm text-textMuted mb-6">
         Fields marked with <span className="text-red-500">*</span> are required.
       </div>
 
@@ -46,23 +46,23 @@ export const LoginForm = () => {
 
       <div className="mt-8 relative">
         <div className="absolute inset-0 flex items-center">
-          <div className="w-full border-t border-[#1b251e]"></div>
+          <div className="w-full border-t border-borderDim"></div>
         </div>
         <div className="relative flex justify-center text-xs">
-          <span className="bg-[#0A0D0B] px-4 text-zinc-500">or continue with</span>
+          <span className="bg-background px-4 text-textMuted">or continue with</span>
         </div>
       </div>
 
       <div className="mt-8 grid grid-cols-2 gap-4">
-        <Button type="button" variant="outline" className="w-full border-zinc-700 hover:bg-zinc-800">
+        <Button type="button" variant="outline" className="w-full border-borderDim hover:bg-surfaceHighlight">
           Google
         </Button>
-        <Button type="button" variant="outline" className="w-full border-zinc-700 hover:bg-zinc-800">
+        <Button type="button" variant="outline" className="w-full border-borderDim hover:bg-surfaceHighlight">
           GitHub
         </Button>
       </div>
 
-      <p className="mt-8 text-center text-sm text-zinc-400">
+      <p className="mt-8 text-center text-sm text-textMuted">
         Don't have an account?{' '}
         <Link to="/register" className="font-medium text-emerald-500 hover:text-emerald-400 transition-colors">
           Sign up

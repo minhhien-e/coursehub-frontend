@@ -10,7 +10,7 @@ export const PaymentMethodsList = ({ methods }: PaymentMethodsListProps) => {
     <div className="mb-8">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-bold text-white">Payment Methods</h3>
-        <button className="flex items-center gap-2 text-sm font-medium text-white bg-[#1b251e] hover:bg-[#233027] px-3 py-1.5 rounded-lg transition-colors">
+        <button className="flex items-center gap-2 text-sm font-medium text-white bg-borderDim hover:bg-[#233027] px-3 py-1.5 rounded-lg transition-colors">
           <Plus size={16} />
           Add Method
         </button>
@@ -18,15 +18,15 @@ export const PaymentMethodsList = ({ methods }: PaymentMethodsListProps) => {
 
       <div className="space-y-3">
         {methods.map(method => (
-          <div key={method.id} className="bg-[#121814] border border-[#1b251e] rounded-xl p-5 flex items-center justify-between group">
+          <div key={method.id} className="bg-surfaceHighlight border border-borderDim rounded-xl p-5 flex items-center justify-between group">
             
             <div className="flex items-center gap-4">
               <div className="w-12 h-8 bg-zinc-800 rounded flex items-center justify-center">
-                <CreditCard size={20} className="text-zinc-400" />
+                <CreditCard size={20} className="text-textMuted" />
               </div>
               <div>
                 <p className="font-semibold text-white capitalize">{method.type} Ending In {method.last4}</p>
-                <p className="text-xs text-zinc-500">Expires {method.expires}</p>
+                <p className="text-xs text-textMuted">Expires {method.expires}</p>
               </div>
             </div>
 
@@ -36,7 +36,7 @@ export const PaymentMethodsList = ({ methods }: PaymentMethodsListProps) => {
                   Default
                 </span>
               )}
-              <button className="text-zinc-500 hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 p-2">
+              <button className="text-textMuted hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 p-2">
                 <Trash2 size={16} />
               </button>
             </div>

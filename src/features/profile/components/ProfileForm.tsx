@@ -51,8 +51,8 @@ export const ProfileForm = () => {
   const defaultFullName = user ? `${user.firstName} ${user.lastName}`.trim() : '';
 
   return (
-    <div className="bg-[#121814] rounded-xl border border-[#1b251e] p-6 md:p-8 max-w-4xl shadow-sm">
-      <h3 className="text-lg font-bold text-zinc-100 mb-6">Profile Information</h3>
+    <div className="bg-surfaceHighlight rounded-xl border border-borderDim p-6 md:p-8 shadow-sm">
+      <h3 className="text-lg font-bold text-textMain mb-6">Profile Information</h3>
 
       <div className="flex items-center space-x-4 mb-8">
         <div className="w-20 h-20 rounded-full bg-zinc-800 overflow-hidden flex-shrink-0">
@@ -81,12 +81,12 @@ export const ProfileForm = () => {
           <Camera className="w-4 h-4" />
           <span>Change Photo</span>
         </Button>
-        <div className="text-xs text-zinc-500 self-center">
+        <div className="text-xs text-textMuted self-center">
           JPG, PNG or WebP. Max 5 MB.
         </div>
       </div>
 
-      <div className="text-sm text-zinc-400 mb-6">
+      <div className="text-sm text-textMuted mb-6">
         Fields marked with <span className="text-red-500">*</span> are required.
       </div>
 
@@ -123,9 +123,9 @@ export const ProfileForm = () => {
           <Input id="location" name="location" defaultValue="" placeholder="e.g. San Francisco, CA" />
         </div>
         
-        <div className="border-t border-[#1b251e] my-8"></div>
+        <div className="border-t border-borderDim my-8"></div>
 
-        <h3 className="text-lg font-bold text-zinc-100 mb-6">Social Links</h3>
+        <h3 className="text-lg font-bold text-textMain mb-6">Social Links</h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="space-y-2">

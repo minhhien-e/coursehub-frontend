@@ -9,7 +9,7 @@ interface CourseCardProps {
 export const CourseCard = ({ course }: CourseCardProps) => {
   return (
     <Link to={`/courses/${course.id}`} className="block h-full group">
-      <div className="bg-[#121814] rounded-2xl overflow-hidden border border-[#1b251e] shadow-sm hover:border-emerald-500/50 hover:shadow-emerald-900/20 transition-all duration-300 cursor-pointer flex flex-col h-full">
+      <div className="bg-surfaceHighlight rounded-2xl overflow-hidden border border-borderDim shadow-sm hover:border-emerald-500/50 hover:shadow-emerald-900/20 transition-all duration-300 cursor-pointer flex flex-col h-full">
       
       {/* Thumbnail */}
       <div className="relative h-48 w-full overflow-hidden">
@@ -38,22 +38,22 @@ export const CourseCard = ({ course }: CourseCardProps) => {
       {/* Content */}
       <div className="p-5 flex-1 flex flex-col">
         <div className="mb-2">
-          <span className="text-[10px] font-medium px-2 py-1 border border-zinc-700 rounded-md text-zinc-300">
+          <span className="text-[10px] font-medium px-2 py-1 border border-borderDim rounded-md text-textMuted">
             {course.category}
           </span>
         </div>
         
-        <h3 className="font-bold text-zinc-100 text-[15px] leading-snug mb-1 line-clamp-2 group-hover:text-emerald-400 transition-colors">
+        <h3 className="font-bold text-textMain text-[15px] leading-snug mb-1 line-clamp-2 group-hover:text-emerald-400 transition-colors">
           {course.title}
         </h3>
         
-        <p className="text-zinc-400 text-xs mb-3">
+        <p className="text-textMuted text-xs mb-3">
           {course.instructor}
         </p>
 
         {/* Stats */}
         <div className="space-y-2 mt-auto mb-4">
-          <div className="flex items-center text-xs text-zinc-400 gap-3">
+          <div className="flex items-center text-xs text-textMuted gap-3">
             <div className="flex items-center text-yellow-500 gap-1">
               <Star size={12} className="fill-current" />
               <span className="font-semibold">{course.rating}</span>
@@ -66,7 +66,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
             </div>
           </div>
           
-          <div className="flex items-center text-xs text-zinc-400 gap-3">
+          <div className="flex items-center text-xs text-textMuted gap-3">
             <div className="flex items-center gap-1">
               <Clock size={12} />
               <span>{course.duration}</span>
@@ -79,10 +79,10 @@ export const CourseCard = ({ course }: CourseCardProps) => {
         </div>
 
         {/* Price */}
-        <div className="flex items-end gap-2 mt-auto pt-4 border-t border-[#1b251e]">
+        <div className="flex items-end gap-2 mt-auto pt-4 border-t border-borderDim">
           <span className="text-lg font-bold text-white">${course.price.toFixed(2)}</span>
           {course.originalPrice && (
-            <span className="text-sm text-zinc-500 line-through mb-0.5">
+            <span className="text-sm text-textMuted line-through mb-0.5">
               ${course.originalPrice.toFixed(2)}
             </span>
           )}

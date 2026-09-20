@@ -40,10 +40,10 @@ export const CourseDetailsView = () => {
     <div className="w-full max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
       
       {/* Breadcrumbs */}
-      <div className="flex items-center gap-2 text-sm text-zinc-400 mb-6">
+      <div className="flex items-center gap-2 text-sm text-textMuted mb-6">
         <Link to="/courses" className="hover:text-emerald-500 transition-colors">Courses</Link>
         <ChevronRight size={14} />
-        <span className="text-zinc-200">{course.title}</span>
+        <span className="text-textMain">{course.title}</span>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">
@@ -56,7 +56,7 @@ export const CourseDetailsView = () => {
           </h1>
 
           {/* Hero Image */}
-          <div className="relative rounded-2xl overflow-hidden aspect-video bg-[#121814] border border-[#1b251e] mb-6 group">
+          <div className="relative rounded-2xl overflow-hidden aspect-video bg-surfaceHighlight border border-borderDim mb-6 group">
             <img 
               src={course.imageUrl} 
               alt={course.title} 
@@ -87,23 +87,23 @@ export const CourseDetailsView = () => {
               <span className="px-2.5 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20 font-medium">
                 {course.level}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700 font-medium">
+              <span className="px-2.5 py-0.5 rounded-full bg-zinc-800 text-textMuted border border-borderDim font-medium">
                 {course.category}
               </span>
             </div>
             
-            <div className="flex items-center gap-1.5 text-zinc-300">
+            <div className="flex items-center gap-1.5 text-textMuted">
               <Star size={16} className="text-[#f59e0b] fill-[#f59e0b]" />
               <span className="font-semibold text-[#f59e0b]">{course.rating}</span>
-              <span className="text-zinc-500">({course.ratingCount.toLocaleString()} reviews)</span>
+              <span className="text-textMuted">({course.ratingCount.toLocaleString()} reviews)</span>
             </div>
             
-            <div className="flex items-center gap-1.5 text-zinc-400">
+            <div className="flex items-center gap-1.5 text-textMuted">
               <Users size={16} />
               <span>{course.students.toLocaleString()} students</span>
             </div>
 
-            <div className="flex items-center gap-1.5 text-zinc-400">
+            <div className="flex items-center gap-1.5 text-textMuted">
               <Globe size={16} />
               <span>English</span>
             </div>
@@ -116,23 +116,23 @@ export const CourseDetailsView = () => {
 
         {/* Right Column: Floating Action Card */}
         <div className="w-full lg:w-[380px] shrink-0">
-          <div className="sticky top-24 bg-[#121814] border border-[#1b251e] rounded-2xl p-6 shadow-xl">
+          <div className="sticky top-24 bg-surfaceHighlight border border-borderDim rounded-2xl p-6 shadow-xl">
             
             {/* Price */}
             <div className="flex items-end gap-3 mb-6">
               <span className="text-3xl font-extrabold text-white">${course.price}</span>
               {course.originalPrice && (
-                <span className="text-lg text-zinc-500 line-through mb-1">${course.originalPrice}</span>
+                <span className="text-lg text-textMuted line-through mb-1">${course.originalPrice}</span>
               )}
             </div>
 
             {/* Progress Bar (if enrolled) */}
             {course.progress !== undefined && (
               <div className="mb-6 space-y-2">
-                <div className="flex justify-between text-sm text-zinc-400">
+                <div className="flex justify-between text-sm text-textMuted">
                   <span>{course.progress}% complete</span>
                 </div>
-                <div className="h-1.5 w-full bg-[#1b251e] rounded-full overflow-hidden">
+                <div className="h-1.5 w-full bg-borderDim rounded-full overflow-hidden">
                   <div 
                     className="h-full bg-emerald-500 rounded-full transition-all duration-1000"
                     style={{ width: `${course.progress}%` }}
@@ -153,18 +153,18 @@ export const CourseDetailsView = () => {
                 <Button className="w-full h-12 text-base font-semibold">
                   Enroll Now
                 </Button>
-                <Button variant="outline" className="w-full h-12 text-base font-semibold border-[#253229] hover:bg-[#1a231d]">
+                <Button variant="outline" className="w-full h-12 text-base font-semibold border-[#253229] hover:bg-surfaceHighlight">
                   Add to Cart
                 </Button>
               </div>
             )}
             
             <div className="flex gap-4 mb-8">
-              <Button variant="outline" className="flex-1 h-12 border-[#253229] hover:bg-[#1a231d]">
-                <Heart size={20} className="text-zinc-400" />
+              <Button variant="outline" className="flex-1 h-12 border-[#253229] hover:bg-surfaceHighlight">
+                <Heart size={20} className="text-textMuted" />
               </Button>
-              <Button variant="outline" className="flex-1 h-12 border-[#253229] hover:bg-[#1a231d]">
-                <Share2 size={20} className="text-zinc-400" />
+              <Button variant="outline" className="flex-1 h-12 border-[#253229] hover:bg-surfaceHighlight">
+                <Share2 size={20} className="text-textMuted" />
               </Button>
             </div>
 
@@ -173,7 +173,7 @@ export const CourseDetailsView = () => {
               <h3 className="font-semibold text-white mb-4">This course includes:</h3>
               <ul className="space-y-3">
                 {course.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-sm text-zinc-400">
+                  <li key={idx} className="flex items-center gap-3 text-sm text-textMuted">
                     {/* Choose an icon based on text - simplified for mock */}
                     {feature.includes('video') ? <PlayCircle size={16} /> : 
                      <ChevronRight size={16} />}

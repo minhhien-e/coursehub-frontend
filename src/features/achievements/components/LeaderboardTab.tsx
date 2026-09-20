@@ -7,10 +7,10 @@ interface LeaderboardTabProps {
 
 export const LeaderboardTab = ({ leaderboard }: LeaderboardTabProps) => {
   return (
-    <div className="bg-[#121814] border border-[#1b251e] rounded-xl overflow-hidden animate-in fade-in duration-300">
+    <div className="bg-surfaceHighlight border border-borderDim rounded-xl overflow-hidden animate-in fade-in duration-300">
       <div className="w-full overflow-x-auto">
         <table className="w-full text-sm text-left">
-          <thead className="text-xs text-zinc-500 bg-[#0a0e0c] border-b border-[#1b251e]">
+          <thead className="text-xs text-textMuted bg-surface border-b border-borderDim">
             <tr>
               <th scope="col" className="px-6 py-4 font-medium">Rank</th>
               <th scope="col" className="px-6 py-4 font-medium">Learner</th>
@@ -26,14 +26,14 @@ export const LeaderboardTab = ({ leaderboard }: LeaderboardTabProps) => {
                 user.rank === 1 ? "text-yellow-500 font-bold" :
                 user.rank === 2 ? "text-slate-300 font-bold" :
                 user.rank === 3 ? "text-orange-600 font-bold" :
-                "text-zinc-500 font-medium";
+                "text-textMuted font-medium";
 
               return (
                 <tr 
                   key={user.id} 
                   className={cn(
                     "transition-colors",
-                    user.isCurrentUser ? "bg-emerald-500/5 hover:bg-emerald-500/10" : "hover:bg-[#1a231d]/50"
+                    user.isCurrentUser ? "bg-emerald-500/5 hover:bg-emerald-500/10" : "hover:bg-surfaceHighlight/50"
                   )}
                 >
                   {/* Rank */}
@@ -62,17 +62,17 @@ export const LeaderboardTab = ({ leaderboard }: LeaderboardTabProps) => {
                   </td>
 
                   {/* XP */}
-                  <td className="px-6 py-4 text-right font-medium text-zinc-300">
+                  <td className="px-6 py-4 text-right font-medium text-textMuted">
                     {user.xp.toLocaleString()}
                   </td>
 
                   {/* Level */}
-                  <td className="px-6 py-4 text-center text-zinc-400">
+                  <td className="px-6 py-4 text-center text-textMuted">
                     {user.level}
                   </td>
 
                   {/* Badges */}
-                  <td className="px-6 py-4 text-center font-medium text-zinc-300">
+                  <td className="px-6 py-4 text-center font-medium text-textMuted">
                     {user.badgesCount}
                   </td>
                 </tr>

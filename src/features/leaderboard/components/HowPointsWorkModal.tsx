@@ -50,19 +50,19 @@ export const HowPointsWorkModal = ({ isOpen, onClose }: HowPointsWorkModalProps)
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-[#0f1a14] border border-[#1b251e] rounded-2xl w-full max-w-md shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="bg-[#0f1a14] border border-borderDim rounded-2xl w-full max-w-md shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Header */}
-        <div className="p-6 border-b border-[#1b251e] flex items-start justify-between shrink-0">
+        <div className="p-6 border-b border-borderDim flex items-start justify-between shrink-0">
           <div>
             <h2 className="text-xl font-bold text-white mb-2">How Points Work</h2>
-            <p className="text-sm text-zinc-400">
+            <p className="text-sm text-textMuted">
               Earn XP by completing courses, quizzes, and maintaining streaks.
             </p>
           </div>
           <button 
             onClick={onClose}
-            className="text-zinc-500 hover:text-white transition-colors p-1"
+            className="text-textMuted hover:text-textMain transition-colors p-1"
           >
             <X size={20} />
           </button>
@@ -73,14 +73,14 @@ export const HowPointsWorkModal = ({ isOpen, onClose }: HowPointsWorkModalProps)
           {pointRules.map((rule, index) => {
             const Icon = rule.icon;
             return (
-              <div key={index} className="bg-[#121814] border border-[#1b251e] rounded-xl p-4 flex items-center justify-between">
+              <div key={index} className="bg-surfaceHighlight border border-borderDim rounded-xl p-4 flex items-center justify-between">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0">
                     <Icon size={18} className="text-emerald-500" />
                   </div>
                   <div>
                     <h3 className="font-bold text-white text-sm">{rule.title}</h3>
-                    <p className="text-xs text-zinc-400">{rule.description}</p>
+                    <p className="text-xs text-textMuted">{rule.description}</p>
                   </div>
                 </div>
                 <div className="bg-fuchsia-500/20 text-fuchsia-400 font-bold text-[11px] px-2.5 py-1 rounded-full whitespace-nowrap">
@@ -90,18 +90,18 @@ export const HowPointsWorkModal = ({ isOpen, onClose }: HowPointsWorkModalProps)
             );
           })}
 
-          <div className="mt-6 p-4 rounded-xl border border-zinc-800 bg-[#121814]">
-            <p className="text-sm text-zinc-300">
+          <div className="mt-6 p-4 rounded-xl border border-borderDim bg-surfaceHighlight">
+            <p className="text-sm text-textMuted">
               <span className="font-bold text-white">Levels:</span> Every 500 XP earns you a new level. Higher levels unlock exclusive badges and recognition on the leaderboard.
             </p>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-[#1b251e] flex justify-end shrink-0 bg-[#0a0e0c]/50">
+        <div className="p-4 border-t border-borderDim flex justify-end shrink-0 bg-surface/50">
           <button 
             onClick={onClose}
-            className="px-6 py-2 rounded-xl text-sm font-bold text-white bg-[#1b251e] hover:bg-[#233027] transition-colors border border-zinc-800"
+            className="px-6 py-2 rounded-xl text-sm font-bold text-white bg-borderDim hover:bg-[#233027] transition-colors border border-borderDim"
           >
             Close
           </button>

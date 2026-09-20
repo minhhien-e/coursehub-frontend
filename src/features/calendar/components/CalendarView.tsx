@@ -38,7 +38,7 @@ export const CalendarView = () => {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold text-white mb-2">Calendar</h1>
-        <p className="text-zinc-400">Track your deadlines, live sessions, and quiz dates.</p>
+        <p className="text-textMuted">Track your deadlines, live sessions, and quiz dates.</p>
       </div>
 
       {/* Main Content */}

@@ -19,7 +19,7 @@ export const LessonTabs = ({ lesson }: LessonTabsProps) => {
   return (
     <div className="mt-8">
       {/* Tabs */}
-      <div className="flex space-x-2 border-b border-[#1b251e] mb-6">
+      <div className="flex space-x-2 border-b border-borderDim mb-6">
         {TABS.map((tab) => (
           <button
             key={tab.id}
@@ -28,7 +28,7 @@ export const LessonTabs = ({ lesson }: LessonTabsProps) => {
               "px-4 py-2.5 text-sm font-medium border-b-2 transition-colors",
               activeTab === tab.id
                 ? "border-emerald-500 text-white"
-                : "border-transparent text-zinc-400 hover:text-zinc-200"
+                : "border-transparent text-textMuted hover:text-textMain"
             )}
           >
             {tab.label}
@@ -39,11 +39,11 @@ export const LessonTabs = ({ lesson }: LessonTabsProps) => {
       {/* Content */}
       <div className="min-h-[200px]">
         {activeTab === 'notes' && (
-          <div className="text-zinc-300 leading-relaxed text-sm md:text-base animate-in fade-in duration-300">
+          <div className="text-textMuted leading-relaxed text-sm md:text-base animate-in fade-in duration-300">
             {lesson.notes ? (
               <p>{lesson.notes}</p>
             ) : (
-              <p className="text-zinc-500 italic">No notes provided for this lesson.</p>
+              <p className="text-textMuted italic">No notes provided for this lesson.</p>
             )}
           </div>
         )}
@@ -55,25 +55,25 @@ export const LessonTabs = ({ lesson }: LessonTabsProps) => {
                 <a 
                   key={idx}
                   href={resource.url}
-                  className="flex items-center gap-3 p-4 rounded-xl border border-[#1b251e] bg-[#0d120f] hover:border-[#253229] hover:bg-[#121814] transition-all group"
+                  className="flex items-center gap-3 p-4 rounded-xl border border-borderDim bg-[#0d120f] hover:border-[#253229] hover:bg-surfaceHighlight transition-all group"
                 >
-                  <div className="text-zinc-400 group-hover:text-emerald-400 transition-colors">
+                  <div className="text-textMuted group-hover:text-emerald-400 transition-colors">
                     {resource.type === 'pdf' && <FileText size={20} />}
                     {resource.type === 'github' && <Code2 size={20} />}
                     {resource.type === 'link' && <ExternalLink size={20} />}
                   </div>
-                  <span className="text-zinc-300 font-medium">{resource.title}</span>
+                  <span className="text-textMuted font-medium">{resource.title}</span>
                 </a>
               ))
             ) : (
-              <p className="text-zinc-500 italic">No resources available for this lesson.</p>
+              <p className="text-textMuted italic">No resources available for this lesson.</p>
             )}
           </div>
         )}
 
         {activeTab === 'discussion' && (
           <div className="animate-in fade-in duration-300">
-            <p className="text-zinc-400">No discussions yet. Be the first to ask a question!</p>
+            <p className="text-textMuted">No discussions yet. Be the first to ask a question!</p>
           </div>
         )}
       </div>

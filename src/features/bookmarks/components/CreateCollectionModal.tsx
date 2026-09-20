@@ -11,19 +11,19 @@ export const CreateCollectionModal = ({ isOpen, onClose }: CreateCollectionModal
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div 
-        className="bg-[#0a0e0c] border border-[#1b251e] rounded-xl w-full max-w-md shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
+        className="bg-surface border border-borderDim rounded-xl w-full max-w-md shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
         onClick={e => e.stopPropagation()}
       >
         
         {/* Header */}
-        <div className="p-5 border-b border-[#1b251e] flex justify-between items-center">
+        <div className="p-5 border-b border-borderDim flex justify-between items-center">
           <div>
             <h2 className="text-lg font-bold text-white">Create Collection</h2>
-            <p className="text-xs text-zinc-500 mt-1">Organize your bookmarks into a named collection.</p>
+            <p className="text-xs text-textMuted mt-1">Organize your bookmarks into a named collection.</p>
           </div>
           <button 
             onClick={onClose}
-            className="text-zinc-500 hover:text-white transition-colors"
+            className="text-textMuted hover:text-textMain transition-colors"
           >
             <X size={20} />
           </button>
@@ -36,7 +36,7 @@ export const CreateCollectionModal = ({ isOpen, onClose }: CreateCollectionModal
             <input 
               type="text" 
               placeholder="Collection name..."
-              className="w-full bg-[#121814] border border-emerald-500/50 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-lg px-4 py-2.5 text-white placeholder:text-zinc-600 outline-none transition-all shadow-[0_0_10px_rgba(16,185,129,0.1)]"
+              className="w-full bg-surfaceHighlight border border-emerald-500/50 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-lg px-4 py-2.5 text-white placeholder:text-textMuted outline-none transition-all shadow-[0_0_10px_rgba(16,185,129,0.1)]"
               autoFocus
             />
           </div>
@@ -46,16 +46,16 @@ export const CreateCollectionModal = ({ isOpen, onClose }: CreateCollectionModal
             <textarea 
               placeholder="What is this collection for?"
               rows={3}
-              className="w-full bg-[#121814] border border-[#1b251e] focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-lg px-4 py-2.5 text-white placeholder:text-zinc-600 outline-none transition-all resize-none"
+              className="w-full bg-surfaceHighlight border border-borderDim focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 rounded-lg px-4 py-2.5 text-white placeholder:text-textMuted outline-none transition-all resize-none"
             />
           </div>
         </div>
 
         {/* Footer */}
-        <div className="p-5 bg-[#121814] border-t border-[#1b251e] flex justify-end gap-3">
+        <div className="p-5 bg-surfaceHighlight border-t border-borderDim flex justify-end gap-3">
           <button 
             onClick={onClose}
-            className="px-4 py-2 rounded-lg text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-700"
+            className="px-4 py-2 rounded-lg text-sm font-medium text-textMuted hover:text-textMain hover:bg-surfaceHighlight transition-colors border border-transparent hover:border-borderDim"
           >
             Cancel
           </button>

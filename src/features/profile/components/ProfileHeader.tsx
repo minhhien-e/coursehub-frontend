@@ -2,7 +2,7 @@ import { MapPin, Calendar, Globe, MessageCircle, Briefcase, Code, Edit2 } from '
 
 export const ProfileHeader = () => {
   return (
-    <div className="bg-[#121814] border border-[#1b251e] rounded-xl p-8 mb-6 relative">
+    <div className="bg-surfaceHighlight border border-borderDim rounded-xl p-8 mb-6 relative">
       <div className="flex flex-col md:flex-row gap-8 items-start">
         
         {/* Avatar */}
@@ -19,16 +19,16 @@ export const ProfileHeader = () => {
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-2">
             <div>
               <h2 className="text-2xl font-bold text-white mb-1">Alex Johnson</h2>
-              <p className="text-zinc-400 font-medium">Full-Stack Developer & Lifelong Learner</p>
+              <p className="text-textMuted font-medium">Full-Stack Developer & Lifelong Learner</p>
             </div>
             
-            <button className="flex items-center gap-2 text-sm font-medium text-white bg-[#1b251e] hover:bg-[#233027] px-4 py-2 rounded-lg transition-colors shrink-0">
+            <button className="flex items-center gap-2 text-sm font-medium text-white bg-borderDim hover:bg-[#233027] px-4 py-2 rounded-lg transition-colors shrink-0">
               <Edit2 size={16} />
               Edit Profile
             </button>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-500 mb-4">
+          <div className="flex flex-wrap items-center gap-4 text-sm text-textMuted mb-4">
             <span className="flex items-center gap-1.5">
               <MapPin size={16} /> San Francisco, CA
             </span>
@@ -40,21 +40,21 @@ export const ProfileHeader = () => {
             </span>
           </div>
 
-          <p className="text-sm text-zinc-400 leading-relaxed mb-6 max-w-2xl">
+          <p className="text-sm text-textMuted leading-relaxed mb-6 max-w-2xl">
             Passionate about web development and design. Currently learning advanced React patterns and system design.
           </p>
 
           <div className="flex items-center gap-4">
-            <a href="#" className="w-8 h-8 rounded bg-[#1b251e] flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors">
+            <a href="#" className="w-8 h-8 rounded bg-borderDim flex items-center justify-center text-textMuted hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors">
               <Globe size={16} />
             </a>
-            <a href="#" className="w-8 h-8 rounded bg-[#1b251e] flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors">
+            <a href="#" className="w-8 h-8 rounded bg-borderDim flex items-center justify-center text-textMuted hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors">
               <MessageCircle size={16} />
             </a>
-            <a href="#" className="w-8 h-8 rounded bg-[#1b251e] flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors">
+            <a href="#" className="w-8 h-8 rounded bg-borderDim flex items-center justify-center text-textMuted hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors">
               <Briefcase size={16} />
             </a>
-            <a href="#" className="w-8 h-8 rounded bg-[#1b251e] flex items-center justify-center text-zinc-400 hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors">
+            <a href="#" className="w-8 h-8 rounded bg-borderDim flex items-center justify-center text-textMuted hover:text-emerald-500 hover:bg-emerald-500/10 transition-colors">
               <Code size={16} />
             </a>
           </div>

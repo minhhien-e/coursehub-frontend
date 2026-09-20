@@ -23,7 +23,7 @@ export const CourseTabs = ({ course }: CourseTabsProps) => {
   return (
     <div className="mt-8">
       {/* Tab Navigation */}
-      <div className="flex space-x-1 p-1 bg-[#121814] border border-[#1b251e] rounded-xl w-fit mb-8">
+      <div className="flex space-x-1 p-1 bg-surfaceHighlight border border-borderDim rounded-xl w-fit mb-8">
         {TABS.map((tab) => (
           <button
             key={tab.id}
@@ -31,8 +31,8 @@ export const CourseTabs = ({ course }: CourseTabsProps) => {
             className={cn(
               "px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200",
               activeTab === tab.id
-                ? "bg-[#1a231d] text-white shadow-sm border border-[#253229]"
-                : "text-zinc-400 hover:text-zinc-200 hover:bg-[#1a231d]/50 border border-transparent"
+                ? "bg-surfaceHighlight text-white shadow-sm border border-[#253229]"
+                : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight/50 border border-transparent"
             )}
           >
             {tab.label}

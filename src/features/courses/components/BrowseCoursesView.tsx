@@ -15,7 +15,7 @@ export const BrowseCoursesView = () => {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold text-white mb-2 tracking-tight">Browse Courses</h1>
-        <p className="text-zinc-400">
+        <p className="text-textMuted">
           {totalCourses} courses available
         </p>
       </div>
@@ -31,7 +31,7 @@ export const BrowseCoursesView = () => {
       ) : error ? (
         <div className="text-red-500 text-center py-20">{error}</div>
       ) : courses.length === 0 ? (
-        <div className="text-zinc-500 text-center py-20">No courses found matching your criteria.</div>
+        <div className="text-textMuted text-center py-20">No courses found matching your criteria.</div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map((course) => (

@@ -33,18 +33,18 @@ export const NotificationsView = () => {
   }
 
   return (
-    <div className="p-6 md:p-8 max-w-4xl mx-auto animate-in fade-in duration-500">
+    <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
       {/* Header */}
       <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-extrabold text-white mb-2">Notifications</h1>
-          <p className="text-zinc-400">{unreadCount} unread notifications</p>
+          <p className="text-textMuted">{unreadCount} unread notifications</p>
         </div>
         <button 
           onClick={() => dispatch(markAllAsRead())}
           disabled={unreadCount === 0}
-          className="bg-transparent border border-zinc-700 hover:bg-zinc-800 text-zinc-300 px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="bg-transparent border border-borderDim hover:bg-surfaceHighlight text-textMuted px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Check size={16} />
           Mark all as read
@@ -52,14 +52,14 @@ export const NotificationsView = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 mb-6 bg-[#121814] p-1.5 rounded-lg border border-[#1b251e] w-fit">
+      <div className="flex items-center gap-2 mb-6 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
         <button
           onClick={() => dispatch(setActiveTab('All'))}
           className={cn(
             "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
             activeTab === 'All'
               ? "bg-zinc-800 text-white shadow-sm"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+              : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
           )}
         >
           All ({items.length})
@@ -70,7 +70,7 @@ export const NotificationsView = () => {
             "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
             activeTab === 'Unread'
               ? "bg-zinc-800 text-white shadow-sm"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+              : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
           )}
         >
           Unread ({unreadCount})
@@ -88,8 +88,8 @@ export const NotificationsView = () => {
         ))}
 
         {filteredItems.length === 0 && (
-          <div className="text-center py-12 bg-[#0a0e0c] border border-[#1b251e] rounded-xl">
-            <p className="text-zinc-500">No notifications here.</p>
+          <div className="text-center py-12 bg-surface border border-borderDim rounded-xl">
+            <p className="text-textMuted">No notifications here.</p>
           </div>
         )}
       </div>

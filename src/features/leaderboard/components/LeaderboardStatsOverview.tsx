@@ -10,9 +10,9 @@ export const LeaderboardStatsOverview = ({ stats }: LeaderboardStatsProps) => {
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 mb-8">
       
       {/* Rank */}
-      <div className="bg-[#121814] border border-[#1b251e] rounded-xl p-5 flex flex-col justify-between group hover:border-[#233027] transition-colors">
+      <div className="bg-surfaceHighlight border border-borderDim rounded-xl p-5 flex flex-col justify-between group hover:border-[#233027] transition-colors">
         <div className="flex justify-between items-start mb-4">
-          <p className="text-sm font-medium text-zinc-400">Your Rank</p>
+          <p className="text-sm font-medium text-textMuted">Your Rank</p>
           <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
             <Trophy size={16} className="text-emerald-500" />
           </div>
@@ -26,9 +26,9 @@ export const LeaderboardStatsOverview = ({ stats }: LeaderboardStatsProps) => {
       </div>
 
       {/* XP */}
-      <div className="bg-[#121814] border border-[#1b251e] rounded-xl p-5 flex flex-col justify-between group hover:border-[#233027] transition-colors">
+      <div className="bg-surfaceHighlight border border-borderDim rounded-xl p-5 flex flex-col justify-between group hover:border-[#233027] transition-colors">
         <div className="flex justify-between items-start mb-4">
-          <p className="text-sm font-medium text-zinc-400">Your XP</p>
+          <p className="text-sm font-medium text-textMuted">Your XP</p>
           <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
             <Zap size={16} className="text-emerald-500" />
           </div>
@@ -42,25 +42,25 @@ export const LeaderboardStatsOverview = ({ stats }: LeaderboardStatsProps) => {
       </div>
 
       {/* Streak */}
-      <div className="bg-[#121814] border border-[#1b251e] rounded-xl p-5 flex flex-col justify-between group hover:border-[#233027] transition-colors">
+      <div className="bg-surfaceHighlight border border-borderDim rounded-xl p-5 flex flex-col justify-between group hover:border-[#233027] transition-colors">
         <div className="flex justify-between items-start mb-4">
-          <p className="text-sm font-medium text-zinc-400">Current Streak</p>
+          <p className="text-sm font-medium text-textMuted">Current Streak</p>
           <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
             <Flame size={16} className="text-emerald-500" />
           </div>
         </div>
         <div>
           <p className="text-3xl font-extrabold text-white">{stats.currentStreak} days</p>
-          <p className="text-xs font-medium text-zinc-500 mt-2">
+          <p className="text-xs font-medium text-textMuted mt-2">
             Personal best: {stats.personalBestStreak} days
           </p>
         </div>
       </div>
 
       {/* Badges */}
-      <div className="bg-[#121814] border border-[#1b251e] rounded-xl p-5 flex flex-col justify-between group hover:border-[#233027] transition-colors">
+      <div className="bg-surfaceHighlight border border-borderDim rounded-xl p-5 flex flex-col justify-between group hover:border-[#233027] transition-colors">
         <div className="flex justify-between items-start mb-4">
-          <p className="text-sm font-medium text-zinc-400">Badges Earned</p>
+          <p className="text-sm font-medium text-textMuted">Badges Earned</p>
           <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
             <Award size={16} className="text-emerald-500" />
           </div>

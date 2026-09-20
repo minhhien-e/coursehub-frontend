@@ -38,18 +38,18 @@ export const EventModal = ({ event, isOpen, onClose }: EventModalProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
       <div 
-        className="w-full max-w-md bg-[#0d120f] border border-[#1b251e] rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
+        className="w-full max-w-md bg-[#0d120f] border border-borderDim rounded-2xl shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="p-6 pb-4 flex items-start justify-between">
           <div className="pr-4">
             <h2 className="text-lg font-bold text-white leading-tight">{event.title}</h2>
-            <p className="text-sm text-zinc-400 mt-1">{event.course}</p>
+            <p className="text-sm text-textMuted mt-1">{event.course}</p>
           </div>
           <button 
             onClick={onClose}
-            className="p-1 text-zinc-500 hover:text-white hover:bg-zinc-800 rounded-md transition-colors shrink-0"
+            className="p-1 text-textMuted hover:text-textMain hover:bg-surfaceHighlight rounded-md transition-colors shrink-0"
           >
             <X size={20} />
           </button>
@@ -65,8 +65,8 @@ export const EventModal = ({ event, isOpen, onClose }: EventModalProps) => {
           </div>
 
           {/* Date & Time */}
-          <div className="flex items-center gap-3 text-zinc-300">
-            <Clock size={16} className="text-zinc-500" />
+          <div className="flex items-center gap-3 text-textMuted">
+            <Clock size={16} className="text-textMuted" />
             <span className="text-sm">
               {formattedDate} {event.time ? `at ${event.time}` : ''}
             </span>
@@ -74,25 +74,25 @@ export const EventModal = ({ event, isOpen, onClose }: EventModalProps) => {
 
           {/* Description */}
           {event.description && (
-            <div className="bg-[#121814] border border-[#1b251e] p-4 rounded-xl">
-              <p className="text-sm text-zinc-300 leading-relaxed">
+            <div className="bg-surfaceHighlight border border-borderDim p-4 rounded-xl">
+              <p className="text-sm text-textMuted leading-relaxed">
                 {event.description}
               </p>
             </div>
           )}
 
           {/* Course */}
-          <div className="flex items-center gap-3 text-zinc-400">
-            <BookOpen size={16} className="text-zinc-500" />
+          <div className="flex items-center gap-3 text-textMuted">
+            <BookOpen size={16} className="text-textMuted" />
             <span className="text-sm">{event.course}</span>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="p-6 pt-4 flex items-center justify-end border-t border-[#1b251e] bg-[#0a0e0c]">
+        <div className="p-6 pt-4 flex items-center justify-end border-t border-borderDim bg-surface">
           <button 
             onClick={onClose}
-            className="px-4 py-2 text-sm font-medium bg-[#1b251e] hover:bg-zinc-800 text-zinc-300 hover:text-white rounded-lg transition-colors border border-transparent hover:border-zinc-700"
+            className="px-4 py-2 text-sm font-medium bg-borderDim hover:bg-surfaceHighlight text-textMuted hover:text-textMain rounded-lg transition-colors border border-transparent hover:border-borderDim"
           >
             Close
           </button>

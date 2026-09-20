@@ -34,26 +34,26 @@ export const AchievementsView = () => {
   if (!progress) return null;
 
   return (
-    <div className="p-6 md:p-8 max-w-5xl mx-auto animate-in fade-in duration-500">
+    <div className="p-6 md:p-8 max-w-7xl mx-auto animate-in fade-in duration-500">
       
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-extrabold text-white mb-2">Achievements</h1>
-        <p className="text-zinc-400">{progress.earnedBadges} of {progress.totalBadges} badges earned</p>
+        <p className="text-textMuted">{progress.earnedBadges} of {progress.totalBadges} badges earned</p>
       </div>
 
       {/* Progress */}
       <ProgressCard progress={progress} />
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 mb-6 bg-[#121814] p-1.5 rounded-lg border border-[#1b251e] w-fit">
+      <div className="flex items-center gap-2 mb-6 bg-surfaceHighlight p-1.5 rounded-lg border border-borderDim w-fit">
         <button
           onClick={() => dispatch(setActiveTab('badges'))}
           className={cn(
             "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
             activeTab === 'badges'
               ? "bg-zinc-800 text-white shadow-sm"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+              : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
           )}
         >
           Badges ({progress.totalBadges})
@@ -64,7 +64,7 @@ export const AchievementsView = () => {
             "px-4 py-1.5 rounded-md text-sm font-medium transition-colors",
             activeTab === 'leaderboard'
               ? "bg-zinc-800 text-white shadow-sm"
-              : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50"
+              : "text-textMuted hover:text-textMain hover:bg-surfaceHighlight"
           )}
         >
           Leaderboard

@@ -23,7 +23,7 @@ export const TabCurriculum = ({ course }: TabCurriculumProps) => {
     <div className="animate-in fade-in duration-300">
       <div className="flex justify-between items-end mb-6">
         <h2 className="text-xl font-bold text-white">Course Content</h2>
-        <div className="text-zinc-400 text-sm">
+        <div className="text-textMuted text-sm">
           {course.modules.length} modules &middot; {course.lessons} lessons &middot; {course.duration}
         </div>
       </div>
@@ -37,7 +37,7 @@ export const TabCurriculum = ({ course }: TabCurriculumProps) => {
               key={module.id} 
               className={cn(
                 "border rounded-xl overflow-hidden transition-colors duration-200",
-                isOpen ? "border-[#253229] bg-[#121814]" : "border-[#1b251e] bg-[#0d120f] hover:border-[#253229]"
+                isOpen ? "border-[#253229] bg-surfaceHighlight" : "border-borderDim bg-[#0d120f] hover:border-[#253229]"
               )}
             >
               <button
@@ -46,11 +46,11 @@ export const TabCurriculum = ({ course }: TabCurriculumProps) => {
               >
                 <div className="flex items-center gap-3">
                   <h3 className="font-semibold text-white">{module.title}</h3>
-                  <span className="text-xs text-zinc-500 hidden sm:inline-block">
+                  <span className="text-xs text-textMuted hidden sm:inline-block">
                     {module.lessons.length} lessons &middot; {module.duration}
                   </span>
                 </div>
-                <div className="text-zinc-500">
+                <div className="text-textMuted">
                   {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                 </div>
               </button>
@@ -65,11 +65,11 @@ export const TabCurriculum = ({ course }: TabCurriculumProps) => {
                         <div className="flex items-center gap-3">
                           <PlayCircle size={18} className={cn(
                             "transition-colors",
-                            isAccessible ? "text-emerald-500/70 group-hover:text-emerald-400" : "text-zinc-600"
+                            isAccessible ? "text-emerald-500/70 group-hover:text-emerald-400" : "text-textMuted"
                           )} />
                           <span className={cn(
                             "text-sm transition-colors",
-                            isAccessible ? "text-zinc-300 group-hover:text-white" : "text-zinc-500"
+                            isAccessible ? "text-textMuted group-hover:text-textMain" : "text-textMuted"
                           )}>
                             {lesson.title}
                           </span>
@@ -80,14 +80,14 @@ export const TabCurriculum = ({ course }: TabCurriculumProps) => {
                               Preview
                             </span>
                           )}
-                          <span className="text-xs text-zinc-500">{lesson.duration}</span>
+                          <span className="text-xs text-textMuted">{lesson.duration}</span>
                         </div>
                       </>
                     );
 
                     const className = cn(
                       "flex items-center justify-between py-3 px-2 rounded-lg transition-colors group",
-                      isAccessible ? "hover:bg-[#1a231d] cursor-pointer" : "cursor-not-allowed opacity-80"
+                      isAccessible ? "hover:bg-surfaceHighlight cursor-pointer" : "cursor-not-allowed opacity-80"
                     );
 
                     return isAccessible ? (

@@ -16,17 +16,17 @@ export const TabReviews = ({ course }: TabReviewsProps) => {
             <Star 
               key={star} 
               size={20} 
-              className={star <= Math.round(course.rating) ? "fill-[#f59e0b] text-[#f59e0b]" : "fill-zinc-700 text-zinc-700"} 
+              className={star <= Math.round(course.rating) ? "fill-[#f59e0b] text-[#f59e0b]" : "fill-zinc-700 text-borderDim"} 
             />
           ))}
         </div>
-        <p className="text-zinc-400 text-sm">{course.ratingCount.toLocaleString()} reviews</p>
+        <p className="text-textMuted text-sm">{course.ratingCount.toLocaleString()} reviews</p>
       </div>
 
       {/* Reviews List */}
       <div className="space-y-6">
         {course.reviews.map((review) => (
-          <div key={review.id} className="bg-[#121814] border border-[#1b251e] rounded-xl p-6">
+          <div key={review.id} className="bg-surfaceHighlight border border-borderDim rounded-xl p-6">
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-center gap-4">
                 <img 
@@ -42,21 +42,21 @@ export const TabReviews = ({ course }: TabReviewsProps) => {
                         <Star 
                           key={star} 
                           size={12} 
-                          className={star <= review.rating ? "fill-[#f59e0b] text-[#f59e0b]" : "fill-zinc-700 text-zinc-700"} 
+                          className={star <= review.rating ? "fill-[#f59e0b] text-[#f59e0b]" : "fill-zinc-700 text-borderDim"} 
                         />
                       ))}
                     </div>
-                    <span className="text-xs text-zinc-500">{review.date}</span>
+                    <span className="text-xs text-textMuted">{review.date}</span>
                   </div>
                 </div>
               </div>
             </div>
             
-            <p className="text-zinc-300 text-sm leading-relaxed mb-4">
+            <p className="text-textMuted text-sm leading-relaxed mb-4">
               {review.comment}
             </p>
             
-            <p className="text-xs text-zinc-500">
+            <p className="text-xs text-textMuted">
               {review.helpfulCount} people found this helpful
             </p>
           </div>

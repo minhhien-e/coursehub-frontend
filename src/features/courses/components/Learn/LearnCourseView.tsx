@@ -65,14 +65,14 @@ export const LearnCourseView = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen bg-[#09090b] text-zinc-300">
+    <div className="flex flex-col h-screen bg-[#09090b] text-textMuted">
       
       {/* Top Header */}
-      <header className="h-14 flex items-center justify-between px-4 border-b border-[#1b251e] bg-[#121814] shrink-0">
+      <header className="h-14 flex items-center justify-between px-4 border-b border-borderDim bg-surfaceHighlight shrink-0">
         <div className="flex items-center gap-4">
           <Link 
             to={`/courses/${id}`} 
-            className="flex items-center gap-1.5 text-sm font-medium hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-sm font-medium hover:text-textMain transition-colors"
           >
             <ChevronLeft size={16} />
             <span>Back to course</span>
@@ -83,13 +83,13 @@ export const LearnCourseView = () => {
         
         {course.progress !== undefined && (
           <div className="flex items-center gap-4">
-            <div className="w-32 h-1.5 bg-[#1b251e] rounded-full overflow-hidden hidden sm:block">
+            <div className="w-32 h-1.5 bg-borderDim rounded-full overflow-hidden hidden sm:block">
               <div 
                 className="h-full bg-emerald-500 rounded-full"
                 style={{ width: `${course.progress}%` }}
               />
             </div>
-            <span className="text-sm text-zinc-400 font-medium">{course.progress}%</span>
+            <span className="text-sm text-textMuted font-medium">{course.progress}%</span>
           </div>
         )}
       </header>
@@ -105,15 +105,15 @@ export const LearnCourseView = () => {
               <>
                 <VideoPlayer title={activeLessonData.lesson.title} />
                 
-                <div className="mt-2 text-sm text-zinc-400 mb-8">
+                <div className="mt-2 text-sm text-textMuted mb-8">
                   {activeLessonData.module.title} &middot; {activeLessonData.lesson.title}
                 </div>
 
                 <LessonTabs lesson={activeLessonData.lesson} />
 
                 {/* Bottom Nav */}
-                <div className="flex justify-between items-center py-6 mt-6 border-t border-[#1b251e]">
-                  <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#253229] bg-[#121814] hover:bg-[#1a231d] transition-colors text-sm font-medium">
+                <div className="flex justify-between items-center py-6 mt-6 border-t border-borderDim">
+                  <button className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#253229] bg-surfaceHighlight hover:bg-surfaceHighlight transition-colors text-sm font-medium">
                     <ChevronLeft size={16} /> Previous
                   </button>
                   <button className="flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black transition-colors text-sm font-medium">
@@ -122,7 +122,7 @@ export const LearnCourseView = () => {
                 </div>
               </>
             ) : (
-              <div className="py-20 text-center text-zinc-500">
+              <div className="py-20 text-center text-textMuted">
                 Select a lesson from the sidebar to begin.
               </div>
             )}
@@ -130,7 +130,7 @@ export const LearnCourseView = () => {
         </div>
 
         {/* Right Side: Sidebar */}
-        <div className="w-80 shrink-0 border-l border-[#1b251e] hidden md:block">
+        <div className="w-80 shrink-0 border-l border-borderDim hidden md:block">
           <LessonSidebar 
             course={course} 
             activeLessonId={activeLessonId || ''} 

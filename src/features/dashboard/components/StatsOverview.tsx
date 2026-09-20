@@ -1,10 +1,10 @@
 import { BookOpen, Clock, Award, Flame } from 'lucide-react';
 
 const StatCard = ({ title, value, subtext, icon: Icon, colorClass, bgClass }: any) => (
-  <div className="bg-[#0a0e0c] rounded-xl p-5 border border-[#1b251e] hover:border-zinc-700 transition-colors">
+  <div className="bg-surface rounded-xl p-5 border border-borderDim hover:border-borderDim transition-colors">
     <div className="flex justify-between items-start">
       <div>
-        <p className="text-zinc-500 text-sm font-medium mb-1">{title}</p>
+        <p className="text-textMuted text-sm font-medium mb-1">{title}</p>
         <h3 className="text-3xl font-extrabold text-white mb-2">{value}</h3>
         <p className="text-xs font-medium text-emerald-500">{subtext}</p>
       </div>

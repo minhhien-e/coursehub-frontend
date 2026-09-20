@@ -13,8 +13,8 @@ export const NoteGrid = ({ notes }: NoteGridProps) => {
       ))}
       
       {notes.length === 0 && (
-        <div className="col-span-full text-center py-12 bg-[#121814] border border-[#1b251e] rounded-xl">
-          <p className="text-zinc-500">No notes found.</p>
+        <div className="col-span-full text-center py-12 bg-surfaceHighlight border border-borderDim rounded-xl">
+          <p className="text-textMuted">No notes found.</p>
         </div>
       )}
     </div>

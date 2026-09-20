@@ -10,11 +10,11 @@ const achievements = [
 
 export const RecentAchievements = () => {
   return (
-    <div className="bg-[#0a0e0c] border border-[#1b251e] rounded-xl overflow-hidden mb-6">
+    <div className="bg-surface border border-borderDim rounded-xl overflow-hidden mb-6">
       
       <div className="p-5 flex justify-between items-center">
         <h3 className="text-lg font-bold text-white">Recent Achievements</h3>
-        <button className="text-sm font-medium text-zinc-400 hover:text-white transition-colors flex items-center gap-1">
+        <button className="text-sm font-medium text-textMuted hover:text-textMain transition-colors flex items-center gap-1">
           View all <ArrowRight size={14} />
         </button>
       </div>
@@ -24,7 +24,7 @@ export const RecentAchievements = () => {
           <div key={ach.id} className={cn("rounded-lg p-3 border flex flex-col items-center text-center cursor-pointer hover:scale-105 transition-transform", ach.bgClass)}>
             <ach.icon size={20} className={cn("mb-2", ach.colorClass)} />
             <h4 className={cn("font-bold text-[11px] mb-0.5", ach.colorClass)}>{ach.title}</h4>
-            <p className="text-[9px] text-zinc-400 uppercase tracking-wider">{ach.rarity}</p>
+            <p className="text-[9px] text-textMuted uppercase tracking-wider">{ach.rarity}</p>
           </div>
         ))}
       </div>

@@ -13,8 +13,8 @@ export const BookmarkList = ({ bookmarks }: BookmarkListProps) => {
       ))}
       
       {bookmarks.length === 0 && (
-        <div className="text-center py-12 bg-[#121814] border border-[#1b251e] rounded-xl">
-          <p className="text-zinc-500">No bookmarks found in this category.</p>
+        <div className="text-center py-12 bg-surfaceHighlight border border-borderDim rounded-xl">
+          <p className="text-textMuted">No bookmarks found in this category.</p>
         </div>
       )}
     </div>
