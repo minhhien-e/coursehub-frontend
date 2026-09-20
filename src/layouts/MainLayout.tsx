@@ -8,10 +8,10 @@ export const MainLayout = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background text-textMain flex font-sans">
+    <div className="min-h-screen bg-background text-textMain flex font-sans overflow-x-hidden">
       <Sidebar isCollapsed={isSidebarCollapsed} setIsCollapsed={setIsSidebarCollapsed} />
       <div className={cn(
-        "flex-1 flex flex-col",
+        "flex-1 flex flex-col min-w-0",
         isSidebarCollapsed ? "ml-20" : "ml-64"
       )}>
         <Header />
