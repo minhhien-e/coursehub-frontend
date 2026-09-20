@@ -8,11 +8,11 @@ export const MainLayout = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background text-textMain flex font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-background text-textMain flex w-full font-sans">
       <Sidebar isCollapsed={isSidebarCollapsed} setIsCollapsed={setIsSidebarCollapsed} />
       <div className={cn(
-        "flex-1 flex flex-col min-w-0",
-        isSidebarCollapsed ? "ml-20" : "ml-64"
+        "flex-1 flex flex-col min-w-0 w-full transition-[padding] duration-300",
+        isSidebarCollapsed ? "pl-20" : "pl-64"
       )}>
         <Header />
         <main className="flex-1 overflow-y-auto bg-background">
