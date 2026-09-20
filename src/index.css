@@ -3,14 +3,14 @@
 
 @layer base {
   :root {
-    --background: #f8fafc;
+    --background: #f9fafb;
     --surface: #ffffff;
-    --surface-highlight: #f1f5f9;
-    --primary: #10b981;
-    --secondary: #e2e8f0;
-    --text-main: #0f172a;
-    --text-muted: #64748b;
-    --border-dim: #e2e8f0;
+    --surface-highlight: #ecfdf5;
+    --primary: #059669;
+    --secondary: #f3f4f6;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --border-dim: #e5e7eb;
   }
 
   .dark {

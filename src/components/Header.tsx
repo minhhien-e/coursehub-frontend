@@ -50,7 +50,7 @@ export const Header = () => {
         >
           {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
         </button>
-        <button className="text-textMuted hover:text-white relative mr-2">
+        <button className="text-textMuted hover:text-textMain relative mr-2 transition-colors">
           <Bell size={20} />
           <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
         </button>
@@ -58,22 +58,22 @@ export const Header = () => {
         <div className="relative" ref={dropdownRef}>
           <button 
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-full"
+            className="flex items-center focus:outline-none focus:ring-2 focus:ring-primary rounded-full"
           >
-            <img src={user?.avatarUrl || "https://i.pravatar.cc/150?img=11"} alt="Profile" className="w-8 h-8 rounded-full border border-zinc-700" />
+            <img src={user?.avatarUrl || "https://i.pravatar.cc/150?img=11"} alt="Profile" className="w-8 h-8 rounded-full border border-borderDim" />
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-56 bg-[#0B1410] border border-zinc-800 rounded-lg shadow-xl py-1 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-              <div className="px-4 py-3 border-b border-zinc-800">
-                <p className="text-sm font-semibold text-zinc-100">{user ? `${user.firstName} ${user.lastName}` : 'Guest User'}</p>
-                <p className="text-xs text-zinc-400 truncate mt-0.5">{user?.email || 'Not logged in'}</p>
+            <div className="absolute right-0 mt-2 w-56 bg-surface border border-borderDim rounded-lg shadow-xl py-1 z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+              <div className="px-4 py-3 border-b border-borderDim">
+                <p className="text-sm font-semibold text-textMain">{user ? `${user.firstName} ${user.lastName}` : 'Guest User'}</p>
+                <p className="text-xs text-textMuted truncate mt-0.5">{user?.email || 'Not logged in'}</p>
               </div>
               
               <div className="py-1">
                 <Link 
                   to="/profile" 
-                  className="flex items-center px-4 py-2 text-sm text-zinc-300 hover:bg-[#15231c] hover:text-white transition-colors"
+                  className="flex items-center px-4 py-2 text-sm text-textMuted hover:bg-surfaceHighlight hover:text-textMain transition-colors"
                   onClick={() => setIsDropdownOpen(false)}
                 >
                   <User className="w-4 h-4 mr-3" />
@@ -81,7 +81,7 @@ export const Header = () => {
                 </Link>
                 <Link 
                   to="/settings" 
-                  className="flex items-center px-4 py-2 text-sm text-zinc-300 hover:bg-[#15231c] hover:text-white transition-colors"
+                  className="flex items-center px-4 py-2 text-sm text-textMuted hover:bg-surfaceHighlight hover:text-textMain transition-colors"
                   onClick={() => setIsDropdownOpen(false)}
                 >
                   <Settings className="w-4 h-4 mr-3" />
@@ -89,9 +89,9 @@ export const Header = () => {
                 </Link>
               </div>
               
-              <div className="border-t border-zinc-800 py-1">
+              <div className="border-t border-borderDim py-1">
                 <button 
-                  className="flex items-center w-full px-4 py-2 text-sm text-zinc-300 hover:bg-[#15231c] hover:text-white transition-colors text-left"
+                  className="flex items-center w-full px-4 py-2 text-sm text-textMuted hover:bg-surfaceHighlight hover:text-textMain transition-colors text-left"
                   onClick={handleLogout}
                 >
                   <LogOut className="w-4 h-4 mr-3" />

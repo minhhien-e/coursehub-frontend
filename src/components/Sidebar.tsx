@@ -28,7 +28,7 @@ const navItems = [
   { name: 'My Learning', path: '/my-learning', icon: BookOpen },
   { name: 'Assignments', path: '/assignments', icon: FileText },
   { name: 'Calendar', path: '/calendar', icon: Calendar },
-  { name: 'Progress', path: '/progress', icon: TrendingUp },
+
   { name: 'Certificates', path: '/certificates', icon: Award },
   { name: 'Achievements', path: '/achievements', icon: Trophy },
   { name: 'Leaderboard', path: '/leaderboard', icon: Trophy },
@@ -55,9 +55,9 @@ export const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
     >
       {/* Logo Area */}
       <div className={cn("p-6 flex items-center", isCollapsed ? "justify-center" : "")}>
-        <h1 className="text-xl font-bold flex items-center gap-2 text-white">
+        <h1 className="text-xl font-bold flex items-center gap-2 text-textMain">
           <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center shrink-0">
-            <BookOpen size={20} className="text-black" />
+            <BookOpen size={20} className="text-white" />
           </div>
           {!isCollapsed && <span className="whitespace-nowrap overflow-hidden">LMS Kit</span>}
         </h1>
@@ -65,40 +65,40 @@ export const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
 
       {/* User Info */}
       {!isCollapsed && (
-        <div className="px-6 pb-6 border-b border-[#1b251e] mb-4">
+        <div className="px-6 pb-6 border-b border-borderDim mb-4">
           <div className="flex items-center gap-3 mb-4">
             <img src="https://i.pravatar.cc/150?img=11" alt="User" className="w-10 h-10 rounded-full" />
             <div>
-              <p className="font-semibold text-sm text-white">Alex Johnson</p>
-              <p className="text-xs text-zinc-500">Level 12</p>
+              <p className="font-semibold text-sm text-textMain">Alex Johnson</p>
+              <p className="text-xs text-textMuted">Level 12</p>
             </div>
           </div>
 
           <div className="space-y-2">
             <div className="flex justify-between text-[10px] font-bold">
-              <span className="text-zinc-400">4250 XP</span>
-              <span className="text-emerald-500 flex items-center gap-1">
+              <span className="text-textMuted">4250 XP</span>
+              <span className="text-primary flex items-center gap-1">
                 🔥 14 day streak
               </span>
             </div>
-            <div className="h-1.5 w-full bg-[#121814] rounded-full overflow-hidden">
-              <div className="h-full bg-emerald-500 rounded-full" style={{ width: '65%' }} />
+            <div className="h-1.5 w-full bg-secondary rounded-full overflow-hidden">
+              <div className="h-full bg-primary rounded-full" style={{ width: '65%' }} />
             </div>
           </div>
         </div>
       )}
 
-      {isCollapsed && <div className="border-b border-[#1b251e] mb-4" />}
+      {isCollapsed && <div className="border-b border-borderDim mb-4" />}
 
       {/* Navigation */}
       <nav className={cn("flex-1 space-y-1 mb-4", isCollapsed ? "px-2" : "px-4")}>
         {!isCollapsed && (
-          <button className="w-full px-3 py-2.5 mb-4 bg-[#121814] hover:bg-[#1a231d] rounded-xl flex items-center justify-between text-white transition-colors border border-[#1b251e] group">
+          <button className="w-full px-3 py-2.5 mb-4 bg-surface hover:bg-surfaceHighlight rounded-xl flex items-center justify-between text-textMain transition-colors border border-borderDim group">
             <div className="flex items-center gap-2.5">
-              <GraduationCap size={18} className="text-emerald-500" />
+              <GraduationCap size={18} className="text-primary" />
               <span className="text-sm font-bold">Student Portal</span>
             </div>
-            <ChevronsUpDown size={14} className="text-zinc-500 group-hover:text-zinc-400 transition-colors" />
+            <ChevronsUpDown size={14} className="text-textMuted group-hover:text-textMain transition-colors" />
           </button>
         )}
         
@@ -114,7 +114,7 @@ export const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
                   isCollapsed ? "justify-center px-0" : "px-3",
                   isActive
                     ? 'bg-surfaceHighlight text-primary border border-primary/20'
-                    : 'text-textMuted hover:bg-surface hover:text-white'
+                    : 'text-textMuted hover:bg-surface hover:text-textMain'
                 )
               }
               title={isCollapsed ? item.name : undefined}
@@ -139,10 +139,10 @@ export const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
       </nav>
 
       {/* Collapse Toggle */}
-      <div className={cn("p-4 mt-auto border-t border-[#1b251e] flex", isCollapsed ? "justify-center" : "justify-start")}>
+      <div className={cn("p-4 mt-auto border-t border-borderDim flex", isCollapsed ? "justify-center" : "justify-start")}>
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="w-8 h-8 rounded-lg flex items-center justify-center border border-zinc-800 text-zinc-400 hover:text-emerald-500 hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-colors"
+          className="w-8 h-8 rounded-lg flex items-center justify-center border border-borderDim text-textMuted hover:text-primary hover:border-primary/50 hover:bg-primary/10 transition-colors"
         >
           {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>
