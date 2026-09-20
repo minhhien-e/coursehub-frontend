@@ -11,7 +11,7 @@ export const MainLayout = () => {
     <div className="min-h-screen bg-background text-textMain flex font-sans">
       <Sidebar isCollapsed={isSidebarCollapsed} setIsCollapsed={setIsSidebarCollapsed} />
       <div className={cn(
-        "flex-1 flex flex-col transition-all duration-300",
+        "flex-1 flex flex-col transition-[margin] duration-300",
         isSidebarCollapsed ? "ml-20" : "ml-64"
       )}>
         <Header />

@@ -49,7 +49,7 @@ export const Sidebar = ({ isCollapsed, setIsCollapsed }: SidebarProps) => {
   return (
     <aside 
       className={cn(
-        "h-screen bg-background border-r border-borderDim flex flex-col fixed left-0 top-0 overflow-y-auto transition-all duration-300 z-50",
+        "h-screen bg-background border-r border-borderDim flex flex-col fixed left-0 top-0 overflow-y-auto transition-[width] duration-300 z-50",
         isCollapsed ? "w-20" : "w-64"
       )}
     >
