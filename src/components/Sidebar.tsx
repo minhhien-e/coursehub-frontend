@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 import { 
   LayoutDashboard, 
@@ -6,7 +6,7 @@ import {
   BookOpen, 
   FileText, 
   Calendar, 
-  TrendingUp, 
+
   Award,
   Trophy,
   Bookmark,
