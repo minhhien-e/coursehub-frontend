@@ -3,17 +3,6 @@
 
 @layer base {
   :root {
-    --background: #f9fafb;
-    --surface: #ffffff;
-    --surface-highlight: #ecfdf5;
-    --primary: #059669;
-    --secondary: #f3f4f6;
-    --text-main: #111827;
-    --text-muted: #6b7280;
-    --border-dim: #e5e7eb;
-  }
-
-  .dark {
     --background: #0a0f0d;
     --surface: #111816;
     --surface-highlight: #1a2421;
