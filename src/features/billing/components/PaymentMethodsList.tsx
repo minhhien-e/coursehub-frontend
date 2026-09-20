@@ -1,16 +1,23 @@
+import React, { useState } from 'react';
 import { CreditCard, Plus, Trash2 } from 'lucide-react';
 import type { PaymentMethod } from '../types';
+import { AddPaymentMethodModal } from './AddPaymentMethodModal';
 
 interface PaymentMethodsListProps {
   methods: PaymentMethod[];
 }
 
 export const PaymentMethodsList = ({ methods }: PaymentMethodsListProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-bold text-white">Payment Methods</h3>
-        <button className="flex items-center gap-2 text-sm font-medium text-white bg-borderDim hover:bg-[#233027] px-3 py-1.5 rounded-lg transition-colors">
+        <h3 className="text-lg font-bold text-textMain">Payment Methods</h3>
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="flex items-center gap-2 text-sm font-medium text-textMain bg-borderDim hover:bg-surfaceHighlight px-3 py-1.5 rounded-lg transition-colors"
+        >
           <Plus size={16} />
           Add Method
         </button>
@@ -44,6 +51,11 @@ export const PaymentMethodsList = ({ methods }: PaymentMethodsListProps) => {
           </div>
         ))}
       </div>
+
+      <AddPaymentMethodModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </div>
   );
 };
