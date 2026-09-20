@@ -2,20 +2,22 @@ import React, { useState } from 'react';
 import { CreditCard, Plus, Trash2 } from 'lucide-react';
 import type { PaymentMethod } from '../types';
 import { AddPaymentMethodModal } from './AddPaymentMethodModal';
+import { RemovePaymentMethodModal } from './RemovePaymentMethodModal';
 
 interface PaymentMethodsListProps {
   methods: PaymentMethod[];
 }
 
 export const PaymentMethodsList = ({ methods }: PaymentMethodsListProps) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [methodToRemove, setMethodToRemove] = useState<PaymentMethod | null>(null);
 
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-bold text-textMain">Payment Methods</h3>
         <button 
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => setIsAddModalOpen(true)}
           className="flex items-center gap-2 text-sm font-medium text-textMain bg-borderDim hover:bg-surfaceHighlight px-3 py-1.5 rounded-lg transition-colors"
         >
           <Plus size={16} />
@@ -43,7 +45,10 @@ export const PaymentMethodsList = ({ methods }: PaymentMethodsListProps) => {
                   Default
                 </span>
               )}
-              <button className="text-textMuted hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 p-2">
+              <button 
+                onClick={() => setMethodToRemove(method)}
+                className="text-textMuted hover:text-red-500 transition-colors opacity-0 group-hover:opacity-100 p-2"
+              >
                 <Trash2 size={16} />
               </button>
             </div>
@@ -53,8 +58,14 @@ export const PaymentMethodsList = ({ methods }: PaymentMethodsListProps) => {
       </div>
 
       <AddPaymentMethodModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
+        isOpen={isAddModalOpen} 
+        onClose={() => setIsAddModalOpen(false)} 
+      />
+
+      <RemovePaymentMethodModal
+        isOpen={!!methodToRemove}
+        method={methodToRemove}
+        onClose={() => setMethodToRemove(null)}
       />
     </div>
   );
