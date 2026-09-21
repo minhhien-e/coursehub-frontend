@@ -1,12 +1,9 @@
+import api from '@/services/api';
 import type { CalendarEvent } from '../types';
-import { mockEvents } from '../data/mockEvents';
 
 export const calendarService = {
   async getEvents(): Promise<CalendarEvent[]> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(mockEvents);
-      }, 500);
-    });
+    const response = await api.get('/calendar');
+    return response.data;
   }
 };

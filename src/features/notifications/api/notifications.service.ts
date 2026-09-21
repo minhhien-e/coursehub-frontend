@@ -1,8 +1,9 @@
+import api from '@/services/api';
 import type { Notification } from '../types';
-import { mockNotifications } from '../data/mockNotifications';
 
 export const notificationsService = {
   async getNotifications(): Promise<Notification[]> {
-    return new Promise((resolve) => setTimeout(() => resolve(mockNotifications), 400));
+    const response = await api.get('/notifications');
+    return response.data;
   }
 };

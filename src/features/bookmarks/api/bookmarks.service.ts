@@ -1,11 +1,13 @@
+import api from '@/services/api';
 import type { Bookmark, BookmarksStats } from '../types';
-import { mockBookmarks, mockBookmarksStats } from '../data/mockBookmarks';
 
 export const bookmarksService = {
   async getBookmarks(): Promise<Bookmark[]> {
-    return new Promise((resolve) => setTimeout(() => resolve(mockBookmarks), 400));
+    const response = await api.get('/bookmarks');
+    return response.data;
   },
   async getStats(): Promise<BookmarksStats> {
-    return new Promise((resolve) => setTimeout(() => resolve(mockBookmarksStats), 200));
+    const response = await api.get('/bookmarks/stats');
+    return response.data;
   }
 };
