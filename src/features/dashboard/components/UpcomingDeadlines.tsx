@@ -1,35 +1,6 @@
 import { FileCode, ClipboardList } from 'lucide-react';
 
-const deadlines = [
-  { 
-    id: 1,
-    title: 'Build a Compound Component', 
-    course: 'Advanced React Patterns', 
-    date: 'Jun 5', 
-    type: 'assignment' 
-  },
-  { 
-    id: 2,
-    title: 'Module 3 Assessment', 
-    course: 'Advanced React Patterns', 
-    date: 'Jun 8', 
-    type: 'quiz' 
-  },
-  { 
-    id: 3,
-    title: 'Design System Project', 
-    course: 'UI/UX Design Masterclass', 
-    date: 'Jun 12', 
-    type: 'assignment' 
-  },
-  { 
-    id: 4,
-    title: 'Midterm Exam', 
-    course: 'UI/UX Design Masterclass', 
-    date: 'Jun 18', 
-    type: 'quiz' 
-  },
-];
+import { mockDeadlines as deadlines } from '../data/mockDashboard';
 
 export const UpcomingDeadlines = () => {
   return (

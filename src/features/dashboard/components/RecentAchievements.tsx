@@ -1,12 +1,7 @@
-import { ArrowRight, Medal, Heart, Zap, Brain } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
-const achievements = [
-  { id: 1, title: 'Triple Threat', rarity: 'Epic', icon: Medal, colorClass: 'text-emerald-400', bgClass: 'bg-emerald-500/10 border-emerald-500/20' },
-  { id: 2, title: 'Helpful Hand', rarity: 'Rare', icon: Heart, colorClass: 'text-blue-400', bgClass: 'bg-blue-500/10 border-blue-500/20' },
-  { id: 3, title: 'Two-Week Streak', rarity: 'Rare', icon: Zap, colorClass: 'text-blue-400', bgClass: 'bg-blue-500/10 border-blue-500/20' },
-  { id: 4, title: 'Quiz Whiz', rarity: 'Rare', icon: Brain, colorClass: 'text-blue-400', bgClass: 'bg-blue-500/10 border-blue-500/20' },
-];
+import { mockRecentAchievements as achievements } from '../data/mockDashboard';
 
 export const RecentAchievements = () => {
   return (

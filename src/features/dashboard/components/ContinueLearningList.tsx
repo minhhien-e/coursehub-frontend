@@ -1,26 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
-const courses = [
-  {
-    id: 1,
-    title: 'Advanced React Patterns & Performance',
-    instructor: 'Dr. Sarah Mitchell',
-    progress: 68,
-    tag: 'Advanced',
-    tagColor: 'text-fuchsia-400 bg-fuchsia-500/20 border-fuchsia-500/20',
-    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 2,
-    title: 'UI/UX Design Masterclass: From Wireframe to Prototype',
-    instructor: 'Marcus Chen',
-    progress: 35,
-    tag: 'Intermediate',
-    tagColor: 'text-pink-400 bg-pink-500/20 border-pink-500/20',
-    image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop&q=60'
-  }
-];
+import { mockContinueLearning as courses } from '../data/mockDashboard';
 
 export const ContinueLearningList = () => {
   return (

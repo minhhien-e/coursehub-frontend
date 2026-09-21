@@ -1,27 +1,6 @@
 import { ArrowRight, Star, Users, Clock } from 'lucide-react';
 
-const courses = [
-  {
-    id: 1,
-    title: 'Digital Marketing & Growth Strategy',
-    instructor: 'James Walker',
-    rating: 4.8,
-    students: 21300,
-    duration: '23h 20m',
-    price: 69.99,
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=60'
-  },
-  {
-    id: 2,
-    title: 'Full-Stack TypeScript: Next.js, tRPC & Prisma',
-    instructor: 'Dr. Sarah Mitchell',
-    rating: 4.9,
-    students: 9800,
-    duration: '45h 10m',
-    price: 94.99,
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=60'
-  }
-];
+import { mockRecommendedCourses as courses } from '../data/mockDashboard';
 
 export const RecommendedCourses = () => {
   return (
