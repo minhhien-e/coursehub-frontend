@@ -1,4 +1,4 @@
-import api from '@/services/api';
+// import api from '@/services/api'; // (To be used when cross-course assignment API is ready)
 import type { Assignment, AssignmentStatsData } from '../types';
 
 export const assignmentsService = {

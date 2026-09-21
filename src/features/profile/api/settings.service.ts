@@ -7,20 +7,20 @@ export const settingsService = {
     return response.data;
   },
 
-  updateNotifications: async (payload: any) => {
-    // const response = await api.put('/users/me/notifications', payload);
+  updateNotifications: async (_payload: any) => {
+    // const response = await api.put('/users/me/notifications', _payload);
     // return response.data;
     return { success: true };
   },
 
-  updatePrivacy: async (payload: any) => {
-    // const response = await api.put('/users/me/privacy', payload);
+  updatePrivacy: async (_payload: any) => {
+    // const response = await api.put('/users/me/privacy', _payload);
     // return response.data;
     return { success: true };
   },
 
-  updatePassword: async (payload: UpdatePasswordPayload) => {
-    // const response = await api.put('/users/me/password', payload);
+  updatePassword: async (_payload: UpdatePasswordPayload) => {
+    // const response = await api.put('/users/me/password', _payload);
     // return response.data;
     return { success: true };
   }
