@@ -1,4 +1,4 @@
-import api from '../../services/api';
+import api from '@/services/api';
 import type { Course, CourseDetail } from '../types';
 
 export const coursesService = {
