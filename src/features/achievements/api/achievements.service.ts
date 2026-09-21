@@ -1,16 +1,19 @@
+import api from '@/services/api';
 import type { Badge, LeaderboardUser, UserProgress } from '../types';
-import { mockBadges, mockLeaderboard, mockUserProgress } from '../data/mockAchievements';
 
 export const achievementsService = {
   async getBadges(): Promise<Badge[]> {
-    return new Promise((resolve) => setTimeout(() => resolve(mockBadges), 400));
+    const response = await api.get('/achievements/badges');
+    return response.data;
   },
   
   async getLeaderboard(): Promise<LeaderboardUser[]> {
-    return new Promise((resolve) => setTimeout(() => resolve(mockLeaderboard), 400));
+    const response = await api.get('/leaderboard');
+    return response.data;
   },
   
   async getUserProgress(): Promise<UserProgress> {
-    return new Promise((resolve) => setTimeout(() => resolve(mockUserProgress), 200));
+    const response = await api.get('/achievements/progress');
+    return response.data;
   }
 };
