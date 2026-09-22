@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
-import { RecentAchievement } from '../types';
+import type { RecentAchievement } from '../types';
 import * as Icons from 'lucide-react';
 
 export const RecentAchievements = ({ achievements }: { achievements: RecentAchievement[] }) => {

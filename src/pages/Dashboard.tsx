@@ -6,7 +6,8 @@ import { StudyHoursChart } from '@/features/dashboard/components/StudyHoursChart
 import { RecommendedCourses } from '@/features/dashboard/components/RecommendedCourses';
 import { UpcomingDeadlines } from '@/features/dashboard/components/UpcomingDeadlines';
 import { RecentAchievements } from '@/features/dashboard/components/RecentAchievements';
-import { dashboardService, DashboardData } from '@/features/dashboard/api/dashboard.service';
+import { dashboardService } from '@/features/dashboard/api/dashboard.service';
+import type { DashboardData } from '@/features/dashboard/api/dashboard.service';
 
 export const Dashboard = () => {
   const [data, setData] = useState<DashboardData | null>(null);

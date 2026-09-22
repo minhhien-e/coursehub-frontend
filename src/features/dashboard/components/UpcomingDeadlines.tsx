@@ -1,6 +1,6 @@
 import { FileCode, ClipboardList } from 'lucide-react';
 
-import { UpcomingDeadline } from '../types';
+import type { UpcomingDeadline } from '../types';
 
 export const UpcomingDeadlines = ({ deadlines }: { deadlines: UpcomingDeadline[] }) => {
   return (

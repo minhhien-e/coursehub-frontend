@@ -1,6 +1,6 @@
 import { ArrowRight, Star, Users, Clock } from 'lucide-react';
 
-import { RecommendedCourse } from '../types';
+import type { RecommendedCourse } from '../types';
 
 export const RecommendedCourses = ({ courses }: { courses: RecommendedCourse[] }) => {
   return (

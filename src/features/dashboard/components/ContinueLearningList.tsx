@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
-import { ContinueLearningCourse } from '../types';
+import type { ContinueLearningCourse } from '../types';
 
 export const ContinueLearningList = ({ courses }: { courses: ContinueLearningCourse[] }) => {
   return (
