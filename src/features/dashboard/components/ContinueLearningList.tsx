@@ -1,9 +1,9 @@
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
-import { mockContinueLearning as courses } from '../data/mockDashboard';
+import { ContinueLearningCourse } from '../types';
 
-export const ContinueLearningList = () => {
+export const ContinueLearningList = ({ courses }: { courses: ContinueLearningCourse[] }) => {
   return (
     <div className="bg-surface border border-borderDim rounded-xl overflow-hidden mb-6">
       

@@ -23,7 +23,7 @@ export interface RecentAchievement {
   id: number;
   title: string;
   rarity: string;
-  icon: LucideIcon;
+  iconType: string;
   colorClass: string;
   bgClass: string;
 }

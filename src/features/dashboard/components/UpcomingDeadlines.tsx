@@ -1,8 +1,8 @@
 import { FileCode, ClipboardList } from 'lucide-react';
 
-import { mockDeadlines as deadlines } from '../data/mockDashboard';
+import { UpcomingDeadline } from '../types';
 
-export const UpcomingDeadlines = () => {
+export const UpcomingDeadlines = ({ deadlines }: { deadlines: UpcomingDeadline[] }) => {
   return (
     <div className="bg-surface border border-borderDim rounded-xl overflow-hidden mb-6">
       

@@ -1,8 +1,8 @@
 import { ArrowRight, Star, Users, Clock } from 'lucide-react';
 
-import { mockRecommendedCourses as courses } from '../data/mockDashboard';
+import { RecommendedCourse } from '../types';
 
-export const RecommendedCourses = () => {
+export const RecommendedCourses = ({ courses }: { courses: RecommendedCourse[] }) => {
   return (
     <div className="bg-surface border border-borderDim rounded-xl overflow-hidden">
       

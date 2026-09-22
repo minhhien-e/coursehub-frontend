@@ -1,9 +1,10 @@
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
-import { mockRecentAchievements as achievements } from '../data/mockDashboard';
+import { RecentAchievement } from '../types';
+import * as Icons from 'lucide-react';
 
-export const RecentAchievements = () => {
+export const RecentAchievements = ({ achievements }: { achievements: RecentAchievement[] }) => {
   return (
     <div className="bg-surface border border-borderDim rounded-xl overflow-hidden mb-6">
       
@@ -17,7 +18,10 @@ export const RecentAchievements = () => {
       <div className="px-5 pb-5 grid grid-cols-2 gap-3">
         {achievements.map(ach => (
           <div key={ach.id} className={cn("rounded-lg p-3 border flex flex-col items-center text-center cursor-pointer hover:scale-105 transition-transform", ach.bgClass)}>
-            <ach.icon size={20} className={cn("mb-2", ach.colorClass)} />
+            {(() => {
+              const Icon = (Icons as any)[ach.iconType] || Icons.Award;
+              return <Icon size={20} className={cn("mb-2", ach.colorClass)} />;
+            })()}
             <h4 className={cn("font-bold text-[11px] mb-0.5", ach.colorClass)}>{ach.title}</h4>
             <p className="text-[9px] text-textMuted uppercase tracking-wider">{ach.rarity}</p>
           </div>
